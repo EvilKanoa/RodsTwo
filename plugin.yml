@@ -1,0 +1,18 @@
+name: LightningRods 2
+main: ca.kanoa.RodsTwo.RodsTwo
+version: 1.0
+author: 12323op
+description: The second edition of the LightningRods plugin.
+
+permissions:
+    lr.command:
+        description: Allows use of the /lightningrod command.
+        default: true
+        
+commands:
+    lightningrod:
+        description:
+        usage: /lightningrod <arguments>
+        aliases: [lr, lrod]
+        permission: lr.command
+        permission-message: You don't have permission!
