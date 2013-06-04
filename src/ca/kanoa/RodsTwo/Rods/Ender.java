@@ -12,7 +12,7 @@ import org.bukkit.plugin.Plugin;
 public class Ender extends Rod {
 
 	public Ender(Plugin plugin) throws Exception {
-	    super("Ender", 1, 280, new ConfigOptions(new String[]{}, new Object[]{}), 500, plugin);
+	    super("Ender", 1, 280, new ConfigOptions(), 500, plugin);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape("EBE").setIngredient('E', Material.ENDER_PEARL).setIngredient('B', Material.STICK));
 	}
 	
