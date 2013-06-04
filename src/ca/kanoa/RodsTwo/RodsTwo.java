@@ -10,6 +10,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -28,10 +29,12 @@ public class RodsTwo extends JavaPlugin implements Listener{
     public Logger logger;
     public FileConfiguration rodConfig;
     public Utils utils = new Utils(this);
+    public static Plugin plugin;
 
     public void onEnable(){
         pdf = getDescription();
         logger = getLogger();
+        plugin = this;
         getCommand("lightningrod").setExecutor(new CommandExecu(this));
         Bukkit.getPluginManager().registerEvents(new EventListener(this), this);
         try {
