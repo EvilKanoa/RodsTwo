@@ -3,8 +3,7 @@ package ca.kanoa.RodsTwo.Rods;
 import ca.kanoa.RodsTwo.Objects.ConfigOptions;
 import ca.kanoa.RodsTwo.Objects.Rod;
 import org.bukkit.Material;
-import org.bukkit.Server;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.Plugin;
@@ -24,19 +23,14 @@ public class Health extends Rod {
     }
 
     @Override
-    public boolean run(Player player, FileConfiguration config){
+    public boolean run(Player player, ConfigurationSection config){
         int currHealth = player.getHealth();
-        int addHealth = config.getInt(super.getPath("options.heartsToBeHealed"));
+        int addHealth = config.getInt("heartsToBeHealed");
         int newHealth = currHealth + addHealth > 20 ? 20 : currHealth + addHealth;
         if(currHealth == 20)
             return false;
         player.setHealth(newHealth);
         player.getWorld().strikeLightningEffect(player.getLocation());
-        return true;
-    }
-    
-    @Override
-    public boolean enable(Server server){
         return true;
     }
 }

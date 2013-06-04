@@ -12,8 +12,15 @@ public class ConfigOptions {
     public ConfigOptions(String[] options, Object[] defaultValues) throws Exception {
         if(!(options.length == defaultValues.length))
             throw new Exception("Invalid sizing");
-        this.options = new ArrayList<String>(Arrays.asList(options));
-        this.defaultValues = new ArrayList<Object>(Arrays.asList(defaultValues));
+        
+        if (options != null && defaultValues != null) {
+        	this.options = new ArrayList<String>(Arrays.asList(options));
+        	this.defaultValues = new ArrayList<Object>(Arrays.asList(defaultValues));
+        }
+        else {
+        	this.options = new ArrayList<String>();
+        	this.defaultValues = new ArrayList<Object>();
+        }
     }
 
     /*

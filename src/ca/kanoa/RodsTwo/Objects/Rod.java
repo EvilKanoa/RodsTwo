@@ -2,7 +2,7 @@ package ca.kanoa.RodsTwo.Objects;
 
 import org.bukkit.Material;
 import org.bukkit.Server;
-import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
@@ -104,7 +104,7 @@ public abstract class Rod {
         return "Rods." + this.name + "." + path;
     }
 
-    public abstract boolean run(Player player, FileConfiguration config);
+    public abstract boolean run(Player player, ConfigurationSection config);
 
     public boolean enable(Server server){
         return true;

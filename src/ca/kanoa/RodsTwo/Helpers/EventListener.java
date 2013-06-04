@@ -27,7 +27,7 @@ public class EventListener implements Listener {
                             event.getItem().getAmount() >= rod.getCost() && event.getPlayer().hasPermission(rod.getPermission()) &&
                             plugin.rodConfig.getBoolean(rod.getPath("enabled"))){
                         if(plugin.utils.isCooldownOver(event.getPlayer().getName())){
-                            if(rod.run(event.getPlayer(), plugin.rodConfig)){
+                            if(rod.run(event.getPlayer(), plugin.rodConfig.getConfigurationSection("Rods." + rod.getName() + ".options"))){
                                 ItemStack is = event.getItem();
                                 if(is.getAmount() == rod.getCost()) is = null;
                                 else is.setAmount(is.getAmount() - rod.getCost());
