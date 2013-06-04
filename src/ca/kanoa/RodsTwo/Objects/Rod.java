@@ -10,6 +10,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 
+import ca.kanoa.RodsTwo.RodsTwo;
+
 import java.util.Arrays;
 
 public abstract class Rod {
@@ -33,6 +35,10 @@ public abstract class Rod {
         this.plugin = plugin;
         this.defaultCooldown = cooldown;
         this.defaultCost = cost;
+    }
+    
+    public Rod(String name, int cost, int rodID, ConfigOptions options, long cooldown){
+    	this(name, cost, rodID, options, cooldown, RodsTwo.plugin);
     }
 
     public long getDefaultCooldown(){
