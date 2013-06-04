@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class ConfigRecipe {
 
-    public ShapedRecipe loadRecipeFromConfig(FileConfiguration config, Rod rod) throws InvalidRecipeException {
+    public static ShapedRecipe loadRecipeFromConfig(FileConfiguration config, Rod rod) throws InvalidRecipeException {
         //Load all the values from disk
         int amount = config.getInt(rod.getPath("recipe.amount"));
         List<String> shape = config.getStringList(rod.getPath("recipe.shape"));
@@ -47,9 +47,7 @@ public class ConfigRecipe {
         }
     }
 
-    public ConfigRecipe(){}
-
-    public void saveDefaultRecipe(FileConfiguration config, Rod rod, boolean overwrite){
+    public static void saveDefaultRecipe(FileConfiguration config, Rod rod, boolean overwrite){
         if(config.get(rod.getPath("recipe.amount")) == null || overwrite)
             config.set(rod.getPath("recipe.amount"), rod.getRecipe().getResult().getAmount());
 

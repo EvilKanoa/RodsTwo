@@ -80,9 +80,9 @@ public class CommandExecu implements CommandExecutor {
             if(args.length == 1){
                 sender.sendMessage(ChatColor.DARK_BLUE + "Reloading configuration...");
                 plugin.rodConfig = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "rods.yml"));
-                plugin.utils.setRodVars();
+                Utils.setRodVars();
                 plugin.getServer().resetRecipes();
-                plugin.utils.addRecipes();
+                Utils.addRecipes();
                 sender.sendMessage(ChatColor.AQUA + "Reload complete!");
             }
             else
@@ -93,11 +93,11 @@ public class CommandExecu implements CommandExecutor {
         else if(args.length > 0 && args[0].equalsIgnoreCase("overwrite")){
             if(args.length == 1){
                 sender.sendMessage(ChatColor.DARK_BLUE + "Overwriting configuration...");
-                plugin.utils.makeConfig(true);
+                Utils.makeConfig(true);
                 plugin.rodConfig = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "rods.yml"));
-                plugin.utils.setRodVars();
+                Utils.setRodVars();
                 plugin.getServer().resetRecipes();
-                plugin.utils.addRecipes();
+                Utils.addRecipes();
                 sender.sendMessage(ChatColor.AQUA + "Overwrite complete!");
             }
             else

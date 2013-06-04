@@ -13,22 +13,14 @@ import java.io.IOException;
 
 public class Utils {
 
-    RodsTwo plugin;
-    ConfigRecipe configRecipe;
-
-    public Utils(RodsTwo plugin){
-        this.plugin = plugin;
-        configRecipe = new ConfigRecipe();
-    }
-
-    public void makeConfig(boolean overwrite) {
-        File configFile = new File(plugin.getDataFolder(), "rods.yml");
+    public static void makeConfig(boolean overwrite) {
+        File configFile = new File(RodsTwo.plugin.getDataFolder(), "rods.yml");
         if(!configFile.exists()){
-            plugin.saveResource("rods.yml", true);
+            RodsTwo.plugin.saveResource("rods.yml", true);
         }
         FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
 
-        for(Rod rod : plugin.rods){
+        for(Rod rod : RodsTwo.rods){
             if(config.get(rod.getPath("enabled")) == null || overwrite)
                 config.set(rod.getPath("enabled"), true);
 
@@ -38,7 +30,7 @@ public class Utils {
             if(config.get(rod.getPath("cooldown")) == null || overwrite)
                 config.set(rod.getPath("cooldown"), overwrite ? rod.getDefaultCooldown() : rod.getCooldown());
 
-            configRecipe.saveDefaultRecipe(config, rod, overwrite);
+            ConfigRecipe.saveDefaultRecipe(config, rod, overwrite);
 
             for(Object[] s : rod.getOptions().getAllOptionsAsArray()){
                 if(config.get(rod.getPath("options." + s[0])) == null || overwrite)
@@ -55,41 +47,41 @@ public class Utils {
 
     //TODO: load set of rods from folder plugins/lr2/rods
 
-    public void setRodVars(){
-        for(Rod rod : plugin.rods){
+    public static void setRodVars(){
+        for(Rod rod : RodsTwo.rods){
             try{
-                rod.setCost(plugin.rodConfig.getInt(rod.getPath("cost")));
-                rod.setCooldown(plugin.rodConfig.getLong(rod.getPath("cooldown")));
+                rod.setCost(RodsTwo.plugin.rodConfig.getInt(rod.getPath("cost")));
+                rod.setCooldown(RodsTwo.plugin.rodConfig.getLong(rod.getPath("cooldown")));
             } catch (Exception e){
-                plugin.logger.warning("Invalid config formatting for rod: " + rod.getName() + ".");
+                RodsTwo.plugin.logger.warning("Invalid config formatting for rod: " + rod.getName() + ".");
             }
         }
     }
 
-    public void addRecipes(){
-        for(Rod rod : plugin.rods){
+    public static void addRecipes(){
+        for(Rod rod : RodsTwo.rods){
             try {
-                ShapedRecipe recipe = configRecipe.loadRecipeFromConfig(plugin.rodConfig, rod);
-                plugin.getServer().addRecipe(recipe);
+                ShapedRecipe recipe = ConfigRecipe.loadRecipeFromConfig(RodsTwo.plugin.rodConfig, rod);
+                RodsTwo.plugin.getServer().addRecipe(recipe);
             } catch (InvalidRecipeException e) {
                 e.printStackTrace();
-                plugin.logger.warning("Error while loading recipe for rod: " + rod.getName() + "!");
+                RodsTwo.plugin.logger.warning("Error while loading recipe for rod: " + rod.getName() + "!");
             } catch(NullPointerException e){e.printStackTrace();}
         }
     }
 
-    public boolean isCooldownOver(String player){
+    public static boolean isCooldownOver(String player){
         try{
-            return System.currentTimeMillis() > plugin.cooldowns.get(player);
+            return System.currentTimeMillis() > RodsTwo.plugin.cooldowns.get(player);
         } catch(Exception e){
             return true;
         }
     }
 
-    public void initializeRods(){
-        for(Rod rod : plugin.rods){
-            if(!rod.enable(plugin.getServer()))
-                plugin.rods.remove(rod);
+    public static void initializeRods(){
+        for(Rod rod : RodsTwo.rods){
+            if(!rod.enable(RodsTwo.plugin.getServer()))
+                RodsTwo.rods.remove(rod);
         }
     }
 }
