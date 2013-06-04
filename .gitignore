@@ -4,6 +4,8 @@
 
 *.eml
 *.iml
+.project
+*.project
 
 
 #################
