@@ -4,10 +4,6 @@
 
 *.eml
 *.iml
-.project
-.classpath
-*.project
-*.classpath
 
 
 #################
