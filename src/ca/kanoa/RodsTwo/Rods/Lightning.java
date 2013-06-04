@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 public class Lightning extends Rod {
 
     public Lightning(Plugin plugin) throws Exception {
-        super("Lightning", 1, 280,  new ConfigOptions(new String[]{"maxDistance"}, new Object[]{50}), 1500, plugin);
+        super("Lightning", 1, 280,  new ConfigOptions(new String[]{"max_distance"}, new Object[]{50}), 1500, plugin);
 
         //Set default the recipe
         super.setRecipe(new ShapedRecipe(super.getItem()).shape(" I ", " R ", " I ").setIngredient('I', Material.IRON_INGOT).setIngredient('R', Material.getMaterial(super.getRodID())));
@@ -19,7 +19,7 @@ public class Lightning extends Rod {
 
     @Override
     public boolean run(Player player, ConfigurationSection config){
-        player.getWorld().strikeLightning(player.getTargetBlock(null, config.getInt("maxDistence")).getLocation());
+        player.getWorld().strikeLightning(player.getTargetBlock(null, config.getInt("max_distence")).getLocation());
         return true;
     }
 }

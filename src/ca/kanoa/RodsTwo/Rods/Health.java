@@ -11,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 public class Health extends Rod {
 
     public Health(Plugin plugin) throws Exception {
-        super("Health", /*Cost*/ 1, /*RodID*/ 280,  new ConfigOptions(new String[]{"heartsToBeHealed"}, new Object[]{10}), /*Cooldown (In MS)*/ 3000, /*Main Plugin Object*/ plugin);
+        super("Health", /*Cost*/ 1, /*RodID*/ 280,  new ConfigOptions(new String[]{"hearts_to_be_healed"}, new Object[]{10}), /*Cooldown (In MS)*/ 3000, /*Main Plugin Object*/ plugin);
         
         //Set default the recipe
         ShapedRecipe recipe = new ShapedRecipe(super.getItem());
@@ -25,7 +25,7 @@ public class Health extends Rod {
     @Override
     public boolean run(Player player, ConfigurationSection config){
         int currHealth = player.getHealth();
-        int addHealth = config.getInt("heartsToBeHealed");
+        int addHealth = config.getInt("hearts_to_be_healed");
         int newHealth = currHealth + addHealth > 20 ? 20 : currHealth + addHealth;
         if(currHealth == 20)
             return false;

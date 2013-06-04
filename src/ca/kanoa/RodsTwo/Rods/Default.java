@@ -11,12 +11,12 @@ import org.bukkit.plugin.Plugin;
 public class Default extends Rod {
 
 	public Default(Plugin plugin) throws Exception {
-        super("Debug", 32, 280, new ConfigOptions(null, null), 500, plugin);
-        super.setRecipe(new ShapedRecipe(super.getItem()).shape("DDD", "DRD", "DDD").setIngredient('D', Material.DIAMOND).setIngredient('R', Material.BLAZE_ROD));
-    }
-
-    @Override
-    public boolean run(Player player, ConfigurationSection config) {
-        return false; 
-    }
+	    super("Debug", 1, 280, new ConfigOptions(new String[]{}, new Object[]{}), 500, plugin);
+	    setRecipe(new ShapedRecipe(super.getItem()).shape(" W ", "WBW", " W ").setIngredient('W', Material.BONE).setIngredient('B', Material.STICK));
+	}
+	
+	@Override
+	public boolean run(Player player, ConfigurationSection config) {
+	    return false; 
+	}
 }
