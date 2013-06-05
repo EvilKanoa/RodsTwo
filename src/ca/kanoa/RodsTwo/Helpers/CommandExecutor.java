@@ -5,7 +5,6 @@ import ca.kanoa.RodsTwo.RodsTwo;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -15,11 +14,11 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.io.File;
 import java.util.Arrays;
 
-public class CommandExecu implements CommandExecutor {
+public class CommandExecutor implements org.bukkit.command.CommandExecutor {
 
     private RodsTwo plugin;
 
-    public CommandExecu(RodsTwo plugin){
+    public CommandExecutor(RodsTwo plugin){
         this.plugin = plugin;
     }
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {

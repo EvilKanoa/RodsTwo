@@ -1,6 +1,6 @@
 package ca.kanoa.RodsTwo;
 
-import ca.kanoa.RodsTwo.Helpers.CommandExecu;
+import ca.kanoa.RodsTwo.Helpers.CommandExecutor;
 import ca.kanoa.RodsTwo.Helpers.EventListener;
 import ca.kanoa.RodsTwo.Helpers.Utils;
 import ca.kanoa.RodsTwo.Objects.Rod;
@@ -33,7 +33,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
         pdf = getDescription();
         logger = getLogger();
         plugin = this;
-        getCommand("lightningrod").setExecutor(new CommandExecu(this));
+        getCommand("lightningrod").setExecutor(new CommandExecutor(this));
         Bukkit.getPluginManager().registerEvents(new EventListener(this), this);
         try {
             addRods();
