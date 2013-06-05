@@ -21,7 +21,7 @@ public class Creeper extends Rod {
 	public boolean run(Player player, ConfigurationSection config) {
 	   	for (int i = 0; i < config.getInt("number_to_spawn"); i++) {
 	   		Location loc = player.getTargetBlock(null, config.getInt("max_distence")).getLocation();
-	   		loc.setY(loc.getY() + (i / 2));
+	   		loc.add(0, 1.2f, 0);
 	   		player.getWorld().spawn(loc, org.bukkit.entity.Creeper.class);
 	   	}
 	   	return true;

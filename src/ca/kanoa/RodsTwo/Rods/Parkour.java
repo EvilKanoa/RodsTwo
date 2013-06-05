@@ -13,7 +13,7 @@ import org.bukkit.potion.PotionEffectType;
 public class Parkour extends Rod {
 
 	public Parkour(Plugin plugin) throws Exception {
-	    super("Debug", 1, 280, new ConfigOptions(new String[]{"time_of_jump", "time_of_speed", "jump_level", "speed_level"}, new Object[]{20, 20, 1, 2}), 500, plugin);
+	    super("Parkour", 1, 280, new ConfigOptions(new String[]{"time_of_jump", "time_of_speed", "jump_level", "speed_level"}, new Object[]{20, 20, 1, 2}), 500, plugin);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape("SBU").setIngredient('S', Material.SUGAR).setIngredient('U', Material.SLIME_BALL).setIngredient('B', Material.STICK));
 	}
 	
