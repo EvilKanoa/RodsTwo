@@ -24,7 +24,8 @@ public class EventListener implements Listener {
             for(Rod rod : plugin.getRods()){
                 try {
                     if(event.getItem().getTypeId() == rod.getRodID() && event.getItem().getItemMeta().getLore().contains(rod.getName()) &&
-                            event.getItem().getAmount() >= rod.getCost() && event.getPlayer().hasPermission(rod.getPermission()) &&
+                            event.getItem().getAmount() >= rod.getCost() && 
+                            (event.getPlayer().hasPermission(rod.getPermission()) || event.getPlayer().hasPermission("lr.use.all")) &&
                             plugin.rodConfig.getBoolean(rod.getPath("enabled"))){
                         if(Utils.isCooldownOver(event.getPlayer().getName())){
                             if(rod.run(event.getPlayer(), plugin.rodConfig.getConfigurationSection("Rods." + rod.getName() + ".options"))){

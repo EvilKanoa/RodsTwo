@@ -70,6 +70,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
         rods.add(new Flight(this));
         rods.add(new Zombie(this));
         rods.add(new Drown(this));
+        rods.add(new Time(this));
         //TODO: Make more rods!!!
         Utils.makeConfig(false);
     }
