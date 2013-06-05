@@ -19,7 +19,7 @@ public class EventListener implements Listener {
     }
 
     @EventHandler(priority = EventPriority.NORMAL)
-    public void onPlayerInteract(final PlayerInteractEvent event){
+    public void onPlayerInteract(PlayerInteractEvent event){
         if(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK){
             for(Rod rod : plugin.getRods()){
                 try {
