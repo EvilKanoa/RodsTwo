@@ -6,6 +6,7 @@ import ca.kanoa.RodsTwo.Helpers.Utils;
 import ca.kanoa.RodsTwo.Objects.Rod;
 import ca.kanoa.RodsTwo.Rods.*;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
@@ -73,6 +74,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
         rods.add(new Time(this));
         rods.add(new Broadcast(this));
         rods.add(new Resistance(this));
+        rods.add(new Jump(this));
         //TODO: Make more rods!!!
         Utils.makeConfig(false);
     }
@@ -94,5 +96,9 @@ public class RodsTwo extends JavaPlugin implements Listener{
     public static void addRod(Rod rod) {
     	rods.add(rod);
     	Utils.makeConfig(false);
+    }
+    
+    public static void debug(String msg) {
+    	Bukkit.broadcastMessage(ChatColor.YELLOW + "" + '[' + ChatColor.AQUA + "Debug" + ChatColor.YELLOW + "] " + ChatColor.RED + msg);
     }
 }

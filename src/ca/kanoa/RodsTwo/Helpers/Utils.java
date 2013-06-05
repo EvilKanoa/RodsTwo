@@ -4,6 +4,9 @@ import ca.kanoa.RodsTwo.Objects.ConfigRecipe;
 import ca.kanoa.RodsTwo.Objects.InvalidRecipeException;
 import ca.kanoa.RodsTwo.Objects.Rod;
 import ca.kanoa.RodsTwo.RodsTwo;
+
+import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ShapedRecipe;
@@ -83,5 +86,9 @@ public class Utils {
             if(!rod.enable(RodsTwo.plugin.getServer()))
                 RodsTwo.rods.remove(rod);
         }
+    }
+    
+    public static void debug(String msg) {
+    	Bukkit.broadcastMessage(ChatColor.YELLOW + "" + '[' + ChatColor.AQUA + "Debug" + ChatColor.YELLOW + "] " + ChatColor.RED + msg);
     }
 }
