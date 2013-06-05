@@ -26,7 +26,7 @@ public class Store implements Listener {
 	}
 
 	private void populateStore() {
-		storeFront = Bukkit.createInventory(buyer, roundUp(RodsTwo.rods.size()), "LightningRod Spawner");
+		storeFront = Bukkit.createInventory(buyer, roundUp(RodsTwo.rods.size()), "LightningRod Store");
 		for (Rod rod : RodsTwo.rods)
 			storeFront.addItem(rod.getItem(1));
 	}
