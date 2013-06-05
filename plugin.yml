@@ -8,6 +8,9 @@ permissions:
     lr.command:
         description: Allows use of the /lightningrod command.
         default: true
+    lr.use.all:
+        description: Allows use of all rods
+        default: op
         
 commands:
     lightningrod:
