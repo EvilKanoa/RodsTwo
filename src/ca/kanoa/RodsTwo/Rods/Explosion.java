@@ -11,13 +11,13 @@ import org.bukkit.plugin.Plugin;
 public class Explosion extends Rod {
 
 	public Explosion(Plugin plugin) throws Exception {
-	    super("Explosion", 1, 280, new ConfigOptions(new String[]{"maax_distence", "power"}, new Object[]{50, 4.0D}), 500, plugin);
+	    super("Explosion", 1, 280, new ConfigOptions(new String[]{"max_distence", "power", "enable_fire"}, new Object[]{50, 4.0D, true}), 500, plugin);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape(" B ", " E ").setIngredient('E', Material.TNT).setIngredient('B', Material.STICK));
 	}
 	
 	@Override
 	public boolean run(Player player, ConfigurationSection config) {
-		player.getWorld().createExplosion(player.getTargetBlock(null, config.getInt("max_distence")).getLocation(), (float) config.getDouble("power"), true);
+		player.getWorld().createExplosion(player.getTargetBlock(null, config.getInt("max_distence")).getLocation(), (float) config.getDouble("power"), config.getBoolean("enable_fire"));
 	    return true; 
 	}
 }

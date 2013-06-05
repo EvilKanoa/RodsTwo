@@ -10,6 +10,8 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class Flight extends Rod {
 
@@ -22,12 +24,16 @@ public class Flight extends Rod {
 	public boolean run(Player player, ConfigurationSection config) {
 		if (player.isFlying())
 			return false;
+		final boolean wasAllowedFlight = player.getAllowFlight();
+		player.setAllowFlight(true);
 		player.setFlying(true);
+		player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, (int) (config.getDouble("flight_time") * 20), -1));
 		final Player p1 = player;
 		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
 			@Override
 			public void run() {
 				p1.setFlying(false);
+				p1.setAllowFlight(wasAllowedFlight);
 			}}, (long)(config.getDouble("flight_time") * 20));
 	    return true; 
 	}

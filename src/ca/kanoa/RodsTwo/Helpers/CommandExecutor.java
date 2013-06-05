@@ -77,7 +77,7 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
 
         else if(args.length > 0 && args[0].equalsIgnoreCase("reload")){
             if(args.length == 1){
-                sender.sendMessage(ChatColor.DARK_BLUE + "Reloading configuration...");
+                sender.sendMessage(ChatColor.AQUA + "Reloading configuration...");
                 plugin.rodConfig = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "rods.yml"));
                 Utils.setRodVars();
                 plugin.getServer().resetRecipes();
