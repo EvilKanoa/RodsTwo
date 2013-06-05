@@ -91,7 +91,7 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
 
         else if(args.length > 0 && args[0].equalsIgnoreCase("overwrite")){
             if(args.length == 1){
-                sender.sendMessage(ChatColor.DARK_BLUE + "Overwriting configuration...");
+                sender.sendMessage(ChatColor.AQUA + "Overwriting configuration...");
                 Utils.makeConfig(true);
                 plugin.rodConfig = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "rods.yml"));
                 Utils.setRodVars();
