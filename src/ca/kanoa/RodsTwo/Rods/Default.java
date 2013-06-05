@@ -2,6 +2,7 @@ package ca.kanoa.RodsTwo.Rods;
 
 import ca.kanoa.RodsTwo.Objects.ConfigOptions;
 import ca.kanoa.RodsTwo.Objects.Rod;
+
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
