@@ -12,7 +12,7 @@ public class Explosion extends Rod {
 
 	public Explosion(Plugin plugin) throws Exception {
 	    super("Explosion", 1, 280, new ConfigOptions(new String[]{"maax_distence", "power"}, new Object[]{50, 4.0D}), 500, plugin);
-	    setRecipe(new ShapedRecipe(super.getItem()).shape(" B ", " T ").setIngredient('T', Material.TNT).setIngredient('B', Material.STICK));
+	    setRecipe(new ShapedRecipe(super.getItem()).shape(" B ", " E ").setIngredient('E', Material.TNT).setIngredient('B', Material.STICK));
 	}
 	
 	@Override

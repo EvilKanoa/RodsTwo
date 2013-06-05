@@ -66,7 +66,7 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
 
         else if(args.length > 0 && args[0].equalsIgnoreCase("list")){
             if(args.length == 1){
-                sender.sendMessage(ChatColor.DARK_PURPLE + "Listing all loaded rods");
+                sender.sendMessage("" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Listing all loaded rods");
                 for(Rod rod : plugin.getRods())
                     sender.sendMessage(ChatColor.LIGHT_PURPLE + "Name: " + ChatColor.RED + rod.getName() + ChatColor.LIGHT_PURPLE + ", Cost: " + ChatColor.WHITE + rod.getCost() + ChatColor.LIGHT_PURPLE + ", ItemID: " + ChatColor.GREEN + rod.getRodID());
             }
