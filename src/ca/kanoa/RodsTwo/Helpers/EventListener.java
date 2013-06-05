@@ -38,7 +38,8 @@ public class EventListener implements Listener {
                             }
                         }
                         else{
-                        	String timeLeft = (((float)(((double)(RodsTwo.plugin.cooldowns.get(event.getPlayer().getName())) - System.currentTimeMillis()) / 1000)) + "").substring(0, 3);
+                        	String timeLeft = (((float)(((double)(RodsTwo.plugin.cooldowns.get(event.getPlayer().getName())) - System.currentTimeMillis()) / 1000)) + "");
+                        	timeLeft = timeLeft.substring(0, timeLeft.indexOf('.') + 2);
                             event.getPlayer().sendMessage(ChatColor.RED + "Slow down! Wait " + ChatColor.YELLOW + '[' + ChatColor.AQUA + (timeLeft.contains("0.0") ? "0.1" : timeLeft) + ChatColor.YELLOW + ']' + ChatColor.RED + " second(s) to regain power!");
                         }
                     }
