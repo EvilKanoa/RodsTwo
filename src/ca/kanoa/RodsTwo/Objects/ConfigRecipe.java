@@ -37,7 +37,7 @@ public class ConfigRecipe {
                 default: throw new InvalidRecipeException("Too many strings for shape");
             }
             for(char c : chars){
-                if(!Character.isLetter(ingredients.get(c))) throw new InvalidRecipeException("Found null value for recipe, at ingredient: " + c);
+                if(!Character.isLetter(c)) throw new InvalidRecipeException("Found null value for recipe, at ingredient: " + c);
                 recipe.setIngredient(c, Material.getMaterial(ingredients.get(c)));
             }
 

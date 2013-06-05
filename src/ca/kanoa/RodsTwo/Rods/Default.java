@@ -11,8 +11,8 @@ import org.bukkit.plugin.Plugin;
 public class Default extends Rod {
 
 	public Default(Plugin plugin) throws Exception {
-	    super("Debug", 1, 280, new ConfigOptions(new String[]{}, new Object[]{}), 500, plugin);
-	    setRecipe(new ShapedRecipe(super.getItem()).shape(" W ", "WBW", " W ").setIngredient('W', Material.BONE).setIngredient('B', Material.STICK));
+	    super("Debug", 1, 280, new ConfigOptions(new String[]{}, new Object[]{}), 500);
+	    setRecipe(new ShapedRecipe(super.getItem()).shape("DDD", "DBD", "DDD").setIngredient('D', Material.SPONGE).setIngredient('B', Material.STICK));
 	}
 	
 	@Override
