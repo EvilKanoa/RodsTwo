@@ -2,6 +2,8 @@ package ca.kanoa.RodsTwo.Helpers;
 
 import ca.kanoa.RodsTwo.Objects.Rod;
 import ca.kanoa.RodsTwo.RodsTwo;
+
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -78,10 +80,21 @@ public class EventListener implements Listener {
 					event.getPlayer().sendMessage(Utils.signMsg("Your inventory is full!"));
 					return;
 				}
-				event.getPlayer().getInventory().addItem(rod.getItem(amount));
-				//remove money
-				event.getPlayer().sendMessage(Utils.signMsg("You just bought " + amount + " " + rod.getName() + " Rod(s), for " + cost /*plus currency*/  + "."));
+				//Vault
+				if (RodsTwo.eco) {
+					if (RodsTwo.vaultEco.getBalance(event.getPlayer().getName()) < cost){
+						event.getPlayer().sendMessage(Utils.signMsg("You don't have enough money!"));
+						return;
+					}
+					//remove money
+					RodsTwo.vaultEco.withdrawPlayer(event.getPlayer().getName(), cost);
+				}
+				else
+					Bukkit.getLogger().warning("A player is buying a LightningRod but vault is disabled, no money will be withdrawn!");
 				
+				event.getPlayer().getInventory().addItem(rod.getItem(amount));
+				event.getPlayer().sendMessage(Utils.signMsg("You just bought " + amount + " " + rod.getName() + " Rod(s), for " + (RodsTwo.eco ? RodsTwo.vaultEco.format(cost) : cost + " dollars") + "."));
+
 			} catch (Exception e){
 				event.getPlayer().sendMessage(Utils.signMsg("Badly formated sign, tell an admin!"));
 			}
