@@ -19,7 +19,7 @@ public class Time extends Rod {
 	
 	@Override
 	public boolean run(Player player, ConfigurationSection config) {
-		player.getWorld().setTime(6000);
+		player.getWorld().setTime(player.getWorld().getTime() + 6000 >= 24000 ? player.getWorld().getTime() + 6000 - 24000 : player.getWorld().getTime() + 6000);
 		player.playSound(player.getLocation(), Sound.PORTAL_TRAVEL, 1, 1);
 	    return true; 
 	}
