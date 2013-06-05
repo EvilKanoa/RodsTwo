@@ -2,6 +2,7 @@ package ca.kanoa.RodsTwo;
 
 import ca.kanoa.RodsTwo.Helpers.CommandExecutor;
 import ca.kanoa.RodsTwo.Helpers.EventListener;
+import ca.kanoa.RodsTwo.Helpers.SignListener;
 import ca.kanoa.RodsTwo.Helpers.Utils;
 import ca.kanoa.RodsTwo.Objects.Rod;
 import ca.kanoa.RodsTwo.Rods.*;
@@ -40,6 +41,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
         plugin = this;
         getCommand("lightningrod").setExecutor(new CommandExecutor());
         Bukkit.getPluginManager().registerEvents(new EventListener(), this);
+        Bukkit.getPluginManager().registerEvents(new SignListener(), this);
         eco = Utils.setupEconomy();
         try {
             addRods();
