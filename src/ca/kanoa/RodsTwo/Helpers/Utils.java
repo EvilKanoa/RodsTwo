@@ -91,4 +91,8 @@ public class Utils {
     public static void debug(String msg) {
     	Bukkit.broadcastMessage(ChatColor.YELLOW + "" + '[' + ChatColor.AQUA + "Debug" + ChatColor.YELLOW + "] " + ChatColor.RED + msg);
     }
+    
+    public static String signMsg(String msg) {
+    	return ChatColor.BLACK + "[" + ChatColor.YELLOW + "SIGN" + ChatColor.BLACK + "] " + ChatColor.AQUA + msg;
+    }
 }
