@@ -5,6 +5,8 @@ import ca.kanoa.RodsTwo.Helpers.EventListener;
 import ca.kanoa.RodsTwo.Helpers.Utils;
 import ca.kanoa.RodsTwo.Objects.Rod;
 import ca.kanoa.RodsTwo.Rods.*;
+import net.milkbowl.vault.economy.Economy;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -29,13 +31,16 @@ public class RodsTwo extends JavaPlugin implements Listener{
     public Logger logger;
     public FileConfiguration rodConfig;
     public static RodsTwo plugin;
+    public static Economy vaultEco = null;
+    public static boolean eco = false;
 
     public void onEnable(){
         pdf = getDescription();
         logger = getLogger();
         plugin = this;
-        getCommand("lightningrod").setExecutor(new CommandExecutor(this));
-        Bukkit.getPluginManager().registerEvents(new EventListener(this), this);
+        getCommand("lightningrod").setExecutor(new CommandExecutor());
+        Bukkit.getPluginManager().registerEvents(new EventListener(), this);
+        eco = Utils.setupEconomy();
         try {
             addRods();
         } catch (Exception e) {

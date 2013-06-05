@@ -17,8 +17,8 @@ public class EventListener implements Listener {
 
 	private RodsTwo plugin;
 
-	public EventListener(RodsTwo plugin){
-		this.plugin = plugin;
+	public EventListener(){
+		this.plugin = RodsTwo.plugin;
 	}
 
 	@EventHandler(priority = EventPriority.NORMAL)

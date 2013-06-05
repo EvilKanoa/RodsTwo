@@ -19,8 +19,8 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
 
     private RodsTwo plugin;
 
-    public CommandExecutor(RodsTwo plugin){
-        this.plugin = plugin;
+    public CommandExecutor(){
+        this.plugin = RodsTwo.plugin;
     }
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         boolean isPlayer = sender instanceof Player;
