@@ -41,6 +41,9 @@ public class RodsTwo extends JavaPlugin implements Listener{
         Bukkit.getPluginManager().registerEvents(new SignListener(), this);
         if (Bukkit.getPluginManager().isPluginEnabled("Vault"))
         	VaultManager.eco = VaultManager.setupEconomy();
+        else
+        	getLogger().warning("Vault has not been enabled, using signs will not cost any money!");
+        
         try {
             addRods();
         } catch (Exception e) {

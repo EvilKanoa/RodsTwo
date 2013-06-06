@@ -8,21 +8,23 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 
 import ca.kanoa.RodsTwo.RodsTwo;
 import ca.kanoa.RodsTwo.Objects.Rod;
 
 public class SignListener implements Listener {
 
+	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void signClick(PlayerInteractEvent event) {
 		Block b = event.getClickedBlock();
 		Material mat = b == null ? Material.AIR : b.getType();
-		if (!(event.getAction() == Action.LEFT_CLICK_BLOCK) || b == null ||
+		if (!(event.getAction() == Action.RIGHT_CLICK_BLOCK) || b == null ||
 				(mat != Material.SIGN && mat != Material.SIGN_POST && mat != Material.WALL_SIGN))
 			return;
-		Sign sign = (Sign)b;
-		if (sign.getLine(0).equalsIgnoreCase("[LightningRods]")) {
+		Sign sign = (Sign) b.getState();
+		if (sign.getLine(0).equalsIgnoreCase("[LightningRod]")) {
 			try {
 				String rodName = sign.getLine(1);
 				int cost = Integer.parseInt(sign.getLine(2));
@@ -49,9 +51,11 @@ public class SignListener implements Listener {
 					VaultManager.vaultEco.withdrawPlayer(event.getPlayer().getName(), cost);
 				}
 				else
-					Bukkit.getLogger().warning("A player is buying a LightningRod but vault is disabled, no money will be withdrawn!");
+					Bukkit.getLogger().warning(event.getPlayer().getName() + " is buying a LightningRod but vault is disabled, no money will be withdrawn!");
 
-				event.getPlayer().getInventory().addItem(rod.getItem(amount));
+				ItemStack rodStack = rod.getItem(amount);
+				event.getPlayer().getInventory().addItem(rodStack);
+				event.getPlayer().updateInventory();
 				event.getPlayer().sendMessage(Utils.signMsg("You just bought " + amount + " " + rod.getName() + " Rod(s), for " 
 						+ (VaultManager.eco ? VaultManager.vaultEco.format(cost) : cost + " dollars") + "."));
 
