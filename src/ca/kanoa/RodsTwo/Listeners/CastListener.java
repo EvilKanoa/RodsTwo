@@ -5,6 +5,7 @@ import ca.kanoa.RodsTwo.Objects.Rod;
 import ca.kanoa.RodsTwo.RodsTwo;
 
 import org.bukkit.ChatColor;
+import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -31,17 +32,20 @@ public class CastListener implements Listener {
 			for(Rod rod : plugin.getRods()){
 				try {
 					if(event.getItem().getTypeId() == rod.getRodID() && event.getItem().getItemMeta().getLore().contains(rod.getName()) &&
-							event.getItem().getAmount() >= rod.getCost() && 
+							(event.getItem().getAmount() >= rod.getCost() || 
+							event.getPlayer().getGameMode() == GameMode.CREATIVE) && 
 							(event.getPlayer().hasPermission(rod.getUsePermission()) || event.getPlayer().hasPermission("lr.use.all")) &&
 							plugin.rodConfig.getBoolean(rod.getPath("enabled"))){
 						
 						if(Utils.isCooldownOver(event.getPlayer().getName())){
 							
 							if(rod.run(event.getPlayer(), plugin.rodConfig.getConfigurationSection("Rods." + rod.getName() + ".options"))){
-								ItemStack is = event.getItem();
-								if(is.getAmount() == rod.getCost()) is = null;
-								else is.setAmount(is.getAmount() - rod.getCost());
-								event.getPlayer().setItemInHand(is);
+								if (!(event.getPlayer().getGameMode() == GameMode.CREATIVE)) {
+									ItemStack is = event.getItem();
+									if(is.getAmount() == rod.getCost()) is = null;
+									else is.setAmount(is.getAmount() - rod.getCost());
+									event.getPlayer().setItemInHand(is);
+								}
 
 								plugin.cooldowns.put(event.getPlayer().getName(), System.currentTimeMillis() + rod.getCooldown());
 							}
