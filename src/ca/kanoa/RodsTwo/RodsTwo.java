@@ -1,6 +1,7 @@
 package ca.kanoa.RodsTwo;
 
 import ca.kanoa.RodsTwo.Helpers.CommandExecutor;
+import ca.kanoa.RodsTwo.Helpers.CraftListener;
 import ca.kanoa.RodsTwo.Helpers.EventListener;
 import ca.kanoa.RodsTwo.Helpers.SignListener;
 import ca.kanoa.RodsTwo.Helpers.Utils;
@@ -40,9 +41,12 @@ public class RodsTwo extends JavaPlugin implements Listener{
         pdf = getDescription();
         logger = getLogger();
         plugin = this;
+        
         getCommand("lightningrod").setExecutor(new CommandExecutor());
         Bukkit.getPluginManager().registerEvents(new EventListener(), this);
         Bukkit.getPluginManager().registerEvents(new SignListener(), this);
+        Bukkit.getPluginManager().registerEvents(new CraftListener(), this);
+        
         if (Bukkit.getPluginManager().isPluginEnabled("Vault"))
         	VaultManager.eco = VaultManager.setupEconomy();
         else

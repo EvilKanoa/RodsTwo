@@ -65,6 +65,7 @@ public class Utils {
             try {
                 ShapedRecipe recipe = ConfigRecipe.loadRecipeFromConfig(RodsTwo.plugin.rodConfig, rod);
                 RodsTwo.plugin.getServer().addRecipe(recipe);
+                rod.setRecipe(recipe);
             } catch (InvalidRecipeException e) {
                 e.printStackTrace();
                 RodsTwo.plugin.logger.warning("Error while loading recipe for rod: " + rod.getName() + "!");
