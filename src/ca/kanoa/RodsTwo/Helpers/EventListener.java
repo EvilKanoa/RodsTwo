@@ -22,13 +22,20 @@ public class EventListener implements Listener {
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onPlayerInteract(PlayerInteractEvent event){
 		if(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK){
+			try {
+				if (RodsTwo.noFire.contains(event.getClickedBlock().getType()))
+					return;
+			} catch (NullPointerException e) {}
+			
 			for(Rod rod : plugin.getRods()){
 				try {
 					if(event.getItem().getTypeId() == rod.getRodID() && event.getItem().getItemMeta().getLore().contains(rod.getName()) &&
 							event.getItem().getAmount() >= rod.getCost() && 
-							(event.getPlayer().hasPermission(rod.getPermission()) || event.getPlayer().hasPermission("lr.use.all")) &&
+							(event.getPlayer().hasPermission(rod.getUsePermission()) || event.getPlayer().hasPermission("lr.use.all")) &&
 							plugin.rodConfig.getBoolean(rod.getPath("enabled"))){
+						
 						if(Utils.isCooldownOver(event.getPlayer().getName())){
+							
 							if(rod.run(event.getPlayer(), plugin.rodConfig.getConfigurationSection("Rods." + rod.getName() + ".options"))){
 								ItemStack is = event.getItem();
 								if(is.getAmount() == rod.getCost()) is = null;
@@ -37,11 +44,14 @@ public class EventListener implements Listener {
 
 								plugin.cooldowns.put(event.getPlayer().getName(), System.currentTimeMillis() + rod.getCooldown());
 							}
+							
 						}
-						else{
+						else {
+							
 							String timeLeft = (((float)(((double)(RodsTwo.plugin.cooldowns.get(event.getPlayer().getName())) - System.currentTimeMillis()) / 1000)) + "");
 							timeLeft = timeLeft.substring(0, timeLeft.indexOf('.') + 2);
 							event.getPlayer().sendMessage(ChatColor.RED + "Slow down! Wait " + ChatColor.YELLOW + '[' + ChatColor.AQUA + (timeLeft.contains("0.0") ? "0.1" : timeLeft) + ChatColor.YELLOW + ']' + ChatColor.RED + " second(s) to regain power!");
+							
 						}
 					}
 				} catch (NullPointerException e) {

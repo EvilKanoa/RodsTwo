@@ -57,8 +57,12 @@ public abstract class Rod {
         return rodID;
     }
 
-    public Permission getPermission(){
+    public Permission getUsePermission(){
         return new Permission("lr.use." + name, "Default permission node for " + name + " rod.");
+    }
+    
+    public Permission getCraftPermission(){
+        return new Permission("lr.craft." + name, "Default crafting permission node for " + name + " rod.");
     }
 
     public int getCost(){

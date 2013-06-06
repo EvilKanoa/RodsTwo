@@ -9,6 +9,7 @@ import ca.kanoa.RodsTwo.Objects.Rod;
 import ca.kanoa.RodsTwo.Rods.*;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
@@ -16,8 +17,9 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -25,7 +27,7 @@ import java.util.logging.Logger;
 
 public class RodsTwo extends JavaPlugin implements Listener{
 
-    public static Set<Rod> rods = new HashSet<Rod>();
+    public static List<Rod> rods = new ArrayList<Rod>();
     public Map<String, Long> cooldowns = new HashMap<String, Long>();
     PluginDescriptionFile pdf;
     public Logger logger;
@@ -59,33 +61,33 @@ public class RodsTwo extends JavaPlugin implements Listener{
         logger.info(pdf.getName() + " v" + pdf.getVersion() + " enabled");
     }
 
-    public Set<Rod> getRods(){
+    public List<Rod> getRods(){
         return rods;
     }
 
     private void addRods() throws Exception {
         //TODO: Make more rods!!!
-        rods.add(new Lightning(this));
-        rods.add(new Health(this));
         rods.add(new Arrow(this));
+        rods.add(new Broadcast(this));
         rods.add(new Companion(this));
         rods.add(new Creeper(this));
+        rods.add(new Drought(this));
+        rods.add(new Drown(this));
         rods.add(new Ender(this));
         rods.add(new Explosion(this));
         rods.add(new Fire(this));
-        rods.add(new Hunger(this));
-        rods.add(new Parkour(this));
-        rods.add(new Weather(this));
         rods.add(new Flight(this));
-        rods.add(new Zombie(this));
-        rods.add(new Drown(this));
-        rods.add(new Time(this));
-        rods.add(new Broadcast(this));
-        rods.add(new Resistance(this));
+        rods.add(new Health(this));
+        rods.add(new Hunger(this));
         rods.add(new Jump(this));
-        rods.add(new Torch(this));
         rods.add(new Knockback(this));
-        rods.add(new Drought(this));
+        rods.add(new Lightning(this));
+        rods.add(new Parkour(this));
+        rods.add(new Resistance(this));
+        rods.add(new Time(this));
+        rods.add(new Torch(this));
+        rods.add(new Weather(this));
+        rods.add(new Zombie(this));
         //TODO: Make more rods!!!
         Utils.makeConfig(false);
     }
@@ -112,4 +114,12 @@ public class RodsTwo extends JavaPlugin implements Listener{
     public static void debug(String msg) {
     	Bukkit.broadcastMessage(ChatColor.YELLOW + "" + '[' + ChatColor.AQUA + "Debug" + ChatColor.YELLOW + "] " + ChatColor.RED + msg);
     }
+    
+    
+    public static List<Material> noFire = Arrays.asList(new Material[]{
+    		Material.SIGN, Material.SIGN_POST, Material.WALL_SIGN,
+    		Material.CHEST, Material.WORKBENCH, Material.LEVER,
+    		Material.WOOD_BUTTON, Material.STONE_BUTTON, Material.WOODEN_DOOR
+    });
+    
 }
