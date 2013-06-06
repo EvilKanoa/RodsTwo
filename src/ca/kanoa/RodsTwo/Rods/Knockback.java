@@ -19,7 +19,7 @@ public class Knockback extends Rod {
 
 	public Knockback(Plugin plugin) throws Exception {
 	    super("Knockback", 1, 280, new ConfigOptions(new String[]{"knockback_level", "durability_left_on_item"}, new Object[]{5, 1}), 500);
-	    setRecipe(new ShapedRecipe(super.getItem()).shape(" D ", " B ", " D ").setIngredient('D', Material.IRON_SWORD).setIngredient('B', Material.STICK));
+	    setRecipe(new ShapedRecipe(super.getItem()).shape("SBS").setIngredient('S', Material.WOOD_SWORD).setIngredient('B', Material.STICK));
 	}
 	
 	@SuppressWarnings("deprecation")
