@@ -36,7 +36,7 @@ public class Store implements Listener {
 	}
 
 	private int roundUp(int n) {
-		return (n + 10) / 9 * 9;
+		return ((n + 9 - 1) / 9) * 9;
 	}
 
 	//Events
