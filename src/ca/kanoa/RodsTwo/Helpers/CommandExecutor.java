@@ -1,6 +1,7 @@
 package ca.kanoa.RodsTwo.Helpers;
 
 import ca.kanoa.RodsTwo.Objects.Rod;
+import ca.kanoa.RodsTwo.Objects.Store;
 import ca.kanoa.RodsTwo.RodsTwo;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -58,8 +59,19 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
                     return true;
                 }
             }
-            else{
+            else if (args.length == 1){
+            	if (!isPlayer) {
+                    sender.sendMessage("Player only command.");
+                    return true;
+            	}
+            	Store store = new Store((Player)sender);
+            	sender.sendMessage(Store.storeMsg("Opening the store..."));
+            	store.show();
+            	return true;
+            }
+            else {
                 sender.sendMessage(ChatColor.RED + "Invalid arguments!");
+                sender.sendMessage("" + ChatColor.AQUA + ChatColor.ITALIC + "/lr spawn [rod name] [amount]");
                 return true;
             }
         }
