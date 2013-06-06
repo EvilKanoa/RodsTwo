@@ -27,14 +27,16 @@ import java.util.logging.Logger;
 
 public class RodsTwo extends JavaPlugin implements Listener{
 
-    public static List<Rod> rods = new ArrayList<Rod>();
-    public Map<String, Long> cooldowns = new HashMap<String, Long>();
+    public static List<Rod> rods;
+    public Map<String, Long> cooldowns;
     PluginDescriptionFile pdf;
     public Logger logger;
     public FileConfiguration rodConfig;
     public static RodsTwo plugin;
 
     public void onEnable(){
+    	rods = new ArrayList<Rod>();
+    	cooldowns = new HashMap<String, Long>();
         pdf = getDescription();
         logger = getLogger();
         plugin = this;
