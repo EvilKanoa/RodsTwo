@@ -111,6 +111,13 @@ public class RodsTwo extends JavaPlugin implements Listener{
     	Utils.makeConfig(false);
     }
     
+    public static Rod getRod(String name) {
+    	for (Rod rod : rods)
+    		if (rod.getName().equalsIgnoreCase(name))
+    			return rod;
+    	return null;
+    }
+    
     public static void debug(String msg) {
     	Bukkit.broadcastMessage(ChatColor.YELLOW + "" + '[' + ChatColor.AQUA + "Debug" + ChatColor.YELLOW + "] " + ChatColor.RED + msg);
     }
