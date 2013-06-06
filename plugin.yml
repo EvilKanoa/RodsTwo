@@ -16,14 +16,17 @@ permissions:
         description: Allows use of the overwrite command.
         default: op
     lr.list:
-        description: Allows use of /lr list
+        description: Allows use of /lr list.
         default: true
     lr.use.all:
-        description: Allows use of all rods
+        description: Allows use of all rods.
         default: op
     lr.craft.all:
-        description: Allows crafting of all rods
+        description: Allows crafting of all rods.
         default: op
+    lr.cooldown.exempt:
+        description: Turns of cooldowns.
+        default: false
         
 commands:
     lightningrod:

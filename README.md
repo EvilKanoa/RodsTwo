@@ -26,3 +26,4 @@ Permissions
  - lr.reload - Allows reloading the config.
  - lr.overwrite - Allows overwriting the config with default values.
  - lr.list - Allows use of the /lr list command. (Defaults to letting anyone use it)
+ - lr.cooldown.exempt - Allows a player to be exempt from cooldowns.

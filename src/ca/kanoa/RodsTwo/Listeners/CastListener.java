@@ -31,13 +31,16 @@ public class CastListener implements Listener {
 			
 			for(Rod rod : plugin.getRods()){
 				try {
-					if(event.getItem().getTypeId() == rod.getRodID() && event.getItem().getItemMeta().getLore().contains(rod.getName()) &&
+					if(event.getItem().getTypeId() == rod.getRodID() && 
+							event.getItem().getItemMeta().getLore().contains(rod.getName()) &&
 							(event.getItem().getAmount() >= rod.getCost() || 
 							event.getPlayer().getGameMode() == GameMode.CREATIVE) && 
-							(event.getPlayer().hasPermission(rod.getUsePermission()) || event.getPlayer().hasPermission("lr.use.all")) &&
+							(event.getPlayer().hasPermission(rod.getUsePermission()) || 
+							event.getPlayer().hasPermission("lr.use.all")) &&
 							plugin.rodConfig.getBoolean(rod.getPath("enabled"))){
 						
-						if(Utils.isCooldownOver(event.getPlayer().getName())){
+						if(Utils.isCooldownOver(event.getPlayer().getName()) || 
+								event.getPlayer().hasPermission("lr.cooldown.exempt")){
 							
 							if(rod.run(event.getPlayer(), plugin.rodConfig.getConfigurationSection("Rods." + rod.getName() + ".options"))){
 								if (!(event.getPlayer().getGameMode() == GameMode.CREATIVE)) {
@@ -47,7 +50,8 @@ public class CastListener implements Listener {
 									event.getPlayer().setItemInHand(is);
 								}
 
-								plugin.cooldowns.put(event.getPlayer().getName(), System.currentTimeMillis() + rod.getCooldown());
+								if (!event.getPlayer().hasPermission("lr.cooldown.exempt"))
+									plugin.cooldowns.put(event.getPlayer().getName(), System.currentTimeMillis() + rod.getCooldown());
 							}
 							
 						}
