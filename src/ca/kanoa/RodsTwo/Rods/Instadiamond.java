@@ -12,12 +12,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.Plugin;
 
-public class Instaleather extends Rod {
+public class Instadiamond extends Rod {
 
-	public Instaleather(Plugin plugin) throws Exception {
-	    super("Insta Leather", 1, 280, new ConfigOptions(), 2000);
-	    setRecipe(new ShapedRecipe(super.getItem()).shape(" H ", "CBL", " F ").setIngredient('H', Material.LEATHER_HELMET).setIngredient('C',  Material.LEATHER_CHESTPLATE)
-	    		.setIngredient('L', Material.LEATHER_LEGGINGS).setIngredient('F', Material.LEATHER_BOOTS).setIngredient('B', Material.STICK));
+	public Instadiamond(Plugin plugin) throws Exception {
+	    super("Insta Diamond", 1, 280, new ConfigOptions(), 2000);
+	    setRecipe(new ShapedRecipe(super.getItem()).shape(" H ", "CBL", " F ").setIngredient('H', Material.DIAMOND_HELMET).setIngredient('C',  Material.DIAMOND_CHESTPLATE)
+	    		.setIngredient('L', Material.DIAMOND_LEGGINGS).setIngredient('F', Material.DIAMOND_BOOTS).setIngredient('B', Material.STICK));
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -28,8 +28,8 @@ public class Instaleather extends Rod {
 			return false; 
 		}
 		player.getInventory().setArmorContents(new ItemStack[]{
-				new ItemStack(Material.LEATHER_BOOTS), new ItemStack(Material.LEATHER_LEGGINGS), 
-				new ItemStack(Material.LEATHER_CHESTPLATE), new ItemStack(Material.LEATHER_HELMET)});
+				new ItemStack(Material.DIAMOND_BOOTS), new ItemStack(Material.DIAMOND_LEGGINGS), 
+				new ItemStack(Material.DIAMOND_CHESTPLATE), new ItemStack(Material.DIAMOND_HELMET)});
 		player.updateInventory();
 		player.playSound(player.getLocation(), Sound.ANVIL_USE, 1, 1);
 		return true;
