@@ -12,6 +12,9 @@ permissions:
     lr.use.all:
         description: Allows use of all rods
         default: op
+    lr.craft.all:
+        description: Allows crafting of all rods
+        default: op
         
 commands:
     lightningrod:
