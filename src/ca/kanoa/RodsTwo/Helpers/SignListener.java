@@ -13,7 +13,7 @@ import ca.kanoa.RodsTwo.RodsTwo;
 import ca.kanoa.RodsTwo.Objects.Rod;
 
 public class SignListener implements Listener {
-	
+
 	@EventHandler
 	public void signClick(PlayerInteractEvent event) {
 		Block b = event.getClickedBlock();
@@ -40,24 +40,25 @@ public class SignListener implements Listener {
 					return;
 				}
 				//Vault
-				if (RodsTwo.eco) {
-					if (RodsTwo.vaultEco.getBalance(event.getPlayer().getName()) < cost){
+				if (VaultManager.eco) {
+					if (VaultManager.vaultEco.getBalance(event.getPlayer().getName()) < cost){
 						event.getPlayer().sendMessage(Utils.signMsg("You don't have enough money!"));
 						return;
 					}
 					//remove money
-					RodsTwo.vaultEco.withdrawPlayer(event.getPlayer().getName(), cost);
+					VaultManager.vaultEco.withdrawPlayer(event.getPlayer().getName(), cost);
 				}
 				else
 					Bukkit.getLogger().warning("A player is buying a LightningRod but vault is disabled, no money will be withdrawn!");
-				
+
 				event.getPlayer().getInventory().addItem(rod.getItem(amount));
-				event.getPlayer().sendMessage(Utils.signMsg("You just bought " + amount + " " + rod.getName() + " Rod(s), for " + (RodsTwo.eco ? RodsTwo.vaultEco.format(cost) : cost + " dollars") + "."));
+				event.getPlayer().sendMessage(Utils.signMsg("You just bought " + amount + " " + rod.getName() + " Rod(s), for " 
+						+ (VaultManager.eco ? VaultManager.vaultEco.format(cost) : cost + " dollars") + "."));
 
 			} catch (Exception e){
 				event.getPlayer().sendMessage(Utils.signMsg("Badly formated sign, tell an admin!"));
 			}
 		}
 	}
-	
+
 }

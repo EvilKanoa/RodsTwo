@@ -5,15 +5,11 @@ import ca.kanoa.RodsTwo.Objects.InvalidRecipeException;
 import ca.kanoa.RodsTwo.Objects.Rod;
 import ca.kanoa.RodsTwo.RodsTwo;
 
-import net.milkbowl.vault.economy.Economy;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.RegisteredServiceProvider;
-
 import java.io.File;
 import java.io.IOException;
 
@@ -97,12 +93,5 @@ public class Utils {
     
     public static String signMsg(String msg) {
     	return ChatColor.BLACK + "[" + ChatColor.YELLOW + "SIGN" + ChatColor.BLACK + "] " + ChatColor.AQUA + msg;
-    }
-    
-    public static boolean setupEconomy() {
-        RegisteredServiceProvider<Economy> economyProvider = Bukkit.getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
-        if (economyProvider != null)
-            RodsTwo.vaultEco = economyProvider.getProvider();
-        return (RodsTwo.vaultEco != null);
     }
 }
