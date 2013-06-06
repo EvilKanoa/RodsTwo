@@ -7,6 +7,8 @@
 *.eml
 *.iml
 META-INF/
+.DS_Store
+.DS_Store/
 
 
 #################
