@@ -6,8 +6,17 @@ softdepend: [Vault]
 description: The second edition of the LightningRods plugin.
 
 permissions:
-    lr.command:
-        description: Allows use of the /lightningrod command.
+    lr.spawn:
+        description: Allows use of the spawn commands.
+        default: op
+    lr.reload:
+        description: Allows use of the reload command.
+        default: op
+    lr.overwrite:
+        description: Allows use of the overwrite command.
+        default: op
+    lr.list:
+        description: Allows use of /lr list
         default: true
     lr.use.all:
         description: Allows use of all rods
@@ -21,5 +30,3 @@ commands:
         description:
         usage: /lightningrod <list/spawn/reload/overwrite>
         aliases: [lr, lrod]
-        permission: lr.command
-        permission-message: You don't have permission!

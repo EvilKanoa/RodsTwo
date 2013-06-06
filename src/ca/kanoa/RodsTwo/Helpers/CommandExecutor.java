@@ -27,6 +27,11 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
         Player player = isPlayer ? (Player) sender : null;
 
         if(args.length > 0 && args[0].equalsIgnoreCase("spawn")){
+        	if (!sender.hasPermission("lr.spawn")) {
+        		sender.sendMessage(ChatColor.RED + "You don't have permission!");
+        		return false;
+        	}
+        	
             if(args.length == 2 || args.length == 3){
                 if(isPlayer){
                     Rod rod = null;
@@ -77,6 +82,11 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
         }
 
         else if(args.length > 0 && args[0].equalsIgnoreCase("list")){
+        	if (!sender.hasPermission("lr.list")) {
+        		sender.sendMessage(ChatColor.RED + "You don't have permission!");
+        		return false;
+        	}
+        	
             if(args.length == 1){
                 sender.sendMessage("" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Listing all loaded rods");
                 for(Rod rod : plugin.getRods())
@@ -88,6 +98,11 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
         }
 
         else if(args.length > 0 && args[0].equalsIgnoreCase("reload")){
+        	if (!sender.hasPermission("lr.reload")) {
+        		sender.sendMessage(ChatColor.RED + "You don't have permission!");
+        		return false;
+        	}
+        	
             if(args.length == 1){
                 sender.sendMessage(ChatColor.AQUA + "Reloading configuration...");
                 plugin.rodConfig = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "rods.yml"));
@@ -102,6 +117,11 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
         }
 
         else if(args.length > 0 && args[0].equalsIgnoreCase("overwrite")){
+        	if (!sender.hasPermission("lr.overwrite")) {
+        		sender.sendMessage(ChatColor.RED + "You don't have permission!");
+        		return false;
+        	}
+        	
             if(args.length == 1){
                 sender.sendMessage(ChatColor.AQUA + "Overwriting configuration...");
                 Utils.makeConfig(true);
