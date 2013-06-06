@@ -1,13 +1,14 @@
 package ca.kanoa.RodsTwo;
 
-import ca.kanoa.RodsTwo.Helpers.CommandExecutor;
-import ca.kanoa.RodsTwo.Helpers.CraftListener;
-import ca.kanoa.RodsTwo.Helpers.EventListener;
-import ca.kanoa.RodsTwo.Helpers.SignListener;
-import ca.kanoa.RodsTwo.Helpers.Utils;
-import ca.kanoa.RodsTwo.Helpers.VaultManager;
-import ca.kanoa.RodsTwo.Objects.Rod;
-import ca.kanoa.RodsTwo.Rods.*;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.logging.Logger;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -17,14 +18,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.logging.Logger;
+import ca.kanoa.RodsTwo.Helpers.*;
+import ca.kanoa.RodsTwo.Listeners.*;
+import ca.kanoa.RodsTwo.Objects.Rod;
+import ca.kanoa.RodsTwo.Rods.*;
 
 public class RodsTwo extends JavaPlugin implements Listener{
 
@@ -43,7 +40,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
         plugin = this;
         
         getCommand("lightningrod").setExecutor(new CommandExecutor());
-        Bukkit.getPluginManager().registerEvents(new EventListener(), this);
+        Bukkit.getPluginManager().registerEvents(new CastListener(), this);
         Bukkit.getPluginManager().registerEvents(new SignListener(), this);
         Bukkit.getPluginManager().registerEvents(new CraftListener(), this);
         

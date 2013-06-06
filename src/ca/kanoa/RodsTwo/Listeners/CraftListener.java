@@ -1,4 +1,4 @@
-package ca.kanoa.RodsTwo.Helpers;
+package ca.kanoa.RodsTwo.Listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

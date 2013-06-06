@@ -1,5 +1,6 @@
-package ca.kanoa.RodsTwo.Helpers;
+package ca.kanoa.RodsTwo.Listeners;
 
+import ca.kanoa.RodsTwo.Helpers.Utils;
 import ca.kanoa.RodsTwo.Objects.Rod;
 import ca.kanoa.RodsTwo.RodsTwo;
 
@@ -11,11 +12,11 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class EventListener implements Listener {
+public class CastListener implements Listener {
 
 	private RodsTwo plugin;
 
-	public EventListener(){
+	public CastListener(){
 		this.plugin = RodsTwo.plugin;
 	}
 

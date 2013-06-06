@@ -1,4 +1,4 @@
-package ca.kanoa.RodsTwo.Helpers;
+package ca.kanoa.RodsTwo.Listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -11,6 +11,8 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 import ca.kanoa.RodsTwo.RodsTwo;
+import ca.kanoa.RodsTwo.Helpers.Utils;
+import ca.kanoa.RodsTwo.Helpers.VaultManager;
 import ca.kanoa.RodsTwo.Objects.Rod;
 
 public class SignListener implements Listener {
