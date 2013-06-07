@@ -28,7 +28,10 @@ permissions:
         description: Turns of cooldowns.
         default: false
     lr.slowdownmessage:
-        description: View the slowdown message
+        description: View the slowdown message.
+        default: true
+    lr.version:
+        description: Allows viewing of the current plugin version.
         default: true
         
 commands:

@@ -25,5 +25,8 @@ Permissions
  - lr.spawn - Allows use of the spawn command (and spawn GUI).
  - lr.reload - Allows reloading the config.
  - lr.overwrite - Allows overwriting the config with default values.
- - lr.list - Allows use of the /lr list command. (Defaults to letting anyone use it)
- - lr.cooldown.exempt - Allows a player to be exempt from cooldowns.
+ - lr.list - Allows use of the /lr list command. *
+ - lr.cooldown.exempt - Allows a player to be exempt from cooldowns. *
+ - lr.version - Allows a player to view the current plugin version. *
+ 
+ Note(*): Defaults to letting anyone use it.

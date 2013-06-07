@@ -28,7 +28,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
 
     public static List<Rod> rods;
     public Map<String, Long> cooldowns;
-    PluginDescriptionFile pdf;
+    public static PluginDescriptionFile pdf;
     public Logger logger;
     public FileConfiguration rodConfig;
     public static RodsTwo plugin;

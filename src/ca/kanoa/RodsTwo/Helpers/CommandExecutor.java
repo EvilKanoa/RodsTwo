@@ -135,6 +135,14 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "Too many arguments!");
             return true;
         }
+        
+        else if(args.length > 0 && args[0].equalsIgnoreCase("version")) {
+        	if (sender.hasPermission("lr.version"))
+        		sender.sendMessage(ChatColor.DARK_GREEN + "LightningRods 2 version " + RodsTwo.pdf.getVersion() + ", made by: " + RodsTwo.pdf.getAuthors().get(0) + ".");
+        	else
+        		sender.sendMessage(ChatColor.RED + "You don't have permission!");
+    		return true;
+        }
 
         return false;
     }
