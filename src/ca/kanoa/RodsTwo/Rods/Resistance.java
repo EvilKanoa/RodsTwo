@@ -14,7 +14,7 @@ import org.bukkit.potion.PotionEffectType;
 public class Resistance extends Rod {
 
 	public Resistance(Plugin plugin) throws Exception {
-	    super("Resistance", 1, 280, new ConfigOptions(new String[]{"level", "length"}, new Object[]{1, 30}), 10000);
+	    super("Resistance", 1, 280, new ConfigOptions(new String[]{"level", "length"}, new Object[]{1, 30}), 3000);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape(" M ", " B ", " S ").setIngredient('M', Material.MAGMA_CREAM).setIngredient('S', Material.SLIME_BALL).setIngredient('B', Material.STICK));
 	}
 	
