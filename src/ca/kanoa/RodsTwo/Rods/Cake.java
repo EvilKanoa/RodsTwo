@@ -22,7 +22,7 @@ public class Cake extends Rod {
 	
 	@Override
 	public boolean run(Player player, ConfigurationSection config) {
-		Location loc = player.getLocation().add(0, 1, 0);
+		Location loc = player.getLocation().add(0, 0.2, 0);
 		ItemStack cake = new ItemStack(Material.CAKE, 1);
 		World world = loc.getWorld();
 		world.dropItem(loc.add(1, 0, 1), cake);
@@ -30,6 +30,6 @@ public class Cake extends Rod {
 		world.dropItem(loc.add(1, 0, -1), cake);
 		world.dropItem(loc.add(-1, 0, -1), cake);
 		player.playSound(loc, Sound.CLICK, 1, 1);
-	    return false; 
+	    return true; 
 	}
 }
