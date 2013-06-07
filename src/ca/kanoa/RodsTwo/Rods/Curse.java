@@ -30,8 +30,9 @@ public class Curse extends Rod {
 
 	@Override
 	public boolean run(Player player, ConfigurationSection config) {
+		
 		Entity target = getTarget(player);
-		if (target == null)
+		if (target == null || !(target instanceof LivingEntity))
 			return false;
 
 		PotionEffectType type;
@@ -49,7 +50,7 @@ public class Curse extends Rod {
 		PotionEffect potion = new PotionEffect(type, config.getInt("random_potion_length"), config.getInt("random_potion_level") - 1);
 		
 		((LivingEntity)target).addPotionEffect(potion);
-		target.getWorld().playEffect(target.getLocation(), Effect.SMOKE, null);
+		target.getWorld().playEffect(target.getLocation(), Effect.POTION_BREAK, 4);
 		return true;
 	}
 

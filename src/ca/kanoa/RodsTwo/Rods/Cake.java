@@ -25,10 +25,10 @@ public class Cake extends Rod {
 		Location loc = player.getLocation().add(0, 1, 0);
 		ItemStack cake = new ItemStack(Material.CAKE, 1);
 		World world = loc.getWorld();
-		world.dropItemNaturally(loc.add(1, 0, 1), cake);
-		world.dropItemNaturally(loc.add(-1, 0, 1), cake);
-		world.dropItemNaturally(loc.add(1, 0, -1), cake);
-		world.dropItemNaturally(loc.add(-1, 0, -1), cake);
+		world.dropItem(loc.add(1, 0, 1), cake);
+		world.dropItem(loc.add(-1, 0, 1), cake);
+		world.dropItem(loc.add(1, 0, -1), cake);
+		world.dropItem(loc.add(-1, 0, -1), cake);
 		player.playSound(loc, Sound.CLICK, 1, 1);
 	    return false; 
 	}

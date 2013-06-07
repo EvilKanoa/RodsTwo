@@ -25,7 +25,7 @@ public class Flight extends Rod {
 		if (player.isFlying())
 			return false;
 		final boolean wasAllowedFlight = player.getAllowFlight();
-		player.teleport(player.getLocation().add(0, 0.2, 0));
+		player.teleport(player.getLocation().add(0, 0.5, 0));
 		player.setAllowFlight(true);
 		player.setFlying(true);
 		player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, (int) (config.getDouble("flight_time") * 20), -1));
