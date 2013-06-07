@@ -27,6 +27,9 @@ permissions:
     lr.cooldown.exempt:
         description: Turns of cooldowns.
         default: false
+    lr.slowdownmessage:
+        description: View the slowdown message
+        default: op
         
 commands:
     lightningrod:

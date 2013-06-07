@@ -55,7 +55,7 @@ public class CastListener implements Listener {
 							}
 							
 						}
-						else {
+						else if (event.getPlayer().hasPermission("lr.slowdownmessage")) {
 							
 							String timeLeft = (((float)(((double)(RodsTwo.plugin.cooldowns.get(event.getPlayer().getName())) - System.currentTimeMillis()) / 1000)) + "");
 							timeLeft = timeLeft.substring(0, timeLeft.indexOf('.') + 2);
