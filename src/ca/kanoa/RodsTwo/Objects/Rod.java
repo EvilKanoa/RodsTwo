@@ -18,9 +18,10 @@ public abstract class Rod {
 
     private final String name;
     private final ConfigOptions options;
-    private final int rodID;
+    private final int defaultRodID;
     private long cooldown;
     private int cost;
+    private int rodID;
     private final long defaultCooldown;
     private final int defaultCost;
     private ShapedRecipe recipe;
@@ -30,6 +31,7 @@ public abstract class Rod {
         this.name = name;
         this.cost = cost;
         this.options = options;
+        this.defaultRodID = rodID;
         this.rodID = rodID;
         this.cooldown = cooldown;
         this.plugin = plugin;
@@ -44,6 +46,18 @@ public abstract class Rod {
     public long getDefaultCooldown(){
         return defaultCooldown;
     }
+    
+    public void setItemID(int id) {
+    	this.rodID = id;
+    }
+    
+    public int getItemID() {
+    	return this.rodID;
+    }
+    
+    public int getDefaultItemID() {
+    	return this.defaultRodID;
+    }
 
     public int getDefaultCost(){
         return defaultCost;
@@ -51,10 +65,6 @@ public abstract class Rod {
 
     public String getName(){
         return  name;
-    }
-
-    public int getRodID(){
-        return rodID;
     }
 
     public Permission getUsePermission(){

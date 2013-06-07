@@ -49,7 +49,7 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
                         } catch(Exception e){
                             //Do nothing
                         }
-                        ItemStack rodStack = new ItemStack(Material.getMaterial(rod.getRodID()), x);
+                        ItemStack rodStack = new ItemStack(Material.getMaterial(rod.getItemID()), x);
                         ItemMeta rodMeta = rodStack.getItemMeta();
                         rodMeta.setLore(Arrays.asList(new String[]{rod.getName()}));
                         rodMeta.setDisplayName(rod.getName() + " Rod");
@@ -90,7 +90,7 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
             if(args.length == 1){
                 sender.sendMessage("" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Listing all loaded rods");
                 for(Rod rod : plugin.getRods())
-                    sender.sendMessage(ChatColor.LIGHT_PURPLE + "Name: " + ChatColor.RED + rod.getName() + ChatColor.LIGHT_PURPLE + ", Cost: " + ChatColor.WHITE + rod.getCost() + ChatColor.LIGHT_PURPLE + ", ItemID: " + ChatColor.GREEN + rod.getRodID());
+                    sender.sendMessage(ChatColor.LIGHT_PURPLE + "Name: " + ChatColor.RED + rod.getName() + ChatColor.LIGHT_PURPLE + ", Cost: " + ChatColor.WHITE + rod.getCost() + ChatColor.LIGHT_PURPLE + ", ItemID: " + ChatColor.GREEN + rod.getItemID());
             }
             else
                 sender.sendMessage(ChatColor.RED + "Too many arguments!");

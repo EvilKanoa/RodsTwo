@@ -14,7 +14,7 @@ public class Lightning extends Rod {
         super("Lightning", 1, 280,  new ConfigOptions(new String[]{"max_distance"}, new Object[]{50}), 1500, plugin);
 
         //Set default the recipe
-        super.setRecipe(new ShapedRecipe(super.getItem()).shape(" I ", " R ", " I ").setIngredient('I', Material.IRON_INGOT).setIngredient('R', Material.getMaterial(super.getRodID())));
+        super.setRecipe(new ShapedRecipe(super.getItem()).shape(" I ", " R ", " I ").setIngredient('I', Material.IRON_INGOT).setIngredient('R', Material.STICK));
     }
 
     @Override

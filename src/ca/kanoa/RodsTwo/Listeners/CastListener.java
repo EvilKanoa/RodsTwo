@@ -31,7 +31,7 @@ public class CastListener implements Listener {
 			
 			for(Rod rod : plugin.getRods()){
 				try {
-					if(event.getItem().getTypeId() == rod.getRodID() && 
+					if(event.getItem().getTypeId() == rod.getItemID() && 
 							event.getItem().getItemMeta().getLore().contains(rod.getName()) &&
 							(event.getItem().getAmount() >= rod.getCost() || 
 							event.getPlayer().getGameMode() == GameMode.CREATIVE) && 

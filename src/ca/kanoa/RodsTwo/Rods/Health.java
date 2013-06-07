@@ -16,7 +16,7 @@ public class Health extends Rod {
         //Set default the recipe
         ShapedRecipe recipe = new ShapedRecipe(super.getItem());
         recipe.shape("MRG");
-        recipe.setIngredient('R', Material.getMaterial(super.getRodID()));
+        recipe.setIngredient('R', Material.STICK);
         recipe.setIngredient('M', Material.MELON);
         recipe.setIngredient('G', Material.GOLD_NUGGET);
         super.setRecipe(recipe);
