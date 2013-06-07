@@ -47,7 +47,7 @@ public class Curse extends Rod {
 		case 8:   type = PotionEffectType.WEAKNESS;     break;
 		default:  type = PotionEffectType.HEAL;
 		}
-		PotionEffect potion = new PotionEffect(type, config.getInt("random_potion_length"), config.getInt("random_potion_level") - 1);
+		PotionEffect potion = new PotionEffect(type, config.getInt("random_potion_length") * 20, config.getInt("random_potion_level") - 1);
 		
 		((LivingEntity)target).addPotionEffect(potion);
 		target.getWorld().playEffect(target.getLocation(), Effect.POTION_BREAK, 4);

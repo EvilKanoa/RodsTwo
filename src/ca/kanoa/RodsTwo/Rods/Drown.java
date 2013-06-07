@@ -15,7 +15,7 @@ import org.bukkit.plugin.Plugin;
 public class Drown extends Rod {
 
 	public Drown(Plugin plugin) throws Exception {
-	    super("Drown", 1, 280, new ConfigOptions(new String[]{"max_distence", "drowning_length"}, new Object[]{20, 4}), 10000);
+	    super("Drown", 1, 280, new ConfigOptions(new String[]{"max_distence", "drowning_length"}, new Object[]{20, 4}), 5000);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape("DDD", "DBD", "DDD").setIngredient('D', Material.SPONGE).setIngredient('B', Material.STICK));
 	}
 	
