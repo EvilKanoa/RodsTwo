@@ -15,17 +15,22 @@ import org.bukkit.Server;
 import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Snowball;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 
-public class Minigun extends Rod {
+public class Minigun extends Rod implements Listener {
 
 	private Set<String> isFiring;
 	
 	public Minigun(Plugin plugin) throws Exception {
-	    super("Minigun", 1, 280, new ConfigOptions(new String[]{"shots_per_second", "overheat_time", "minigun_item"}, new Object[]{10, 5, Material.BOW.getId()}), 5000);
+	    super("Minigun", 1, 280, new ConfigOptions(new String[]{"shots_per_second", "overheat_time", "minigun_item", "damage_per_shot"}, new Object[]{10, 5, Material.BOW.getId(), 1}), 5000);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape("SSS", "RBR", "SSS").setIngredient('S', Material.SNOW).setIngredient('R', Material.BOW).setIngredient('B', Material.STICK));
 	}
 	
@@ -80,6 +85,19 @@ public class Minigun extends Rod {
 	@Override
 	public boolean enable(Server serv) {
 		isFiring = new HashSet<String>();
+		Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
 		return true;
+	}
+	
+	@EventHandler(priority=EventPriority.LOW)
+	public void onSnowballHit(EntityDamageByEntityEvent event) {
+		if (event.getDamager() instanceof org.bukkit.entity.Snowball && event.getEntity() instanceof Player) {
+			Snowball ball = (Snowball) event.getEntity();
+			if (ball.getShooter() instanceof Player) {
+				Player player = (Player) ball.getShooter();
+				if (isFiring.contains(player.getName()))
+					event.setDamage(RodsTwo.plugin.rodConfig.getInt(getPath("options.damage_per_shot")));
+			}
+		}
 	}
 }
