@@ -32,7 +32,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
     public Logger logger;
     public FileConfiguration rodConfig;
     public static RodsTwo plugin;
-    public static boolean mccAPI;
+    public static boolean useMobDeathAsPlayer;
 
     public void onEnable(){
     	rods = new ArrayList<Rod>();
@@ -51,7 +51,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
         else
         	getLogger().warning("Vault has not been enabled, using signs will not cost any money!");
         
-        mccAPI = Bukkit.getPluginManager().isPluginEnabled("MCC API");
+        useMobDeathAsPlayer = Bukkit.getPluginManager().isPluginEnabled("MCC API");
         
         try {
             addRods();

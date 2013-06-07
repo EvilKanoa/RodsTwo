@@ -33,7 +33,7 @@ public class Creeper extends Rod implements Listener {
 	   		loc.add(0, 1.2f, 0);
 	   		org.bukkit.entity.Creeper creeper = player.getWorld().spawn(loc, org.bukkit.entity.Creeper.class);
 	   		
-	   		if (RodsTwo.mccAPI) {
+	   		if (RodsTwo.useMobDeathAsPlayer) {
 	   			creeper.setCustomName(player.getName());
 	   			creeper.setCustomNameVisible(false);
 			}
@@ -43,7 +43,7 @@ public class Creeper extends Rod implements Listener {
 	
 	@Override
 	public boolean enable(Server serv) {
-		if (RodsTwo.mccAPI)
+		if (RodsTwo.useMobDeathAsPlayer)
 			Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
 		return true;
 	}

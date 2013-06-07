@@ -33,7 +33,7 @@ public class Zombie extends Rod implements Listener {
 	   		loc.add(0, 1.2f, 0);
 	   		org.bukkit.entity.Zombie zombie = player.getWorld().spawn(loc, org.bukkit.entity.Zombie.class);
 	   		
-	   		if (RodsTwo.mccAPI) {
+	   		if (RodsTwo.useMobDeathAsPlayer) {
 	   			zombie.setCustomName(player.getName());
 	   			zombie.setCustomNameVisible(false);
 			}
@@ -43,7 +43,7 @@ public class Zombie extends Rod implements Listener {
 	
 	@Override
 	public boolean enable(Server serv) {
-		if (RodsTwo.mccAPI)
+		if (RodsTwo.useMobDeathAsPlayer)
 			Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
 		return true;
 	}

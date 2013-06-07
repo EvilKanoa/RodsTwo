@@ -33,7 +33,7 @@ public class Companion extends Rod implements Listener {
 			wolf.setTamed(true);
 			wolf.setOwner(player);
 
-			if (RodsTwo.mccAPI) {
+			if (RodsTwo.useMobDeathAsPlayer) {
 				wolf.setCustomName(player.getName());
 				wolf.setCustomNameVisible(false);
 			}
@@ -43,7 +43,7 @@ public class Companion extends Rod implements Listener {
 	
 	@Override
 	public boolean enable(Server serv) {
-		if (RodsTwo.mccAPI)
+		if (RodsTwo.useMobDeathAsPlayer)
 			Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
 		return true;
 	}
