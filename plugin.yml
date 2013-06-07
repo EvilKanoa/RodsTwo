@@ -29,7 +29,7 @@ permissions:
         default: false
     lr.slowdownmessage:
         description: View the slowdown message
-        default: op
+        default: true
         
 commands:
     lightningrod:
