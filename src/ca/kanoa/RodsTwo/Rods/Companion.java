@@ -1,28 +1,64 @@
 package ca.kanoa.RodsTwo.Rods;
 
+import ca.kanoa.RodsTwo.RodsTwo;
 import ca.kanoa.RodsTwo.Objects.ConfigOptions;
 import ca.kanoa.RodsTwo.Objects.Rod;
+
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Server;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Wolf;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.Plugin;
 
-public class Companion extends Rod {
+public class Companion extends Rod implements Listener {
 
 	public Companion(Plugin plugin) throws Exception {
-        super("Companion", 1, 280, new ConfigOptions(new String[]{"number_to_spawn"}, new Object[]{2}), 500, plugin);
-        super.setRecipe(new ShapedRecipe(super.getItem()).shape(" W ", "WBW", " W ").setIngredient('W', Material.BONE).setIngredient('B', Material.STICK));
-    }
+		super("Companion", 1, 280, new ConfigOptions(new String[]{"number_to_spawn"}, new Object[]{2}), 500, plugin);
+		super.setRecipe(new ShapedRecipe(super.getItem()).shape(" W ", "WBW", " W ").setIngredient('W', Material.BONE).setIngredient('B', Material.STICK));
+	}
 
-    @Override
-    public boolean run(Player player, ConfigurationSection config) {
-        for (int i = 0; i < config.getInt("number_to_spawn"); i++) {
-        	Wolf wolf = player.getWorld().spawn(player.getLocation(), Wolf.class);
-        	wolf.setTamed(true);
-        	wolf.setOwner(player);
-        }
-        return true;
-    }
+	@Override
+	public boolean run(Player player, ConfigurationSection config) {
+		for (int i = 0; i < config.getInt("number_to_spawn"); i++) {
+			Wolf wolf = player.getWorld().spawn(player.getLocation(), Wolf.class);
+			wolf.setTamed(true);
+			wolf.setOwner(player);
+
+			if (RodsTwo.mccAPI) {
+				wolf.setCustomName(player.getName());
+				wolf.setCustomNameVisible(false);
+			}
+		}
+		return true;
+	}
+	
+	@Override
+	public boolean enable(Server serv) {
+		if (RodsTwo.mccAPI)
+			Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
+		return true;
+	}
+	
+	@EventHandler(priority=EventPriority.MONITOR)
+	public void onPlayerDeath(EntityDamageByEntityEvent event) {
+		if (event.getEntity() instanceof Player && event.getDamager() instanceof org.bukkit.entity.Wolf) {
+			LivingEntity entity = (LivingEntity) event.getDamager();
+			for (Player p : Bukkit.getOnlinePlayers())
+				if (entity.getCustomName().equalsIgnoreCase(p.getName()))
+					if (((Player)event.getEntity()).getHealth() - event.getDamage() <= 0) {
+						event.setCancelled(true);
+						Bukkit.getPluginManager().callEvent(new EntityDamageByEntityEvent(p, event.getEntity(), DamageCause.ENTITY_ATTACK, event.getDamage()));
+						return;
+					}
+		}
+	}
 }

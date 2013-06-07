@@ -32,6 +32,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
     public Logger logger;
     public FileConfiguration rodConfig;
     public static RodsTwo plugin;
+    public static boolean mccAPI;
 
     public void onEnable(){
     	rods = new ArrayList<Rod>();
@@ -49,6 +50,8 @@ public class RodsTwo extends JavaPlugin implements Listener{
         	VaultManager.eco = VaultManager.setupEconomy();
         else
         	getLogger().warning("Vault has not been enabled, using signs will not cost any money!");
+        
+        mccAPI = Bukkit.getPluginManager().isPluginEnabled("MCC API");
         
         try {
             addRods();
