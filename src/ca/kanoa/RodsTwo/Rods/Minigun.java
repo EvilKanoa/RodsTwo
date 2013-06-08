@@ -92,7 +92,7 @@ public class Minigun extends Rod implements Listener {
 	@EventHandler(priority=EventPriority.LOW)
 	public void onSnowballHit(EntityDamageByEntityEvent event) {
 		if (event.getDamager() instanceof org.bukkit.entity.Snowball && event.getEntity() instanceof Player) {
-			Snowball ball = (Snowball) event.getEntity();
+			Snowball ball = (Snowball) event.getDamager();
 			if (ball.getShooter() instanceof Player) {
 				Player player = (Player) ball.getShooter();
 				if (isFiring.contains(player.getName()))

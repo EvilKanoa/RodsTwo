@@ -15,7 +15,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.Plugin;
 
@@ -35,7 +34,7 @@ public class Zombie extends Rod implements Listener {
 	   		
 	   		if (RodsTwo.useMobDeathAsPlayer) {
 	   			zombie.setCustomName(player.getName());
-	   			zombie.setCustomNameVisible(false);
+	   			zombie.setCustomNameVisible(true);
 			}
 	   	}
 	   	return true;
@@ -52,13 +51,15 @@ public class Zombie extends Rod implements Listener {
 	public void onPlayerDeath(EntityDamageByEntityEvent event) {
 		if (event.getEntity() instanceof Player && event.getDamager() instanceof org.bukkit.entity.Zombie) {
 			LivingEntity entity = (LivingEntity) event.getDamager();
+			Player player = (Player) event.getEntity();
 			for (Player p : Bukkit.getOnlinePlayers())
-				if (entity.getCustomName().equalsIgnoreCase(p.getName()))
+				if (entity.getCustomName().equalsIgnoreCase(p.getName())) 
 					if (((Player)event.getEntity()).getHealth() - event.getDamage() <= 0) {
+						player.damage(event.getDamage(), p);
 						event.setCancelled(true);
-						Bukkit.getPluginManager().callEvent(new EntityDamageByEntityEvent(p, event.getEntity(), DamageCause.ENTITY_ATTACK, event.getDamage()));
 						return;
 					}
+			
 		}
 	}
 }
