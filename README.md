@@ -29,8 +29,4 @@ Permissions
  - lr.version - Allows a player to view the current plugin version. *1
  - lr.list - Allows use of the /lr list command. *1
  - lr.slowdownmessage - Allows the player to see the cooldown message. *1
- 
- 
- 
- ------
- Note(*1): Defaults to letting anyone use it.
+ - Note(*1): Defaults to letting anyone use it.
