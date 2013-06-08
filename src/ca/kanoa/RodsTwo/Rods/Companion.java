@@ -53,12 +53,16 @@ public class Companion extends Rod implements Listener {
 			LivingEntity entity = (LivingEntity) event.getDamager();
 			Player player = (Player) event.getEntity();
 			for (Player p : Bukkit.getOnlinePlayers())
-				if (entity.getCustomName().equalsIgnoreCase(p.getName())) 
-					if (((Player)event.getEntity()).getHealth() - event.getDamage() <= 0) {
+				if (entity.getCustomName().equalsIgnoreCase(p.getName()) && 
+						!entity.getCustomName().equalsIgnoreCase(player.getName())) {
+					if (player.getHealth() - event.getDamage() <= 0) {
 						player.damage(event.getDamage(), p);
 						event.setCancelled(true);
 						return;
 					}
+				}
+				else if (entity.getCustomName().equalsIgnoreCase(player.getName()))
+					event.setCancelled(true);
 			
 		}
 	}
