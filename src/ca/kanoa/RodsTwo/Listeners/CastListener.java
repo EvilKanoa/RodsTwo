@@ -1,9 +1,11 @@
 package ca.kanoa.RodsTwo.Listeners;
 
 import ca.kanoa.RodsTwo.Helpers.Utils;
+import ca.kanoa.RodsTwo.Objects.PlayerUseRodEvent;
 import ca.kanoa.RodsTwo.Objects.Rod;
 import ca.kanoa.RodsTwo.RodsTwo;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
@@ -52,6 +54,9 @@ public class CastListener implements Listener {
 
 								if (!event.getPlayer().hasPermission("lr.cooldown.exempt"))
 									plugin.cooldowns.put(event.getPlayer().getName(), System.currentTimeMillis() + rod.getCooldown());
+								
+								Bukkit.getPluginManager().callEvent(new PlayerUseRodEvent(event.getPlayer(), rod));
+								
 							}
 							
 						}
