@@ -27,7 +27,7 @@ import ca.kanoa.RodsTwo.Rods.*;
 public class RodsTwo extends JavaPlugin implements Listener{
 
     public static List<Rod> rods;
-    public Map<String, Long> cooldowns;
+    public static Map<String, Long> cooldowns;
     public static PluginDescriptionFile pdf;
     public Logger logger;
     public FileConfiguration rodConfig;

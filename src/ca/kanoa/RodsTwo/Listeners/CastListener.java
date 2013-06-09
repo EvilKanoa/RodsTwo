@@ -1,6 +1,7 @@
 package ca.kanoa.RodsTwo.Listeners;
 
 import ca.kanoa.RodsTwo.Helpers.Utils;
+import ca.kanoa.RodsTwo.Objects.CooldownBar;
 import ca.kanoa.RodsTwo.Objects.PlayerUseRodEvent;
 import ca.kanoa.RodsTwo.Objects.Rod;
 import ca.kanoa.RodsTwo.RodsTwo;
@@ -52,8 +53,10 @@ public class CastListener implements Listener {
 									event.getPlayer().setItemInHand(is);
 								}
 
-								if (!event.getPlayer().hasPermission("lr.cooldown.exempt"))
-									plugin.cooldowns.put(event.getPlayer().getName(), System.currentTimeMillis() + rod.getCooldown());
+								if (!event.getPlayer().hasPermission("lr.cooldown.exempt")) {
+									RodsTwo.cooldowns.put(event.getPlayer().getName(), System.currentTimeMillis() + rod.getCooldown());
+									new CooldownBar(event.getPlayer());
+								}
 								
 								Bukkit.getPluginManager().callEvent(new PlayerUseRodEvent(event.getPlayer(), rod));
 								
@@ -62,7 +65,7 @@ public class CastListener implements Listener {
 						}
 						else if (event.getPlayer().hasPermission("lr.slowdownmessage")) {
 							
-							String timeLeft = (((float)(((double)(RodsTwo.plugin.cooldowns.get(event.getPlayer().getName())) - System.currentTimeMillis()) / 1000)) + "");
+							String timeLeft = (((float)(((double)(RodsTwo.cooldowns.get(event.getPlayer().getName())) - System.currentTimeMillis()) / 1000)) + "");
 							timeLeft = timeLeft.substring(0, timeLeft.indexOf('.') + 2);
 							event.getPlayer().sendMessage(ChatColor.RED + "Slow down! Wait " + ChatColor.YELLOW + '[' + ChatColor.AQUA + (timeLeft.contains("0.0") ? "0.1" : timeLeft) + ChatColor.YELLOW + ']' + ChatColor.RED + " second(s) to regain power!");
 							

@@ -79,7 +79,7 @@ public class Utils {
 
     public static boolean isCooldownOver(String player){
         try {
-            return System.currentTimeMillis() > RodsTwo.plugin.cooldowns.get(player);
+            return System.currentTimeMillis() > RodsTwo.cooldowns.get(player);
         } catch(Exception e){
             return true;
         }
