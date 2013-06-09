@@ -20,6 +20,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -28,12 +29,12 @@ import org.bukkit.plugin.Plugin;
 public class Minigun extends Rod implements Listener {
 
 	private Set<String> isFiring;
-	
+
 	public Minigun(Plugin plugin) throws Exception {
-	    super("Minigun", 1, 280, new ConfigOptions(new String[]{"shots_per_second", "overheat_time", "minigun_item", "damage_per_shot"}, new Object[]{10, 5, Material.BOW.getId(), 1}), 5000);
-	    setRecipe(new ShapedRecipe(super.getItem()).shape("SSS", "RBR", "SSS").setIngredient('S', Material.SNOW).setIngredient('R', Material.BOW).setIngredient('B', Material.STICK));
+		super("Minigun", 1, 280, new ConfigOptions(new String[]{"shots_per_second", "overheat_time", "minigun_item", "damage_per_shot"}, new Object[]{10, 5, Material.BOW.getId(), 1}), 5000);
+		setRecipe(new ShapedRecipe(super.getItem()).shape("SSS", "RBR", "SSS").setIngredient('S', Material.SNOW).setIngredient('R', Material.BOW).setIngredient('B', Material.STICK));
 	}
-	
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public boolean run(Player player, ConfigurationSection config) {
@@ -53,42 +54,48 @@ public class Minigun extends Rod implements Listener {
 				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
 					@Override
 					public void run() {
-						p1.launchProjectile(org.bukkit.entity.Snowball.class);
-						p1.playSound(p1.getLocation(), Sound.ITEM_BREAK, 1, 1);
-						isFiring.remove(p1.getName());
-						p1.getInventory().remove(gun);
-						p1.getInventory().setHeldItemSlot(orginalSlot);
-						p1.updateInventory();
+						if (isFiring.contains(p1.getName())) {
+							p1.launchProjectile(org.bukkit.entity.Snowball.class);
+							p1.playSound(p1.getLocation(), Sound.ITEM_BREAK, 1, 1);
+							isFiring.remove(p1.getName());
+							p1.getInventory().remove(gun);
+							p1.getInventory().setHeldItemSlot(orginalSlot);
+							p1.updateInventory();
+						}
 					}}, (20 / config.getInt("shots_per_second")) * i);
 			else if (i == 0)
 				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
 					@Override
 					public void run() {
-						p1.getInventory().addItem(gun);
-						if (p1.getInventory().first(gun) < 9)
-							p1.getInventory().setHeldItemSlot(p1.getInventory().first(gun));
-						p1.updateInventory();
-						p1.launchProjectile(org.bukkit.entity.Snowball.class);
-						p1.playSound(p1.getLocation(), Sound.ITEM_BREAK, 1, 1);
+						if (isFiring.contains(p1.getName())) {
+							p1.getInventory().addItem(gun);
+							if (p1.getInventory().first(gun) < 9)
+								p1.getInventory().setHeldItemSlot(p1.getInventory().first(gun));
+							p1.updateInventory();
+							p1.launchProjectile(org.bukkit.entity.Snowball.class);
+							p1.playSound(p1.getLocation(), Sound.ITEM_BREAK, 1, 1);
+						}
 					}}, (20 / config.getInt("shots_per_second")) * i);
 			else
 				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
 					@Override
 					public void run() {
-						p1.launchProjectile(org.bukkit.entity.Snowball.class);
-						p1.playSound(p1.getLocation(), Sound.ITEM_BREAK, 1, 1);
+						if (isFiring.contains(p1.getName())) {
+							p1.launchProjectile(org.bukkit.entity.Snowball.class);
+							p1.playSound(p1.getLocation(), Sound.ITEM_BREAK, 1, 1);
+						}
 					}}, (20 / config.getInt("shots_per_second")) * i);
 		return true;
-			
+
 	}
-	
+
 	@Override
 	public boolean enable(Server serv) {
 		isFiring = new HashSet<String>();
 		Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
 		return true;
 	}
-	
+
 	@EventHandler(priority=EventPriority.LOW)
 	public void onSnowballHit(EntityDamageByEntityEvent event) {
 		if (event.getDamager() instanceof org.bukkit.entity.Snowball && event.getEntity() instanceof Player) {
@@ -100,4 +107,11 @@ public class Minigun extends Rod implements Listener {
 			}
 		}
 	}
+	
+	@EventHandler(priority=EventPriority.MONITOR, ignoreCancelled=true)
+	public void onPlayerDeth(PlayerDeathEvent event) {
+		if (isFiring.contains(event.getEntity().getName()))
+			isFiring.remove(event.getEntity().getName());
+	}
+	
 }
