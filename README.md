@@ -26,8 +26,8 @@ Permissions
  - lr.reload - Allows reloading the config.
  - lr.overwrite - Allows overwriting the config with default values.
  - lr.cooldown.exempt - Allows a player to be exempt from cooldowns.
+ - lr.list - Allows use of the /lr list command.
  - lr.cooldown.bar - Allows a players EXP bar to be used as a cooldown timer.
  - lr.cooldown.message - Allows the player to see the cooldown message. *1
  - lr.version - Allows a player to view the current plugin version. *1
- - lr.list - Allows use of the /lr list command. *1
  - Note(*1): Defaults to letting anyone use it.

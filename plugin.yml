@@ -17,7 +17,7 @@ permissions:
         default: op
     lr.list:
         description: Allows use of /lr list.
-        default: true
+        default: op
     lr.use.all:
         description: Allows use of all rods.
         default: op
