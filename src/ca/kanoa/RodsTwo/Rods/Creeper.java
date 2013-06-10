@@ -9,6 +9,7 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -31,6 +32,13 @@ public class Creeper extends Rod implements Listener {
 	   		Location loc = player.getTargetBlock(null, config.getInt("max_distence")).getLocation();
 	   		loc.add(0, 1.2f, 0);
 	   		org.bukkit.entity.Creeper creeper = player.getWorld().spawn(loc, org.bukkit.entity.Creeper.class);
+	   		
+	   		LivingEntity target = null;
+	   		for (Entity e : loc.getChunk().getEntities())
+	   			if (e instanceof Player && e != player)
+	   				target = (LivingEntity) e;
+	   		if (target != null)
+	   			creeper.setTarget(target);
 	   		
 	   		if (RodsTwo.useMobDeathAsPlayer) {
 	   			creeper.setCustomName(player.getName());
