@@ -2,9 +2,11 @@ package ca.kanoa.RodsTwo.Rods;
 
 import java.util.Arrays;
 
+import ca.kanoa.RodsTwo.RodsTwo;
 import ca.kanoa.RodsTwo.Objects.ConfigOptions;
 import ca.kanoa.RodsTwo.Objects.Rod;
 
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -25,15 +27,19 @@ public class Knockback extends Rod {
 	@SuppressWarnings("deprecation")
 	@Override
 	public boolean run(Player player, ConfigurationSection config) {
-		ItemStack sword = new ItemStack(Material.WOOD_SWORD, 1);
+		final ItemStack sword = new ItemStack(Material.WOOD_SWORD, 1);
+		final Player p1 = player;
 		ItemMeta im = sword.getItemMeta();
 		im.addEnchant(Enchantment.KNOCKBACK, config.getInt("knockback_level"), true);
 		im.setLore(Arrays.asList(new String[]{"Knock your enemys away!"}));
 		im.setDisplayName("" + ChatColor.RESET + ChatColor.BLUE + "Knockerbacker");
 		sword.setItemMeta(im);
 		sword.setDurability((short) (60 - config.getInt("durability_left_on_item")));
-		player.getInventory().addItem(sword);
-		player.updateInventory();
+		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+			public void run() {
+				p1.getInventory().addItem(sword);
+				p1.updateInventory();
+			}}, 2L);
 	    return true; 
 	}
 }
