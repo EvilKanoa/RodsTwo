@@ -27,6 +27,15 @@ public abstract class Rod {
     private ShapedRecipe recipe;
     private final Plugin plugin;
 
+    /**
+     * The default lightning rod
+     * @param name The name of the rod, shows up in inventorys and on the item
+     * @param cost How many rods get used when you right click
+     * @param rodID The default itemID for the rod
+     * @param options The options that get placed into the config (under: Rods.rodName.options)
+     * @param cooldown The cooldown after using this rod in milliseconds
+     * @param plugin The original plugin, USE OTHER CONSTRUSTOR
+     */
     public Rod(String name, int cost, int rodID, ConfigOptions options, long cooldown, Plugin plugin){
         this.name = name;
         this.cost = cost;
@@ -39,6 +48,14 @@ public abstract class Rod {
         this.defaultCost = cost;
     }
     
+    /**
+     * The default lightning rod
+     * @param name The name of the rod, shows up in inventorys and on the item
+     * @param cost How many rods get used when you right click
+     * @param rodID The default itemID for the rod
+     * @param options The options that get placed into the config (under: Rods.rodName.options)
+     * @param cooldown The cooldown after using this rod in milliseconds
+     */
     public Rod(String name, int cost, int rodID, ConfigOptions options, long cooldown){
     	this(name, cost, rodID, options, cooldown, RodsTwo.plugin);
     }
