@@ -60,8 +60,6 @@ public class Explosion extends Rod implements Listener {
 				Bukkit.getPlayer(bombSites.get((TNTPrimed) event.getDamager())) != null) {
 			((Player) event.getEntity()).damage(event.getDamage(), Bukkit.getPlayer(bombSites.get((TNTPrimed) event.getDamager())));
 			event.setCancelled(true);
-			bombSites.remove((TNTPrimed) event.getDamager()
-					);
 		}
 	}
 	
