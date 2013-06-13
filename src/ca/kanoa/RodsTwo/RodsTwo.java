@@ -86,6 +86,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
         rods.add(new Explosion(this));
         rods.add(new Evade(this));
         rods.add(new Fire(this));
+        rods.add(new Firework(this));
         rods.add(new Flight(this));
         rods.add(new Ghast(this));
         rods.add(new Health(this));
