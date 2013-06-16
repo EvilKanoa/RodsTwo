@@ -62,5 +62,15 @@ public class Explosion extends Rod implements Listener {
 			event.setCancelled(true);
 		}
 	}
+    
+    @EventHandler
+    public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
+    	if (event.getEntity() instanceof Player && 
+    			event.getDamager() instanceof TNTPrimed &&
+    			bombSites.containsKey((TNTPrimed) event.getDamager()) &&
+    			bombSites.get((TNTPrimed) event.getDamager()).equalsIgnoreCase(((Player) event.getEntity()).getName()))
+    		event.setCancelled(true);
+    		
+    }
 	
 }

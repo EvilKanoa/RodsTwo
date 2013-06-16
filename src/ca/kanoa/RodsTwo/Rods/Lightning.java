@@ -60,4 +60,14 @@ public class Lightning extends Rod implements Listener {
     	}
     }
     
+    @EventHandler
+    public void onEntityDamageByEntity(EntityDamageByEntityEvent event) {
+    	if (event.getEntity() instanceof Player && 
+    			event.getDamager() instanceof LightningStrike &&
+    			strikeID.containsKey(event.getDamager().getEntityId()) &&
+    			strikeID.get(event.getDamager().getEntityId()).equalsIgnoreCase(((Player) event.getEntity()).getName()))
+    		event.setCancelled(true);
+    		
+    }
+    
 }
