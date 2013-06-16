@@ -26,6 +26,8 @@ import org.bukkit.plugin.Plugin;
 
 public class Firework extends Rod {
 
+	public static final float speed = 4.5f;
+	
 	private FireworkEffectPlayer fePlayer;
 
 	public Firework(Plugin plugin) throws Exception {
@@ -39,7 +41,7 @@ public class Firework extends Rod {
 		FireworkMeta fwm = firework.getFireworkMeta();
 		fwm.addEffect(FireworkEffect.builder().withTrail().with(Type.BALL).withColor(Color.RED).withFade(Color.WHITE).build());
 		firework.setFireworkMeta(fwm);
-		firework.setVelocity(player.getEyeLocation().getDirection().multiply(2.1f));
+		firework.setVelocity(player.getEyeLocation().getDirection().multiply(speed));
 		final ConfigurationSection c1 = config;
 		final Player p1 = player;
 		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new FireworkHitBlock(firework, new FireworkRunnable(){
