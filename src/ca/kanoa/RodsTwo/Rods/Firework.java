@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+
 import ca.kanoa.RodsTwo.RodsTwo;
 import ca.kanoa.RodsTwo.Objects.ConfigOptions;
 import ca.kanoa.RodsTwo.Objects.Rod;
@@ -19,16 +20,20 @@ import org.bukkit.Sound;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.util.Vector;
 
 public class Firework extends Rod {
 
 	public static final float speed = 4.5f;
 	
 	private FireworkEffectPlayer fePlayer;
+
+	public final List<Material> trans = Arrays.asList(new Material[]{Material.AIR, Material.LONG_GRASS, Material.WATER});
 
 	public Firework(Plugin plugin) throws Exception {
 		super("Firework", 1, 280, new ConfigOptions(new String[]{"radius", "damage"}, new Object[]{4, 10}), 1000);
@@ -41,20 +46,22 @@ public class Firework extends Rod {
 		FireworkMeta fwm = firework.getFireworkMeta();
 		fwm.addEffect(FireworkEffect.builder().withTrail().with(Type.BALL).withColor(Color.RED).withFade(Color.WHITE).build());
 		firework.setFireworkMeta(fwm);
-		firework.setVelocity(player.getEyeLocation().getDirection().multiply(speed));
+		Vector velocity = player.getEyeLocation().getDirection().multiply(speed);
+		firework.setVelocity(velocity);
 		final ConfigurationSection c1 = config;
 		final Player p1 = player;
-		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new FireworkHitBlock(firework, new FireworkRunnable(){
+		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new FireworkHitBlock(firework, velocity, new FireworkRunnable(){
 			@Override
 			public void run(Location loc, org.bukkit.entity.Firework firework) {
 				int radius = c1.getInt("radius");
-				Collection<Player> players = loc.getWorld().getEntitiesByClass(Player.class);
-				players.remove(p1);
-				int damage = c1.getInt("damage") / (players.size() == 0 ? 1 : players.size());
-				for (Player p : players)
+				Collection<LivingEntity> entitys = loc.getWorld().getEntitiesByClass(LivingEntity.class);
+				//entitys.remove(p1);
+				int damage = c1.getInt("damage");
+				for (LivingEntity p : entitys)
 					if (p.getLocation().distance(loc) <= radius && p != p1) {
 						p.damage(damage, p1);
-						p.playSound(loc, Sound.EXPLODE, 1, 5.05f);
+						if (p instanceof Player)
+						((Player)p).playSound(loc, Sound.EXPLODE, 1, 5.05f);
 					}
 			}}), 1l);
 		return true;
@@ -70,12 +77,12 @@ public class Firework extends Rod {
 
 		private org.bukkit.entity.Firework firework;
 		private FireworkRunnable whenHitsBlock;
+		private Vector velocity;
 
-		public final List<Material> trans = Arrays.asList(new Material[]{Material.AIR, Material.LONG_GRASS, Material.WATER});
-
-		public FireworkHitBlock (org.bukkit.entity.Firework firework, FireworkRunnable whenHitsBlock) {
+		public FireworkHitBlock (org.bukkit.entity.Firework firework, Vector velocity, FireworkRunnable whenHitsBlock) {
 			this.firework = firework;
 			this.whenHitsBlock = whenHitsBlock;
+			this.velocity = velocity;
 		}
 
 		@Override
@@ -99,8 +106,10 @@ public class Firework extends Rod {
 					}
 				whenHitsBlock.run(loc.getLocation(), firework);
 			}
-			else
+			else {
 				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, this, 1L);
+				firework.setVelocity(velocity);
+			}
 		}
 
 	}
