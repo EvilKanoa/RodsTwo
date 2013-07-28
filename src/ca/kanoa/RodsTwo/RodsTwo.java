@@ -51,7 +51,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
         else
         	getLogger().warning("Vault has not been enabled, using signs will not cost any money!");
         
-        useMobDeathAsPlayer = Bukkit.getPluginManager().isPluginEnabled("MCC API");
+        useMobDeathAsPlayer = Bukkit.getPluginManager().isPluginEnabled("Batman API");
         
         try {
             addRods();

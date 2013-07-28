@@ -24,10 +24,10 @@ public class Health extends Rod {
 
     @Override
     public boolean run(Player player, ConfigurationSection config){
-        int currHealth = player.getHealth();
+        double currHealth = player.getHealth();
         int addHealth = config.getInt("hearts_to_be_healed");
-        int newHealth = currHealth + addHealth > 20 ? 20 : currHealth + addHealth;
-        if(currHealth == 20)
+        double newHealth = currHealth + addHealth > 20.0 ? 20.0 : currHealth + addHealth;
+        if(currHealth == 20.0)
             return false;
         player.setHealth(newHealth);
         player.getWorld().strikeLightningEffect(player.getLocation());
