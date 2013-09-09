@@ -27,7 +27,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.FireworkMeta;
-import org.bukkit.plugin.Plugin;
 
 public class God extends Rod implements Listener {
 
@@ -35,7 +34,7 @@ public class God extends Rod implements Listener {
 	private FireworkEffectPlayer fePlayer;
 	private HashMap<TNTPrimed, String> bombSites;
 
-	public God(Plugin plugin) throws Exception {
+	public God() throws Exception {
 		super("God", 1, 280, 
 				new ConfigOptions(
 						new String[]{"height", "max_distance", "effect_delay", "power_per_explosion", "enable_fire_from_explosion"}, 

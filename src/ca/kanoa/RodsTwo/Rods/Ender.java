@@ -7,12 +7,11 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.EnderPearl;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 public class Ender extends Rod {
 
-	public Ender(Plugin plugin) throws Exception {
-	    super("Ender", 1, 280, new ConfigOptions(), 500, plugin);
+	public Ender() throws Exception {
+	    super("Ender", 1, 280, new ConfigOptions(), 500);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape("EBE").setIngredient('E', Material.ENDER_PEARL).setIngredient('B', Material.STICK));
 	}
 	

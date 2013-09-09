@@ -11,11 +11,10 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 public class Cake extends Rod {
 
-	public Cake(Plugin plugin) throws Exception {
+	public Cake() throws Exception {
 	    super("Cake", 1, 280, new ConfigOptions(), 1000);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape("CCC", "CBC", "CCC").setIngredient('C', Material.CAKE).setIngredient('B', Material.STICK));
 	}

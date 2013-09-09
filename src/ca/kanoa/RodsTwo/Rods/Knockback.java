@@ -15,11 +15,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 
 public class Knockback extends Rod {
 
-	public Knockback(Plugin plugin) throws Exception {
+	public Knockback() throws Exception {
 	    super("Knockback", 1, 280, new ConfigOptions(new String[]{"knockback_level", "durability_left_on_item"}, new Object[]{5, 1}), 500);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape("SBS").setIngredient('S', Material.WOOD_SWORD).setIngredient('B', Material.STICK));
 	}

@@ -23,7 +23,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.BlockIterator;
@@ -33,7 +32,7 @@ public class Curse extends Rod implements Listener {
 	private Random rand;
 	private Set<AffectedPlayer> affected;
 
-	public Curse(Plugin plugin) throws Exception {
+	public Curse() throws Exception {
 		super("Curse", 1, 280, new ConfigOptions(new String[]{"random_potion_length", "random_potion_level"}, new Object[]{30, 2}), 2000);
 		setRecipe(new ShapedRecipe(super.getItem()).shape("SSS", "RBR").setIngredient('S', Material.SPIDER_EYE).setIngredient('R', Material.ROTTEN_FLESH).setIngredient('B', Material.STICK));
 	}

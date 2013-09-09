@@ -19,7 +19,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.util.Vector;
 
 public class Sniper extends Rod implements Listener {
@@ -27,7 +26,7 @@ public class Sniper extends Rod implements Listener {
 	private Set<org.bukkit.entity.Arrow> arrows;
 	private ConfigurationSection config;
 	
-	public Sniper(Plugin plugin) throws Exception {
+	public Sniper() throws Exception {
 	    super("Sniper", 1, 280, new ConfigOptions(new String[]{"power", "damage"}, new Object[]{10, 15}), 500);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape("DDD", "DBD", "DDD").setIngredient('D', Material.SPONGE).setIngredient('B', Material.STICK));
 	}

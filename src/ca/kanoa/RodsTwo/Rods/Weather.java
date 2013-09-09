@@ -10,11 +10,10 @@ import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 public class Weather extends Rod {
 
-	public Weather(Plugin plugin) throws Exception {
+	public Weather() throws Exception {
 	    super("Weather", 4, 280, new ConfigOptions(), 3000);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape(" I ", "SBS", " I ").setIngredient('S', Material.SNOW_BALL).setIngredient('I', Material.IRON_INGOT).setIngredient('B', Material.STICK));
 	}

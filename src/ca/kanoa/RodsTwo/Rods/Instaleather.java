@@ -10,11 +10,10 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 public class Instaleather extends Rod {
 
-	public Instaleather(Plugin plugin) throws Exception {
+	public Instaleather() throws Exception {
 	    super("Insta Leather", 1, 280, new ConfigOptions(), 2000);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape(" H ", "CBL", " F ").setIngredient('H', Material.LEATHER_HELMET).setIngredient('C',  Material.LEATHER_CHESTPLATE)
 	    		.setIngredient('L', Material.LEATHER_LEGGINGS).setIngredient('F', Material.LEATHER_BOOTS).setIngredient('B', Material.STICK));

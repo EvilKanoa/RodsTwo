@@ -8,11 +8,10 @@ import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 public class Time extends Rod {
 
-	public Time(Plugin plugin) throws Exception {
+	public Time() throws Exception {
 	    super("Time", 1, 280, new ConfigOptions(new String[]{}, new Object[]{}), 100);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape(" B ", " C ").setIngredient('C', Material.WATCH).setIngredient('B', Material.STICK));
 	}

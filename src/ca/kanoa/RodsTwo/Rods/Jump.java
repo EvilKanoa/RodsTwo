@@ -14,8 +14,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
-
 import ca.kanoa.RodsTwo.RodsTwo;
 import ca.kanoa.RodsTwo.Objects.ConfigOptions;
 import ca.kanoa.RodsTwo.Objects.Rod;
@@ -24,7 +22,7 @@ public class Jump extends Rod implements Listener {
 
 	private Set<String> jumpees;
 	
-	public Jump(Plugin plugin) throws Exception {
+	public Jump() throws Exception {
 	    super("Jump", 1, 280, new ConfigOptions(new String[]{"power"}, new Object[]{5.0d}), 2000);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape(" B ", " I ").setIngredient('I', Material.IRON_BOOTS).setIngredient('B', Material.STICK));
 	}
