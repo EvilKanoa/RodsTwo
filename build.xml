@@ -1,30 +1,26 @@
 <?xml version="1.0"?>
-<project name="RodsTwo" default="build" basedir=".">
+<project name="RodsTwo" default="jar" basedir=".">
+    
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
-  <property name="src.dir" location="src" />
-  <property name="build.dir" location="bin" />
-  <property name="dist.dir" location="dist" />
-  <property name="docs.dir" location="docs" />
-  <property name="lib.dir" location="lib" />
-  <property name="bukkit.dir" location="C:\Users\Kanoa\Bukkit Plugins\BukkitBetaTesting" />
+  <property file="properties/build.properties"/>
 
-  <!-- Deletes the existing build, docs and dist directory-->
+  <!-- Deletes the existing build, docs and dist directory -->
   <target name="clean">
     <delete dir="${build.dir}" />
     <delete dir="${docs.dir}" />
     <delete dir="${dist.dir}" />
   </target>
 
-  <!-- Creates the  build, docs and dist directory-->
+  <!-- Creates the build, docs and dist directory -->
   <target name="makedir">
     <mkdir dir="${build.dir}" />
     <mkdir dir="${docs.dir}" />
     <mkdir dir="${dist.dir}" />
   </target>
 
-  <!-- Compiles the java code (including the usage of library for JUnit -->
-  <target name="compile" depends="clean, makedir">
+  <!-- Compiles the java code -->
+  <target name="compile" depends="clean, makedir, setenv">
     <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
       <classpath>
         <fileset dir="${lib.dir}">
@@ -40,7 +36,7 @@
     <javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}">
       <!-- Define which files / directory should get included, we include all -->
        <fileset dir="${src.dir}">
-                <include name="**" />
+         <include name="**" />
        </fileset>
        <classpath>
          <fileset dir="${lib.dir}">
@@ -50,9 +46,27 @@
     </javadoc>
   </target>
 
-  <!--Creates the deployable jar file  -->
+  <!-- Sets the bukkit.dir variable based on what OS we're running on -->
+  <target name="setenv">
+    <condition property="isUnix">
+      <os family="unix"/>
+    </condition>
+    <condition property="isWindows">
+      <os family="windows"/>
+    </condition>
+  </target>
+  <target name="setwindowsenv" if="isWindows">
+  	<echo>This is a Windows machine.</echo>
+    <property file="properties/windows.properties"/>
+  </target>
+  <target name="setunixenv" if="isUnix">
+  	<echo>This is an Unix machine.</echo>
+    <property file="properties/unix.properties"/>
+  </target>
+  
+  <!-- Creates the jar file -->
   <target name="jar" depends="compile">
-    <jar destfile="${dist.dir}\RodsTwo.jar" basedir="${build.dir}">
+  	<jar destfile="${dist.dir}\RodsTwo.jar" basedir="${build.dir}">
       <zipfileset dir="." includes="plugin.yml"/>
       <zipfileset dir="." includes="rods.yml"/>
       <manifest>
@@ -61,7 +75,8 @@
     </jar>
   </target>
 
-  <target name="build" depends="compile, jar">
+  <!-- Copys the compiled jar file to Bukkit's /plugin folder -->
+  <target name="copy" depends="jar, setwindowsenv, setunixenv">
 	<copy file="${dist.dir}\RodsTwo.jar" overwrite="true" tofile="${bukkit.dir}\plugins\RodsTwo.jar" />
   </target>
 
