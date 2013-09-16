@@ -1,4 +1,4 @@
-package ca.kanoa.RodsTwo.Helpers;
+package ca.kanoa.rodstwo.helpers;
 
 import net.milkbowl.vault.economy.Economy;
 

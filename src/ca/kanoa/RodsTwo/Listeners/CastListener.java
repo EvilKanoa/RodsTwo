@@ -1,10 +1,4 @@
-package ca.kanoa.RodsTwo.Listeners;
-
-import ca.kanoa.RodsTwo.Helpers.Utils;
-import ca.kanoa.RodsTwo.Objects.CooldownBar;
-import ca.kanoa.RodsTwo.Objects.PlayerUseRodEvent;
-import ca.kanoa.RodsTwo.Objects.Rod;
-import ca.kanoa.RodsTwo.RodsTwo;
+package ca.kanoa.rodstwo.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,6 +9,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
+
+import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.helpers.Utils;
+import ca.kanoa.rodstwo.objects.CooldownBar;
+import ca.kanoa.rodstwo.objects.PlayerUseRodEvent;
+import ca.kanoa.rodstwo.objects.Rod;
 
 public class CastListener implements Listener {
 

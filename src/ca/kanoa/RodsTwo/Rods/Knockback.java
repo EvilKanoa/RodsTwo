@@ -1,10 +1,6 @@
-package ca.kanoa.RodsTwo.Rods;
+package ca.kanoa.rodstwo.rods;
 
 import java.util.Arrays;
-
-import ca.kanoa.RodsTwo.RodsTwo;
-import ca.kanoa.RodsTwo.Objects.ConfigOptions;
-import ca.kanoa.RodsTwo.Objects.Rod;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,6 +11,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.objects.ConfigOptions;
+import ca.kanoa.rodstwo.objects.Rod;
 
 public class Knockback extends Rod {
 

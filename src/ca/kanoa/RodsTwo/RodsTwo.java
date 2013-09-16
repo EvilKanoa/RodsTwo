@@ -1,4 +1,4 @@
-package ca.kanoa.RodsTwo;
+package ca.kanoa.rodstwo;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,7 +12,6 @@ import java.util.Set;
 import java.util.logging.Logger;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -21,10 +20,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import ca.kanoa.RodsTwo.Helpers.*;
-import ca.kanoa.RodsTwo.Listeners.*;
-import ca.kanoa.RodsTwo.Objects.Rod;
-import ca.kanoa.RodsTwo.Rods.*;
+import ca.kanoa.rodstwo.helpers.CommandExecutor;
+import ca.kanoa.rodstwo.helpers.RodLoader;
+import ca.kanoa.rodstwo.helpers.Utils;
+import ca.kanoa.rodstwo.helpers.VaultManager;
+import ca.kanoa.rodstwo.listeners.CastListener;
+import ca.kanoa.rodstwo.listeners.CraftListener;
+import ca.kanoa.rodstwo.listeners.SignListener;
+import ca.kanoa.rodstwo.objects.Rod;
+import ca.kanoa.rodstwo.rods.*;
 
 public class RodsTwo extends JavaPlugin implements Listener{
 
@@ -138,7 +142,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
     
     public static void addRods(Rod[] rods) {
     	for (Rod rod : rods)
-    		ca.kanoa.RodsTwo.RodsTwo.rods.add(rod);
+    		ca.kanoa.rodstwo.RodsTwo.rods.add(rod);
     	Utils.makeConfig(false);
     }
     

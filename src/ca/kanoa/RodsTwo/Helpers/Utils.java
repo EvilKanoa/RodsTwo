@@ -1,15 +1,16 @@
-package ca.kanoa.RodsTwo.Helpers;
-
-import ca.kanoa.RodsTwo.Objects.ConfigRecipe;
-import ca.kanoa.RodsTwo.Objects.InvalidRecipeException;
-import ca.kanoa.RodsTwo.Objects.Rod;
-import ca.kanoa.RodsTwo.RodsTwo;
+package ca.kanoa.rodstwo.helpers;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ShapedRecipe;
+
+import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.objects.ConfigRecipe;
+import ca.kanoa.rodstwo.objects.InvalidRecipeException;
+import ca.kanoa.rodstwo.objects.Rod;
+
 import java.io.File;
 import java.io.IOException;
 

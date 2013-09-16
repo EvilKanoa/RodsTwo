@@ -1,4 +1,4 @@
-package ca.kanoa.RodsTwo.Listeners;
+package ca.kanoa.rodstwo.listeners;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -10,10 +10,10 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
-import ca.kanoa.RodsTwo.RodsTwo;
-import ca.kanoa.RodsTwo.Helpers.Utils;
-import ca.kanoa.RodsTwo.Helpers.VaultManager;
-import ca.kanoa.RodsTwo.Objects.Rod;
+import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.helpers.Utils;
+import ca.kanoa.rodstwo.helpers.VaultManager;
+import ca.kanoa.rodstwo.objects.Rod;
 
 public class SignListener implements Listener {
 

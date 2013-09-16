@@ -1,10 +1,10 @@
-package ca.kanoa.RodsTwo.Objects;
+package ca.kanoa.rodstwo.objects;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import ca.kanoa.RodsTwo.RodsTwo;
+import ca.kanoa.rodstwo.RodsTwo;
 
 public class CooldownBar extends BukkitRunnable {
 

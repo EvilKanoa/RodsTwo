@@ -1,13 +1,9 @@
-package ca.kanoa.RodsTwo.Rods;
+package ca.kanoa.rodstwo.rods;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-
-import ca.kanoa.RodsTwo.RodsTwo;
-import ca.kanoa.RodsTwo.Objects.ConfigOptions;
-import ca.kanoa.RodsTwo.Objects.Rod;
 
 import org.bukkit.FireworkEffect;
 import org.bukkit.FireworkEffect.Type;
@@ -25,6 +21,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.util.Vector;
+
+import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.objects.ConfigOptions;
+import ca.kanoa.rodstwo.objects.Rod;
 
 public class Firework extends Rod {
 

@@ -1,4 +1,4 @@
-package ca.kanoa.RodsTwo.Objects;
+package ca.kanoa.rodstwo.objects;
 
 import java.util.ArrayList;
 import java.util.Arrays;

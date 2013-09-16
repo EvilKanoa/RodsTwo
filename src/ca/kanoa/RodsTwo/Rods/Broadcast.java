@@ -1,13 +1,13 @@
-package ca.kanoa.RodsTwo.Rods;
-
-import ca.kanoa.RodsTwo.Objects.ConfigOptions;
-import ca.kanoa.RodsTwo.Objects.Rod;
+package ca.kanoa.rodstwo.rods;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
+
+import ca.kanoa.rodstwo.objects.ConfigOptions;
+import ca.kanoa.rodstwo.objects.Rod;
 
 public class Broadcast extends Rod {
 

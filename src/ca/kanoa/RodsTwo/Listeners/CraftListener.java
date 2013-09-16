@@ -1,4 +1,4 @@
-package ca.kanoa.RodsTwo.Listeners;
+package ca.kanoa.rodstwo.listeners;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -6,8 +6,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.CraftItemEvent;
 
-import ca.kanoa.RodsTwo.RodsTwo;
-import ca.kanoa.RodsTwo.Objects.Rod;
+import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.objects.Rod;
 
 public class CraftListener implements Listener {
 

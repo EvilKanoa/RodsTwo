@@ -1,4 +1,4 @@
-package ca.kanoa.RodsTwo.Rods;
+package ca.kanoa.rodstwo.rods;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -14,9 +14,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageCause;
 import org.bukkit.inventory.ShapedRecipe;
-import ca.kanoa.RodsTwo.RodsTwo;
-import ca.kanoa.RodsTwo.Objects.ConfigOptions;
-import ca.kanoa.RodsTwo.Objects.Rod;
+
+import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.objects.ConfigOptions;
+import ca.kanoa.rodstwo.objects.Rod;
 
 public class Jump extends Rod implements Listener {
 

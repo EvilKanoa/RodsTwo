@@ -1,11 +1,12 @@
-package ca.kanoa.RodsTwo.Rods;
+package ca.kanoa.rodstwo.rods;
 
-import ca.kanoa.RodsTwo.Objects.ConfigOptions;
-import ca.kanoa.RodsTwo.Objects.Rod;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
+
+import ca.kanoa.rodstwo.objects.ConfigOptions;
+import ca.kanoa.rodstwo.objects.Rod;
 
 public class Health extends Rod {
 
