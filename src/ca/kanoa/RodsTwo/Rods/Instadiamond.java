@@ -7,14 +7,13 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
 import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Instadiamond extends Rod {
 
-	public Instadiamond(Plugin plugin) throws Exception {
+	public Instadiamond() throws Exception {
 	    super("Insta Diamond", 1, 280, new ConfigOptions(), 2000);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape(" H ", "CBL", " F ").setIngredient('H', Material.DIAMOND_HELMET).setIngredient('C',  Material.DIAMOND_CHESTPLATE)
 	    		.setIngredient('L', Material.DIAMOND_LEGGINGS).setIngredient('F', Material.DIAMOND_BOOTS).setIngredient('B', Material.STICK));

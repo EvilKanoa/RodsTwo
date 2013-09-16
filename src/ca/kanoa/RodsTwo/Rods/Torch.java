@@ -7,14 +7,13 @@ import org.bukkit.World;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
 import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Torch extends Rod {
 
-	public Torch(Plugin plugin) throws Exception {
+	public Torch() throws Exception {
 	    super("Torch", 1, 280, new ConfigOptions(new String[]{"max_distence"}, new Object[]{50}), 2000);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape("TBT").setIngredient('T', Material.TORCH).setIngredient('B', Material.STICK));
 	}

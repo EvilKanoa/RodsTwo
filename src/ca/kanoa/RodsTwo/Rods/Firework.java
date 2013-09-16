@@ -20,7 +20,6 @@ import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.FireworkMeta;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.util.Vector;
 
 import ca.kanoa.rodstwo.RodsTwo;
@@ -35,7 +34,7 @@ public class Firework extends Rod {
 
 	public final List<Material> trans = Arrays.asList(new Material[]{Material.AIR, Material.LONG_GRASS, Material.WATER});
 
-	public Firework(Plugin plugin) throws Exception {
+	public Firework() throws Exception {
 		super("Firework", 1, 280, new ConfigOptions(new String[]{"radius", "damage"}, new Object[]{4, 10}), 1000);
 		setRecipe(new ShapedRecipe(super.getItem()).shape("DDD", "DBD", "DDD").setIngredient('D', Material.SPONGE).setIngredient('B', Material.STICK));
 	}

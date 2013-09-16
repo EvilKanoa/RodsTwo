@@ -12,7 +12,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.RodsTwo;
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
@@ -22,8 +21,8 @@ public class Arrow extends Rod implements Listener {
 
 	private Set<org.bukkit.entity.Arrow> arrows;
 
-	public Arrow(Plugin plugin) throws Exception {
-		super("Arrow", 1, 280, new ConfigOptions(new String[]{"quiver_size"}, new Object[]{4}), 500, plugin);
+	public Arrow() throws Exception {
+		super("Arrow", 1, 280, new ConfigOptions(new String[]{"quiver_size"}, new Object[]{4}), 500);
 		setRecipe(new ShapedRecipe(super.getItem()).shape("AAA", "ABA", "AAA").setIngredient('A', Material.ARROW).setIngredient('B', Material.STICK));
 	}
 

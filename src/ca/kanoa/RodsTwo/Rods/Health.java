@@ -4,15 +4,14 @@ import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
 import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Health extends Rod {
 
-    public Health(Plugin plugin) throws Exception {
-        super("Health", /*Cost*/ 1, /*RodID*/ 280,  new ConfigOptions(new String[]{"hearts_to_be_healed"}, new Object[]{10}), /*Cooldown (In MS)*/ 3000, /*Main Plugin Object*/ plugin);
+    public Health() throws Exception {
+        super("Health", /*Cost*/ 1, /*RodID*/ 280,  new ConfigOptions(new String[]{"hearts_to_be_healed"}, new Object[]{10}), /*Cooldown (In MS)*/ 3000);
         
         //Set default the recipe
         ShapedRecipe recipe = new ShapedRecipe(super.getItem());

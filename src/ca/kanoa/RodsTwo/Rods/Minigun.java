@@ -20,7 +20,6 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.RodsTwo;
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
@@ -30,7 +29,7 @@ public class Minigun extends Rod implements Listener {
 
 	private Set<String> isFiring;
 
-	public Minigun(Plugin plugin) throws Exception {
+	public Minigun() throws Exception {
 		super("Minigun", 1, 280, new ConfigOptions(new String[]{"shots_per_second", "overheat_time", "minigun_item", "damage_per_shot"}, new Object[]{10, 5, Material.BOW.getId(), 1}), 5000);
 		setRecipe(new ShapedRecipe(super.getItem()).shape("SSS", "RBR", "SSS").setIngredient('S', Material.SNOW).setIngredient('R', Material.BOW).setIngredient('B', Material.STICK));
 	}

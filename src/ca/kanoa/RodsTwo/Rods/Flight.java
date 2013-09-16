@@ -5,7 +5,6 @@ import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
@@ -15,7 +14,7 @@ import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Flight extends Rod {
 
-	public Flight(Plugin plugin) throws Exception {
+	public Flight() throws Exception {
 	    super("Flight", 2, 280, new ConfigOptions(new String[]{"flight_time"}, new Object[]{2.5d}), 2500);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape("FFF", "FBF", "FFF").setIngredient('F', Material.FEATHER).setIngredient('B', Material.STICK));
 	}

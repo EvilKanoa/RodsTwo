@@ -3,6 +3,8 @@ package ca.kanoa.rodstwo;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +37,23 @@ public class RodsTwo extends JavaPlugin implements Listener{
     public static List<Rod> rods;
     public static Map<String, Long> cooldowns;
     public static PluginDescriptionFile pdf;
+    private Comparator<Rod> rodComparator = new Comparator<Rod>(){
+		@Override
+		public int compare(Rod rod1, Rod rod2) {
+			int chosen = rod1.getName().equalsIgnoreCase(rod2.getName()) ? 0 : 2;
+			int index = 0;
+			while (chosen == 2) {
+				char c1 = rod1.getName().charAt(index), c2 = rod2.getName().charAt(index);
+				if (Character.toLowerCase(c1) != Character.toLowerCase(c2))
+					chosen = Character.getNumericValue(Character.toLowerCase(c1)) < Character.getNumericValue(Character.toLowerCase(c2)) ? -1 : 1;
+				index++;
+				if (index > rod1.getName().length() - 1) 
+					chosen = -1;
+				else if (index > rod2.getName().length() - 1)
+					chosen = 1;
+			}
+			return chosen;
+		}};
     public Logger logger;
     public FileConfiguration rodConfig;
     public static RodsTwo plugin;
@@ -80,41 +99,46 @@ public class RodsTwo extends JavaPlugin implements Listener{
 
     private void addRods() throws Exception {
         //TODO: Make more rods!!!
-        rods.add(new Arrow(this));
-        rods.add(new Broadcast(this));
-        rods.add(new Companion(this));
-        rods.add(new Cake(this));
-        rods.add(new Creeper(this));
-        rods.add(new Curse(this));
-        rods.add(new Drought(this));
-        rods.add(new Drown(this));
-        rods.add(new Ender(this));
-        rods.add(new Explosion(this));
-        rods.add(new Evade(this));
-        rods.add(new Fire(this));
-        rods.add(new Firework(this));
-        rods.add(new Flight(this));
-        rods.add(new Ghast(this));
-        rods.add(new God(this));
-        rods.add(new Health(this));
-        rods.add(new Hunger(this));
-        rods.add(new Instadiamond(this));
-        rods.add(new Instairon(this));
-        rods.add(new Instaleather(this));
-        rods.add(new Invisibility(this));
-        rods.add(new Jump(this));
-        rods.add(new Knockback(this));
-        rods.add(new Lightning(this));
-        rods.add(new Minigun(this));
-        rods.add(new Parkour(this));
-        rods.add(new Pickpocket(this));
-        rods.add(new Resistance(this));
-        rods.add(new Sniper(this));
-        rods.add(new Time(this));
-        rods.add(new Torch(this));
-        rods.add(new Weather(this));
-        rods.add(new Zombie(this));
+        rods.add(new Arrow());
+        rods.add(new Broadcast());
+        rods.add(new Companion());
+        rods.add(new Cake());
+        rods.add(new Creeper());
+        rods.add(new Curse());
+        rods.add(new Drought());
+        rods.add(new Drown());
+        rods.add(new Ender());
+        rods.add(new Explosion());
+        rods.add(new Evade());
+        rods.add(new Fire());
+        rods.add(new Firework());
+        rods.add(new Flight());
+        rods.add(new Ghast());
+        rods.add(new God());
+        rods.add(new Health());
+        rods.add(new Hunger());
+        rods.add(new Instadiamond());
+        rods.add(new Instairon());
+        rods.add(new Instaleather());
+        rods.add(new Invisibility());
+        rods.add(new Jump());
+        rods.add(new Knockback());
+        rods.add(new Lightning());
+        rods.add(new Minigun());
+        rods.add(new Parkour());
+        rods.add(new Pickpocket());
+        rods.add(new Resistance());
+        rods.add(new Sniper());
+        rods.add(new Time());
+        rods.add(new Torch());
+        rods.add(new Weather());
+        rods.add(new Zombie());
         //TODO: Make more rods!!!
+        
+        for (Rod rod : RodLoader.getRods(new File(getDataFolder(), "rods")))
+        		rods.add(rod);
+        
+        Collections.sort(rods, rodComparator);
         Utils.makeConfig(false);
     }
     
@@ -149,7 +173,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
     }
     
     public static void debug(String msg) {
-    	Bukkit.broadcastMessage(ChatColor.YELLOW + "" + '[' + ChatColor.AQUA + "Debug" + ChatColor.YELLOW + "] " + ChatColor.RED + msg);
+    	System.out.println("[Debug] " + msg);
     }
     
     public static void main(String[] args) {
@@ -161,5 +185,13 @@ public class RodsTwo extends JavaPlugin implements Listener{
     		Material.CHEST, Material.WORKBENCH, Material.LEVER,
     		Material.WOOD_BUTTON, Material.STONE_BUTTON, Material.WOODEN_DOOR
     });
+
+	public static double getVersion() {
+		try {
+			return Double.parseDouble(pdf.getVersion());
+		} catch (NumberFormatException e) {
+			return 1.0;
+		}
+	}
     
 }

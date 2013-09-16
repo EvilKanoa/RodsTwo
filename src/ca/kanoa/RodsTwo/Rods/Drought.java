@@ -7,7 +7,6 @@ import org.bukkit.Sound;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.RodsTwo;
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
@@ -15,7 +14,7 @@ import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Drought extends Rod {
 
-	public Drought(Plugin plugin) throws Exception {
+	public Drought() throws Exception {
 	    super("Drought", 4, 280, new ConfigOptions(new String[]{"max_distence"}, new Object[]{20}), 3000);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape("SBS").setIngredient('S', Material.SPONGE).setIngredient('B', Material.STICK));
 	}

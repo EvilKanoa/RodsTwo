@@ -6,7 +6,6 @@ import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.RodsTwo;
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
@@ -14,7 +13,7 @@ import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Drown extends Rod {
 
-	public Drown(Plugin plugin) throws Exception {
+	public Drown() throws Exception {
 	    super("Drown", 1, 280, new ConfigOptions(new String[]{"max_distence", "drowning_length"}, new Object[]{20, 4}), 5000);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape("DDD", "DBD", "DDD").setIngredient('D', Material.SPONGE).setIngredient('B', Material.STICK));
 	}

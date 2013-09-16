@@ -5,14 +5,13 @@ import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
 import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Broadcast extends Rod {
 
-	public Broadcast(Plugin plugin) throws Exception {
+	public Broadcast() throws Exception {
 	    super("Broadcast", 1, 280, new ConfigOptions(new String[]{"message"}, new Object[]{"%%PLAYER%% is a legend!"}), 500);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape(" G ", "GBG", " G ").setIngredient('G', Material.GOLD_INGOT).setIngredient('B', Material.STICK));
 	}

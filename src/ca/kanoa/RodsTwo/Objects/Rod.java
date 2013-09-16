@@ -36,6 +36,7 @@ public abstract class Rod {
      * @param cooldown The cooldown after using this rod in milliseconds
      * @param plugin The original plugin, USE OTHER CONSTRUSTOR
      */
+    @Deprecated
     public Rod(String name, int cost, int rodID, ConfigOptions options, long cooldown, Plugin plugin){
         this.name = name;
         this.cost = cost;
@@ -43,7 +44,7 @@ public abstract class Rod {
         this.defaultRodID = rodID;
         this.rodID = rodID;
         this.cooldown = cooldown;
-        this.plugin = plugin;
+        this.plugin = RodsTwo.plugin;
         this.defaultCooldown = cooldown;
         this.defaultCost = cost;
     }
@@ -57,7 +58,15 @@ public abstract class Rod {
      * @param cooldown The cooldown after using this rod in milliseconds
      */
     public Rod(String name, int cost, int rodID, ConfigOptions options, long cooldown){
-    	this(name, cost, rodID, options, cooldown, RodsTwo.plugin);
+    	this.name = name;
+        this.cost = cost;
+        this.options = options;
+        this.defaultRodID = rodID;
+        this.rodID = rodID;
+        this.cooldown = cooldown;
+        this.plugin = RodsTwo.plugin;
+        this.defaultCooldown = cooldown;
+        this.defaultCost = cost;
     }
 
     public long getDefaultCooldown(){
@@ -113,7 +122,7 @@ public abstract class Rod {
     }
 
     public ShapedRecipe getRecipe(){
-        return recipe;
+        return recipe == null ? (new ShapedRecipe(getItem())).shape(" ") : recipe;
     }
 
     public void setRecipe(ShapedRecipe recipe){

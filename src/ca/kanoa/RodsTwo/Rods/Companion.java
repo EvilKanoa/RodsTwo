@@ -12,7 +12,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.RodsTwo;
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
@@ -20,8 +19,8 @@ import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Companion extends Rod implements Listener {
 
-	public Companion(Plugin plugin) throws Exception {
-		super("Companion", 1, 280, new ConfigOptions(new String[]{"number_to_spawn"}, new Object[]{2}), 500, plugin);
+	public Companion() throws Exception {
+		super("Companion", 1, 280, new ConfigOptions(new String[]{"number_to_spawn"}, new Object[]{2}), 500);
 		super.setRecipe(new ShapedRecipe(super.getItem()).shape(" W ", "WBW", " W ").setIngredient('W', Material.BONE).setIngredient('B', Material.STICK));
 	}
 

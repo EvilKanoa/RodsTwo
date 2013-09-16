@@ -8,7 +8,6 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.util.BlockIterator;
 
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
@@ -16,7 +15,7 @@ import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Pickpocket extends Rod {
 
-	public Pickpocket(Plugin plugin) throws Exception {
+	public Pickpocket() throws Exception {
 	    super("Pick Pocket", 1, 280, new ConfigOptions(new String[]{}, new Object[]{}), 2300);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape("DDD", "DBD", "DDD").setIngredient('D', Material.SPONGE).setIngredient('B', Material.STICK));
 	}

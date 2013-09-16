@@ -13,7 +13,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.RodsTwo;
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
@@ -21,8 +20,8 @@ import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Creeper extends Rod implements Listener {
 
-	public Creeper(Plugin plugin) throws Exception {
-	    super("Creeper", 1, 280, new ConfigOptions(new String[]{"number_to_spawn", "max_distence"}, new Object[]{1, 50}), 500, plugin);
+	public Creeper() throws Exception {
+	    super("Creeper", 1, 280, new ConfigOptions(new String[]{"number_to_spawn", "max_distence"}, new Object[]{1, 50}), 500);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape(" G ", "GBG", " G ").setIngredient('G', Material.SULPHUR).setIngredient('B', Material.STICK));
 	}
 	

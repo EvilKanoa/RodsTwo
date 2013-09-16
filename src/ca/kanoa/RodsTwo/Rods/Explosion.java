@@ -13,7 +13,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.RodsTwo;
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
@@ -23,8 +22,8 @@ public class Explosion extends Rod implements Listener {
 
 	private HashMap<TNTPrimed, String> bombSites;
 	
-	public Explosion(Plugin plugin) throws Exception {
-	    super("Explosion", 1, 280, new ConfigOptions(new String[]{"max_distence", "power", "enable_fire"}, new Object[]{50, 4.0D, true}), 500, plugin);
+	public Explosion() throws Exception {
+	    super("Explosion", 1, 280, new ConfigOptions(new String[]{"max_distence", "power", "enable_fire"}, new Object[]{50, 4.0D, true}), 500);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape(" B ", " E ").setIngredient('E', Material.TNT).setIngredient('B', Material.STICK));
 	}
 	

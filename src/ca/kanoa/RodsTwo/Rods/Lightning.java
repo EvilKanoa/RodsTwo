@@ -13,7 +13,6 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.RodsTwo;
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
@@ -23,8 +22,8 @@ public class Lightning extends Rod implements Listener {
 
 	private HashMap<Integer, String> strikeID;
 	
-    public Lightning(Plugin plugin) throws Exception {
-        super("Lightning", 1, 280,  new ConfigOptions(new String[]{"max_distance"}, new Object[]{50}), 1500, plugin);
+    public Lightning() throws Exception {
+        super("Lightning", 1, 280,  new ConfigOptions(new String[]{"max_distance"}, new Object[]{50}), 1500);
 
         //Set default the recipe
         super.setRecipe(new ShapedRecipe(super.getItem()).shape(" I ", " R ", " I ").setIngredient('I', Material.IRON_INGOT).setIngredient('R', Material.STICK));

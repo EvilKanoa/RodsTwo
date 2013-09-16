@@ -7,14 +7,13 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
-import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
 import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Instairon extends Rod {
 
-	public Instairon(Plugin plugin) throws Exception {
+	public Instairon() throws Exception {
 	    super("Insta Iron", 1, 280, new ConfigOptions(), 2000);
 	    setRecipe(new ShapedRecipe(super.getItem()).shape(" H ", "CBL", " F ").setIngredient('H', Material.IRON_HELMET).setIngredient('C',  Material.IRON_CHESTPLATE)
 	    		.setIngredient('L', Material.IRON_LEGGINGS).setIngredient('F', Material.IRON_BOOTS).setIngredient('B', Material.STICK));
