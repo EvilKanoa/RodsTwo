@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<project name="RodsTwo" default="main" basedir=".">
+  <!-- Sets variables which can later be used. -->
+  <!-- The value of a property is accessed via ${} -->
+  <property name="src.dir" location="src" />
+  <property name="build.dir" location="bin" />
+  <property name="dist.dir" location="dist" />
+  <property name="docs.dir" location="docs" />
+  <property name="lib.dir" location="lib" />
+  <property name="bukkit.dir" location="C:\Users\Kanoa\Bukkit Plugins\BukkitBetaTesting" />
+
+  <!-- Deletes the existing build, docs and dist directory-->
+  <target name="clean">
+    <delete dir="${build.dir}" />
+    <delete dir="${docs.dir}" />
+    <delete dir="${dist.dir}" />
+  </target>
+
+  <!-- Creates the  build, docs and dist directory-->
+  <target name="makedir">
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${docs.dir}" />
+    <mkdir dir="${dist.dir}" />
+  </target>
+
+  <!-- Compiles the java code (including the usage of library for JUnit -->
+  <target name="compile" depends="clean, makedir">
+    <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false">
+      <classpath>
+        <fileset dir="${lib.dir}">
+    	  <include name="**/*.jar" />
+    	</fileset>
+      </classpath>
+    </javac>
+
+  </target>
+
+  <!-- Creates Javadoc -->
+  <target name="docs" depends="compile">
+    <javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}">
+      <!-- Define which files / directory should get included, we include all -->
+       <fileset dir="${src.dir}">
+                <include name="**" />
+       </fileset>
+       <classpath>
+         <fileset dir="${lib.dir}">
+    	   <include name="**/*.jar" />
+         </fileset>
+       </classpath>
+    </javadoc>
+  </target>
+
+  <!--Creates the deployable jar file  -->
+  <target name="jar" depends="compile">
+    <jar destfile="${dist.dir}\RodsTwo.jar" basedir="${build.dir}">
+      <zipfileset dir="." includes="plugin.yml"/>
+      <zipfileset dir="." includes="rods.yml"/>
+      <manifest>
+        <attribute name="Main-Class" value="ca.kanoa.rodstwo.RodsTwo" />
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="main" depends="compile, jar">
+	<copy file="${dist.dir}\RodsTwo.jar" overwrite="true" tofile="${bukkit.dir}\plugins\RodsTwo.jar" />
+  </target>
+	
+  <target name="build" depends="main, docs">
+    <description>Compiles, creates a jar, and makes the docs.</description>
+  </target>
+
+</project> 

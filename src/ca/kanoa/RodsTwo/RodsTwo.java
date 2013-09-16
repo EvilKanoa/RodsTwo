@@ -1,4 +1,4 @@
-package ca.kanoa.RodsTwo;
+package ca.kanoa.rodstwo;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
+
+import javax.swing.JOptionPane;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -19,10 +21,14 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import ca.kanoa.RodsTwo.Helpers.*;
-import ca.kanoa.RodsTwo.Listeners.*;
-import ca.kanoa.RodsTwo.Objects.Rod;
-import ca.kanoa.RodsTwo.Rods.*;
+import ca.kanoa.rodstwo.Helpers.CommandExecutor;
+import ca.kanoa.rodstwo.Helpers.Utils;
+import ca.kanoa.rodstwo.Helpers.VaultManager;
+import ca.kanoa.rodstwo.Listeners.CastListener;
+import ca.kanoa.rodstwo.Listeners.CraftListener;
+import ca.kanoa.rodstwo.Listeners.SignListener;
+import ca.kanoa.rodstwo.Objects.Rod;
+import ca.kanoa.rodstwo.Rods.*;
 
 public class RodsTwo extends JavaPlugin implements Listener{
 
@@ -114,7 +120,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
     
     public static void addRods(Rod[] rods) {
     	for (Rod rod : rods)
-    		ca.kanoa.RodsTwo.RodsTwo.rods.add(rod);
+    		ca.kanoa.rodstwo.RodsTwo.rods.add(rod);
     	Utils.makeConfig(false);
     }
     
@@ -146,6 +152,9 @@ public class RodsTwo extends JavaPlugin implements Listener{
     	Bukkit.broadcastMessage(ChatColor.YELLOW + "" + '[' + ChatColor.AQUA + "Debug" + ChatColor.YELLOW + "] " + ChatColor.RED + msg);
     }
     
+    public static void main(String[] args) {
+    	JOptionPane.showMessageDialog(null, "This is a plugin meant to be used with CraftBukkit.", "Error", 1);
+    }
     
     public static List<Material> noFire = Arrays.asList(new Material[]{
     		Material.SIGN, Material.SIGN_POST, Material.WALL_SIGN,

@@ -1,7 +1,4 @@
-package ca.kanoa.RodsTwo.Rods;
-
-import ca.kanoa.RodsTwo.Objects.ConfigOptions;
-import ca.kanoa.RodsTwo.Objects.Rod;
+package ca.kanoa.rodstwo.Rods;
 
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -11,6 +8,9 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
+
+import ca.kanoa.rodstwo.Objects.ConfigOptions;
+import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Invisibility extends Rod {
 

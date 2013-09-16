@@ -1,13 +1,9 @@
-package ca.kanoa.RodsTwo.Rods;
+package ca.kanoa.rodstwo.Rods;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
-import ca.kanoa.RodsTwo.RodsTwo;
-import ca.kanoa.RodsTwo.Objects.ConfigOptions;
-import ca.kanoa.RodsTwo.Objects.Rod;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
@@ -28,6 +24,10 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.plugin.Plugin;
+
+import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.Objects.ConfigOptions;
+import ca.kanoa.rodstwo.Objects.Rod;
 
 public class God extends Rod implements Listener {
 

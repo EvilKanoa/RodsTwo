@@ -1,4 +1,4 @@
-package ca.kanoa.RodsTwo.Objects;
+package ca.kanoa.rodstwo.Objects;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;

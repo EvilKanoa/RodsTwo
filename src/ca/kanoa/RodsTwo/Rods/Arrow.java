@@ -1,11 +1,7 @@
-package ca.kanoa.RodsTwo.Rods;
+package ca.kanoa.rodstwo.Rods;
 
 import java.util.HashSet;
 import java.util.Set;
-
-import ca.kanoa.RodsTwo.RodsTwo;
-import ca.kanoa.RodsTwo.Objects.ConfigOptions;
-import ca.kanoa.RodsTwo.Objects.Rod;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -17,6 +13,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.Plugin;
+
+import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.Objects.ConfigOptions;
+import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Arrow extends Rod implements Listener {
 

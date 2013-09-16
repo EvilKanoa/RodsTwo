@@ -1,8 +1,5 @@
-package ca.kanoa.RodsTwo.Helpers;
+package ca.kanoa.rodstwo.Helpers;
 
-import ca.kanoa.RodsTwo.Objects.Rod;
-import ca.kanoa.RodsTwo.Objects.Store;
-import ca.kanoa.RodsTwo.RodsTwo;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
@@ -11,6 +8,10 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.Objects.Rod;
+import ca.kanoa.rodstwo.Objects.Store;
 
 import java.io.File;
 import java.util.Arrays;

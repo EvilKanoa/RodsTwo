@@ -1,4 +1,4 @@
-package ca.kanoa.RodsTwo.Objects;
+package ca.kanoa.rodstwo.Objects;
 
 import org.bukkit.Material;
 import org.bukkit.Server;
@@ -10,7 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 
-import ca.kanoa.RodsTwo.RodsTwo;
+import ca.kanoa.rodstwo.RodsTwo;
 
 import java.util.Arrays;
 

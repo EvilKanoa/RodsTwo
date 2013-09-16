@@ -1,7 +1,4 @@
-package ca.kanoa.RodsTwo.Rods;
-
-import ca.kanoa.RodsTwo.Objects.ConfigOptions;
-import ca.kanoa.RodsTwo.Objects.Rod;
+package ca.kanoa.rodstwo.Rods;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -11,6 +8,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.Plugin;
+
+import ca.kanoa.rodstwo.Objects.ConfigOptions;
+import ca.kanoa.rodstwo.Objects.Rod;
 
 public class Instairon extends Rod {
 
