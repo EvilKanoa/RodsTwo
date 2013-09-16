@@ -122,7 +122,7 @@ public abstract class Rod {
     }
 
     public ShapedRecipe getRecipe(){
-        return recipe;
+        return recipe == null ? (new ShapedRecipe(getItem())).shape(" ") : recipe;
     }
 
     public void setRecipe(ShapedRecipe recipe){

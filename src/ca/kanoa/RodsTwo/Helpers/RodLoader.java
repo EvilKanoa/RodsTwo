@@ -1,8 +1,6 @@
 package ca.kanoa.RodsTwo.Helpers;
 
 import java.io.File;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.Enumeration;
@@ -28,7 +26,7 @@ public class RodLoader {
 			
 			JarFile jar = new JarFile(f);
 			Enumeration<JarEntry> e = jar.entries();
-			classLoader = URLClassLoader.newInstance(new URL[]{new URL("jar:file:" + f.getAbsolutePath() + "!/")});
+			classLoader = URLClassLoader.newInstance(new URL[]{new URL("jar:file:" + f.getAbsolutePath() + "!/")}, RodsTwo.plugin.getClass().getClassLoader());
 
 			while (e.hasMoreElements()) {
 				JarEntry j = (JarEntry) e.nextElement();
@@ -39,7 +37,7 @@ public class RodLoader {
 				CustomRod a = c.getAnnotation(CustomRod.class);
 				if (a == null)
 					continue;
-				if (a.minimumVersion() < RodsTwo.getVersion())
+				if (a.minimumVersion() > RodsTwo.getVersion())
 					continue;
 				rods.add((Rod) c.getConstructor().newInstance());
 			}
