@@ -1,11 +1,7 @@
 //
 //new CooldownBar(player).setPercent(50).render();
 //
-<<<<<<< HEAD
-package ca.kanoa.rodstwo.Objects;
-=======
 package ca.kanoa.rodstwo.objects;
->>>>>>> dev
 //
 //import java.lang.reflect.Field;
 //

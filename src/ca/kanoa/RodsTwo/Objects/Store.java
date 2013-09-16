@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-package ca.kanoa.rodstwo.Objects;
-=======
 package ca.kanoa.rodstwo.objects;
->>>>>>> dev
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

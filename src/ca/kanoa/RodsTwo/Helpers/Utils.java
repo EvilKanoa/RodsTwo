@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-package ca.kanoa.rodstwo.Helpers;
-=======
 package ca.kanoa.rodstwo.helpers;
->>>>>>> dev
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -11,15 +7,9 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ShapedRecipe;
 
 import ca.kanoa.rodstwo.RodsTwo;
-<<<<<<< HEAD
-import ca.kanoa.rodstwo.Objects.ConfigRecipe;
-import ca.kanoa.rodstwo.Objects.InvalidRecipeException;
-import ca.kanoa.rodstwo.Objects.Rod;
-=======
 import ca.kanoa.rodstwo.objects.ConfigRecipe;
 import ca.kanoa.rodstwo.objects.InvalidRecipeException;
 import ca.kanoa.rodstwo.objects.Rod;
->>>>>>> dev
 
 import java.io.File;
 import java.io.IOException;

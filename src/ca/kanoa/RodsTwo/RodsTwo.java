@@ -11,8 +11,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import javax.swing.JOptionPane;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -22,16 +20,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
-<<<<<<< HEAD
-import ca.kanoa.rodstwo.Helpers.CommandExecutor;
-import ca.kanoa.rodstwo.Helpers.Utils;
-import ca.kanoa.rodstwo.Helpers.VaultManager;
-import ca.kanoa.rodstwo.Listeners.CastListener;
-import ca.kanoa.rodstwo.Listeners.CraftListener;
-import ca.kanoa.rodstwo.Listeners.SignListener;
-import ca.kanoa.rodstwo.Objects.Rod;
-import ca.kanoa.rodstwo.Rods.*;
-=======
 import ca.kanoa.rodstwo.helpers.CommandExecutor;
 import ca.kanoa.rodstwo.helpers.RodLoader;
 import ca.kanoa.rodstwo.helpers.Utils;
@@ -41,7 +29,6 @@ import ca.kanoa.rodstwo.listeners.CraftListener;
 import ca.kanoa.rodstwo.listeners.SignListener;
 import ca.kanoa.rodstwo.objects.Rod;
 import ca.kanoa.rodstwo.rods.*;
->>>>>>> dev
 
 public class RodsTwo extends JavaPlugin implements Listener{
 
@@ -187,9 +174,6 @@ public class RodsTwo extends JavaPlugin implements Listener{
     	System.out.println("[Debug] " + msg);
     }
     
-    public static void main(String[] args) {
-    	JOptionPane.showMessageDialog(null, "This is a plugin meant to be used with CraftBukkit.", "Error", 1);
-    }
     
     public static List<Material> noFire = Arrays.asList(new Material[]{
     		Material.SIGN, Material.SIGN_POST, Material.WALL_SIGN,

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-package ca.kanoa.rodstwo.Rods;
-=======
 package ca.kanoa.rodstwo.rods;
->>>>>>> dev
 
 import java.util.HashMap;
 
@@ -19,13 +15,8 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ShapedRecipe;
 
 import ca.kanoa.rodstwo.RodsTwo;
-<<<<<<< HEAD
-import ca.kanoa.rodstwo.Objects.ConfigOptions;
-import ca.kanoa.rodstwo.Objects.Rod;
-=======
 import ca.kanoa.rodstwo.objects.ConfigOptions;
 import ca.kanoa.rodstwo.objects.Rod;
->>>>>>> dev
 
 public class Explosion extends Rod implements Listener {
 

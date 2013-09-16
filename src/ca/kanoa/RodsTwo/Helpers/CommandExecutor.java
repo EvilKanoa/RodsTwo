@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-package ca.kanoa.rodstwo.Helpers;
-=======
 package ca.kanoa.rodstwo.helpers;
->>>>>>> dev
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -14,13 +10,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import ca.kanoa.rodstwo.RodsTwo;
-<<<<<<< HEAD
-import ca.kanoa.rodstwo.Objects.Rod;
-import ca.kanoa.rodstwo.Objects.Store;
-=======
 import ca.kanoa.rodstwo.objects.Rod;
 import ca.kanoa.rodstwo.objects.Store;
->>>>>>> dev
 
 import java.io.File;
 import java.util.Arrays;
