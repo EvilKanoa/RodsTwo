@@ -64,9 +64,5 @@
   <target name="build" depends="compile, jar">
 	<copy file="${dist.dir}\RodsTwo.jar" overwrite="true" tofile="${bukkit.dir}\plugins\RodsTwo.jar" />
   </target>
-	
-  <target name="deploy" depends="main, docs">
-    <description>Compiles, creates a jar, and makes the docs.</description>
-  </target>
 
 </project> 
