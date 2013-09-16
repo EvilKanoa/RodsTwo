@@ -17,7 +17,7 @@ import ca.kanoa.RodsTwo.Objects.Rod;
 
 public class RodLoader {
 
-	public static Set<Rod> getRods(File rodDirectory) throws ClassNotFoundException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException, IOException {
+	public static Set<Rod> getRods(File rodDirectory) throws Exception {
 		rodDirectory.mkdir();
 		URLClassLoader classLoader;
 		Set<Rod> rods = new HashSet<Rod>();
