@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package ca.kanoa.rodstwo.Rods;
+=======
+package ca.kanoa.rodstwo.rods;
+>>>>>>> dev
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -22,8 +26,13 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import ca.kanoa.rodstwo.RodsTwo;
+<<<<<<< HEAD
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
 import ca.kanoa.rodstwo.Objects.Rod;
+=======
+import ca.kanoa.rodstwo.objects.ConfigOptions;
+import ca.kanoa.rodstwo.objects.Rod;
+>>>>>>> dev
 
 public class Minigun extends Rod implements Listener {
 

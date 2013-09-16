@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package ca.kanoa.rodstwo.Rods;
+=======
+package ca.kanoa.rodstwo.rods;
+>>>>>>> dev
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,8 +22,13 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.util.Vector;
 
 import ca.kanoa.rodstwo.RodsTwo;
+<<<<<<< HEAD
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
 import ca.kanoa.rodstwo.Objects.Rod;
+=======
+import ca.kanoa.rodstwo.objects.ConfigOptions;
+import ca.kanoa.rodstwo.objects.Rod;
+>>>>>>> dev
 
 public class Sniper extends Rod implements Listener {
 

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package ca.kanoa.rodstwo.Rods;
+=======
+package ca.kanoa.rodstwo.rods;
+>>>>>>> dev
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -9,8 +13,13 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import ca.kanoa.rodstwo.RodsTwo;
+<<<<<<< HEAD
 import ca.kanoa.rodstwo.Objects.ConfigOptions;
 import ca.kanoa.rodstwo.Objects.Rod;
+=======
+import ca.kanoa.rodstwo.objects.ConfigOptions;
+import ca.kanoa.rodstwo.objects.Rod;
+>>>>>>> dev
 
 public class Flight extends Rod {
 

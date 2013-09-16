@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package ca.kanoa.rodstwo.Helpers;
+=======
+package ca.kanoa.rodstwo.helpers;
+>>>>>>> dev
 
 import net.milkbowl.vault.economy.Economy;
 

@@ -1,4 +1,4 @@
-package ca.kanoa.RodsTwo.Helpers;
+package ca.kanoa.rodstwo.helpers;
 
 import java.io.File;
 import java.net.URL;
@@ -9,9 +9,9 @@ import java.util.Set;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
-import ca.kanoa.RodsTwo.RodsTwo;
-import ca.kanoa.RodsTwo.Objects.CustomRod;
-import ca.kanoa.RodsTwo.Objects.Rod;
+import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.objects.CustomRod;
+import ca.kanoa.rodstwo.objects.Rod;
 
 public class RodLoader {
 

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package ca.kanoa.rodstwo.Objects;
+=======
+package ca.kanoa.rodstwo.objects;
+>>>>>>> dev
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;

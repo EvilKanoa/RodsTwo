@@ -1,4 +1,4 @@
-package ca.kanoa.RodsTwo.Objects;
+package ca.kanoa.rodstwo.objects;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

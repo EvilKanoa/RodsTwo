@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 package ca.kanoa.rodstwo.Objects;
+=======
+package ca.kanoa.rodstwo.objects;
+>>>>>>> dev
 
 import java.util.ArrayList;
 import java.util.Arrays;
