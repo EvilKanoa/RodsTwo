@@ -69,7 +69,8 @@ public class RodLoader {
 				print("Error while loading jar file: " + f.getName() + " (Is it corrupt?)");
 			}  finally {
 				try {
-					jar.close();
+					if (jar != null)
+						jar.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
