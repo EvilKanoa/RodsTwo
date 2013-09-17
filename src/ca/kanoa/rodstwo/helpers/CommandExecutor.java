@@ -139,7 +139,7 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
         
         else if(args.length > 0 && args[0].equalsIgnoreCase("version")) {
         	if (sender.hasPermission("lr.version"))
-        		sender.sendMessage(ChatColor.DARK_GREEN + "LightningRods 2 version " + RodsTwo.pdf.getVersion() + ", made by: " + RodsTwo.pdf.getAuthors().get(0) + ".");
+        		sender.sendMessage(ChatColor.DARK_GREEN + "LightningRods 2 version " + RodsTwo.plugin.getVersion().toString() + ", made by: 12323op.");
         	else
         		sender.sendMessage(ChatColor.RED + "You don't have permission!");
     		return true;

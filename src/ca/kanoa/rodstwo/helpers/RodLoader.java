@@ -14,6 +14,7 @@ import java.util.jar.JarFile;
 import ca.kanoa.rodstwo.RodsTwo;
 import ca.kanoa.rodstwo.objects.CustomRod;
 import ca.kanoa.rodstwo.objects.Rod;
+import ca.kanoa.rodstwo.objects.Version;
 
 public class RodLoader {
 
@@ -46,8 +47,13 @@ public class RodLoader {
 						
 						if (a == null)
 							continue;
-						if (a.minimumVersion() > RodsTwo.getVersion())
+						if (Version.compare(RodsTwo.plugin.getVersion(), Version.parseString(a.minimumVersion())) == 1) {
+							print("Rod " + loadedClass.getName() 
+									+ " is meant for a newer version of LightningRods 2 (have: " 
+									+ RodsTwo.plugin.getVersion().toString() + ", need: " 
+									+ Version.parseString(a.minimumVersion()).toString() + ")");
 							continue;
+						}
 
 						rods.add((Rod) loadedClass.getConstructor().newInstance());
 						

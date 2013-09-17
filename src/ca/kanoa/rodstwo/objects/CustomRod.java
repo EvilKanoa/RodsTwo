@@ -8,5 +8,5 @@ import java.lang.annotation.Target;
 @Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CustomRod {
-	double minimumVersion() default 1.0;
+	String minimumVersion() default "1.00.0000";
 }

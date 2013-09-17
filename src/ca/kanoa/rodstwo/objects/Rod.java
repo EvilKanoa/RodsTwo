@@ -34,7 +34,7 @@ public abstract class Rod {
      * @param rodID The default itemID for the rod
      * @param options The options that get placed into the config (under: Rods.rodName.options)
      * @param cooldown The cooldown after using this rod in milliseconds
-     * @param plugin The original plugin, USE OTHER CONSTRUSTOR
+     * @param plugin The original plugin, USE OTHER CONSTRUCTOR
      */
     @Deprecated
     public Rod(String name, int cost, int rodID, ConfigOptions options, long cooldown, Plugin plugin){
@@ -60,13 +60,24 @@ public abstract class Rod {
     public Rod(String name, int cost, int rodID, ConfigOptions options, long cooldown){
     	this.name = name;
         this.cost = cost;
-        this.options = options;
+        this.options = options == null ? new ConfigOptions() : options;
         this.defaultRodID = rodID;
         this.rodID = rodID;
         this.cooldown = cooldown;
         this.plugin = RodsTwo.plugin;
         this.defaultCooldown = cooldown;
         this.defaultCost = cost;
+    }
+    
+    /**
+     * The default lightning rod
+     * @param name The name of the rod, shows up in inventorys and on the item
+     * @param cost How many rods get used when you right click
+     * @param rodID The default itemID for the rod
+     * @param cooldown The cooldown after using this rod in milliseconds
+     */
+    public Rod(String name, int cost, int rodID, long cooldown){
+    	this(name, cost, rodID, new ConfigOptions(), cooldown);
     }
 
     public long getDefaultCooldown(){

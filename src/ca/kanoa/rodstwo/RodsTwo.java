@@ -28,13 +28,14 @@ import ca.kanoa.rodstwo.listeners.CastListener;
 import ca.kanoa.rodstwo.listeners.CraftListener;
 import ca.kanoa.rodstwo.listeners.SignListener;
 import ca.kanoa.rodstwo.objects.Rod;
+import ca.kanoa.rodstwo.objects.Version;
 import ca.kanoa.rodstwo.rods.*;
 
 public class RodsTwo extends JavaPlugin implements Listener{
 
     public static List<Rod> rods;
     public static Map<String, Long> cooldowns;
-    public static PluginDescriptionFile pdf;
+    public PluginDescriptionFile pdf;
     private Comparator<Rod> rodComparator = new Comparator<Rod>(){
 		@Override
 		public int compare(Rod rod1, Rod rod2) {
@@ -181,12 +182,8 @@ public class RodsTwo extends JavaPlugin implements Listener{
     		Material.WOOD_BUTTON, Material.STONE_BUTTON, Material.WOODEN_DOOR
     });
 
-	public static double getVersion() {
-		try {
-			return Double.parseDouble(pdf.getVersion());
-		} catch (NumberFormatException e) {
-			return 1.0;
-		}
+	public Version getVersion() {
+		return Version.parseString(pdf.getVersion());
 	}
     
 }
