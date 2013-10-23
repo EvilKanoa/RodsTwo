@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="RodsTwo" default="jar" basedir=".">
+<project name="${project.name}" default="jar" basedir=".">
     
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
@@ -66,18 +66,16 @@
   
   <!-- Creates the jar file -->
   <target name="jar" depends="compile">
-  	<jar destfile="${dist.dir}\RodsTwo.jar" basedir="${build.dir}">
+  	<jar destfile="${dist.dir}\${project.name}.jar" basedir="${build.dir}">
       <zipfileset dir="." includes="plugin.yml"/>
-      <zipfileset dir="." includes="rods.yml"/>
-      <manifest>
-        <attribute name="Main-Class" value="ca.kanoa.rodstwo.RodsTwo" />
-      </manifest>
+      <zipfileset dir="." includes="config.yml"/>
+  	  <!-- This is where you add files to the final jar -->
     </jar>
   </target>
 
   <!-- Copys the compiled jar file to Bukkit's /plugin folder -->
   <target name="copy" depends="jar, setwindowsenv, setunixenv">
-	<copy file="${dist.dir}\RodsTwo.jar" overwrite="true" tofile="${bukkit.dir}\plugins\RodsTwo.jar" />
+	<copy file="${dist.dir}\${project.name}.jar" overwrite="true" tofile="${bukkit.dir}\plugins\${project.name}.jar" />
   </target>
 
 </project> 
