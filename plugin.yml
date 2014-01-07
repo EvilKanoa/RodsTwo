@@ -1,0 +1,44 @@
+name: LightningRods 2
+main: ca.kanoa.rodstwo.RodsTwo
+version: 1.01.0001
+author: 12323op
+softdepend: [Vault]
+description: The second edition of the LightningRods plugin.
+
+permissions:
+    lr.spawn:
+        description: Allows use of the spawn commands.
+        default: op
+    lr.reload:
+        description: Allows use of the reload command.
+        default: op
+    lr.overwrite:
+        description: Allows use of the overwrite command.
+        default: op
+    lr.list:
+        description: Allows use of /lr list.
+        default: op
+    lr.use.all:
+        description: Allows use of all rods.
+        default: op
+    lr.craft.all:
+        description: Allows crafting of all rods.
+        default: op
+    lr.cooldown.exempt:
+        description: Turns off cooldowns.
+        default: op
+    lr.cooldown.messages:
+        description: View the slowdown message.
+        default: true
+    lr.cooldown.bar:
+        description: Uses the exp bar to show cooldowns.
+        default: false
+    lr.version:
+        description: Allows viewing of the current plugin version.
+        default: true
+        
+commands:
+    lightningrod:
+        description:
+        usage: /lightningrod <list/spawn/reload/overwrite>
+        aliases: [lr, lrod]
