@@ -26,7 +26,7 @@ permissions:
         default: op
     lr.cooldown.exempt:
         description: Turns off cooldowns.
-        default: false
+        default: op
     lr.cooldown.messages:
         description: View the slowdown message.
         default: true

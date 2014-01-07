@@ -19,7 +19,7 @@ import ca.kanoa.rodstwo.objects.Version;
 public class RodLoader {
 
 	public static Set<Rod> getRods(File rodDirectory) {
-		rodDirectory.mkdir();
+		rodDirectory.mkdirs();
 		URLClassLoader classLoader;
 		Set<Rod> rods = new HashSet<Rod>();
 		JarFile jar = null;

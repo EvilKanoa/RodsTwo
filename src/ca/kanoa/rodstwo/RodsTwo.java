@@ -70,10 +70,11 @@ public class RodsTwo extends JavaPlugin implements Listener{
         Bukkit.getPluginManager().registerEvents(new SignListener(), this);
         Bukkit.getPluginManager().registerEvents(new CraftListener(), this);
         
-        if (Bukkit.getPluginManager().isPluginEnabled("Vault"))
+        if (Bukkit.getPluginManager().isPluginEnabled("Vault")) {
         	VaultManager.eco = VaultManager.setupEconomy();
-        else
+        } else {
         	getLogger().warning("Vault has not been enabled, using signs will not cost any money!");
+        }
         
         useMobDeathAsPlayer = Bukkit.getPluginManager().isPluginEnabled("Batman API");
         
@@ -134,8 +135,10 @@ public class RodsTwo extends JavaPlugin implements Listener{
         rods.add(new Zombie());
         //TODO: Make more rods!!!
         
-        for (Rod rod : RodLoader.getRods(new File(getDataFolder(), "rods")))
-        		rods.add(rod);
+        getLogger().info("External rod loading is currently disabled");
+        /**for (Rod rod : RodLoader.getRods(new File(getDataFolder(), "rods"))) {
+        	rods.add(rod);
+        }**/
         
         Collections.sort(rods, rodComparator);
         Utils.makeConfig(false);
