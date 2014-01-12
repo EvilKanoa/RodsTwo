@@ -21,7 +21,6 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import ca.kanoa.rodstwo.helpers.CommandExecutor;
-import ca.kanoa.rodstwo.helpers.RodLoader;
 import ca.kanoa.rodstwo.helpers.Utils;
 import ca.kanoa.rodstwo.helpers.VaultManager;
 import ca.kanoa.rodstwo.listeners.CastListener;
