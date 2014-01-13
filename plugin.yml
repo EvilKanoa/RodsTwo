@@ -1,6 +1,6 @@
 name: LightningRods 2
 main: ca.kanoa.rodstwo.RodsTwo
-version: 1.01.0003
+version: 1.01.0004
 author: 12323op
 softdepend: [Vault]
 description: The second edition of the LightningRods plugin.

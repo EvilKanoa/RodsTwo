@@ -17,7 +17,7 @@ public class Pickpocket extends Rod {
 
 	public Pickpocket() throws Exception {
 	    super("Pick Pocket", 1, 280, new ConfigOptions(new String[]{}, new Object[]{}), 2300);
-	    setRecipe(new ShapedRecipe(super.getItem()).shape("DDD", "DBD", "DDD").setIngredient('D', Material.SPONGE).setIngredient('B', Material.STICK));
+	    setRecipe(new ShapedRecipe(super.getItem()).shape("IDI", "DBD", "IDI").setIngredient('D', Material.SPONGE).setIngredient('B', Material.STICK).setIngredient('I', Material.IRON_INGOT));
 	}
 	
 	@SuppressWarnings("deprecation")

@@ -37,7 +37,7 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
                 if(isPlayer){
                     Rod rod = null;
                     for(Rod r : plugin.getRods())
-                        if(r.getName().equalsIgnoreCase(args[1]))
+                        if(r.getName().equalsIgnoreCase(args[1].replace('_', ' ')))
                             rod = r;
                     if(rod == null){
                         player.sendMessage("Couldn't find a rod with that name.");
