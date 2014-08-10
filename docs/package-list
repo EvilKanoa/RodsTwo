@@ -1,5 +1,6 @@
 ca.kanoa.rodstwo
+ca.kanoa.rodstwo.config
+ca.kanoa.rodstwo.events
 ca.kanoa.rodstwo.helpers
 ca.kanoa.rodstwo.listeners
-ca.kanoa.rodstwo.objects
 ca.kanoa.rodstwo.rods
