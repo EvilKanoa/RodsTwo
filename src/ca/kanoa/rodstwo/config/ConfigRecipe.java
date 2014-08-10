@@ -1,8 +1,10 @@
-package ca.kanoa.rodstwo.objects;
+package ca.kanoa.rodstwo.config;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ShapedRecipe;
+
+import ca.kanoa.rodstwo.rods.Rod;
 
 import java.util.ArrayList;
 import java.util.HashMap;

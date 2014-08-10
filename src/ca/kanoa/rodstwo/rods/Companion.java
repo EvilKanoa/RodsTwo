@@ -14,8 +14,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ShapedRecipe;
 
 import ca.kanoa.rodstwo.RodsTwo;
-import ca.kanoa.rodstwo.objects.ConfigOptions;
-import ca.kanoa.rodstwo.objects.Rod;
+import ca.kanoa.rodstwo.config.ConfigOptions;
 
 public class Companion extends Rod implements Listener {
 
@@ -30,19 +29,15 @@ public class Companion extends Rod implements Listener {
 			Wolf wolf = player.getWorld().spawn(player.getLocation(), Wolf.class);
 			wolf.setTamed(true);
 			wolf.setOwner(player);
-
-			if (RodsTwo.useMobDeathAsPlayer) {
-				wolf.setCustomName(player.getName());
-				wolf.setCustomNameVisible(true);
-			}
+			wolf.setCustomName(player.getName());
+			wolf.setCustomNameVisible(true);
 		}
 		return true;
 	}
 	
 	@Override
 	public boolean enable(Server serv) {
-		if (RodsTwo.useMobDeathAsPlayer)
-			Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
+		Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
 		return true;
 	}
 	
@@ -51,7 +46,7 @@ public class Companion extends Rod implements Listener {
 		if (event.getEntity() instanceof Player && event.getDamager() instanceof org.bukkit.entity.Wolf) {
 			LivingEntity entity = (LivingEntity) event.getDamager();
 			Player player = (Player) event.getEntity();
-			for (Player p : Bukkit.getOnlinePlayers())
+			for (Player p : Bukkit.getOnlinePlayers()) {
 				if (entity.getCustomName().equalsIgnoreCase(p.getName()) && 
 						!entity.getCustomName().equalsIgnoreCase(player.getName())) {
 					if (player.getHealth() - event.getDamage() <= 0) {
@@ -59,9 +54,10 @@ public class Companion extends Rod implements Listener {
 						event.setCancelled(true);
 						return;
 					}
-				}
-				else if (entity.getCustomName().equalsIgnoreCase(player.getName()))
+				} else if (entity.getCustomName().equalsIgnoreCase(player.getName())) {
 					event.setCancelled(true);
+				}
+			}
 			
 		}
 	}

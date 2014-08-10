@@ -8,8 +8,7 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapedRecipe;
 
-import ca.kanoa.rodstwo.objects.ConfigOptions;
-import ca.kanoa.rodstwo.objects.Rod;
+import ca.kanoa.rodstwo.config.ConfigOptions;
 
 public class Weather extends Rod {
 

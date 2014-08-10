@@ -10,8 +10,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import ca.kanoa.rodstwo.RodsTwo;
-import ca.kanoa.rodstwo.objects.Rod;
-import ca.kanoa.rodstwo.objects.Store;
+import ca.kanoa.rodstwo.Store;
+import ca.kanoa.rodstwo.rods.Rod;
 
 import java.io.File;
 import java.util.Arrays;
@@ -44,11 +44,11 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
                         return true;
                     }
                     else{
-                        int x = 1;
-                        try{
+                        int x;
+                        try {
                             x = Integer.parseInt(args[2]);
-                        } catch(Exception e){
-                            //Do nothing
+                        } catch(Exception e) {
+                           x = 1;
                         }
                         ItemStack rodStack = new ItemStack(Material.getMaterial(rod.getItemID()), x);
                         ItemMeta rodMeta = rodStack.getItemMeta();
@@ -107,7 +107,7 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
             if(args.length == 1){
                 sender.sendMessage(ChatColor.AQUA + "Reloading configuration...");
                 plugin.rodConfig = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "rods.yml"));
-                Utils.setRodVars();
+                Utils.loadRodOptions();
                 plugin.getServer().resetRecipes();
                 Utils.addRecipes();
                 sender.sendMessage(ChatColor.AQUA + "Reload complete!");
@@ -127,7 +127,7 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
                 sender.sendMessage(ChatColor.AQUA + "Overwriting configuration...");
                 Utils.makeConfig(true);
                 plugin.rodConfig = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "rods.yml"));
-                Utils.setRodVars();
+                Utils.loadRodOptions();
                 plugin.getServer().resetRecipes();
                 Utils.addRecipes();
                 sender.sendMessage(ChatColor.AQUA + "Overwrite complete!");

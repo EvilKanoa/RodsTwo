@@ -1,4 +1,4 @@
-package ca.kanoa.rodstwo.objects;
+package ca.kanoa.rodstwo;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -15,7 +15,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
-import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.rods.Rod;
 
 public class Store implements Listener {
 

@@ -15,8 +15,7 @@ import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.inventory.ShapedRecipe;
 
 import ca.kanoa.rodstwo.RodsTwo;
-import ca.kanoa.rodstwo.objects.ConfigOptions;
-import ca.kanoa.rodstwo.objects.Rod;
+import ca.kanoa.rodstwo.config.ConfigOptions;
 
 public class Creeper extends Rod implements Listener {
 
@@ -31,26 +30,25 @@ public class Creeper extends Rod implements Listener {
 	   		Location loc = player.getTargetBlock(null, config.getInt("max_distence")).getLocation();
 	   		loc.add(0, 1.2f, 0);
 	   		org.bukkit.entity.Creeper creeper = player.getWorld().spawn(loc, org.bukkit.entity.Creeper.class);
+   			creeper.setCustomName(player.getName());
+   			creeper.setCustomNameVisible(true);
 	   		
 	   		LivingEntity target = null;
-	   		for (Entity e : loc.getChunk().getEntities())
-	   			if (e instanceof Player && e != player)
+	   		for (Entity e : loc.getChunk().getEntities()) {
+	   			if (e instanceof Player && e != player) {
 	   				target = (LivingEntity) e;
-	   		if (target != null)
+	   			}
+	   		}
+	   		if (target != null) {
 	   			creeper.setTarget(target);
-	   		
-	   		if (RodsTwo.useMobDeathAsPlayer) {
-	   			creeper.setCustomName(player.getName());
-	   			creeper.setCustomNameVisible(true);
-			}
+	   		}
 	   	}
 	   	return true;
 	}
 	
 	@Override
 	public boolean enable(Server serv) {
-		if (RodsTwo.useMobDeathAsPlayer)
-			Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
+		Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
 		return true;
 	}
 	
@@ -59,7 +57,7 @@ public class Creeper extends Rod implements Listener {
 		if (event.getEntity() instanceof Player && event.getDamager() instanceof org.bukkit.entity.Creeper) {
 			LivingEntity entity = (LivingEntity) event.getDamager();
 			Player player = (Player) event.getEntity();
-			for (Player p : Bukkit.getOnlinePlayers())
+			for (Player p : Bukkit.getOnlinePlayers()) {
 				if (entity.getCustomName().equalsIgnoreCase(p.getName()) && 
 						!entity.getCustomName().equalsIgnoreCase(player.getName())) {
 					if (player.getHealth() - event.getDamage() <= 0) {
@@ -67,9 +65,10 @@ public class Creeper extends Rod implements Listener {
 						event.setCancelled(true);
 						return;
 					}
-				}
-				else if (entity.getCustomName().equalsIgnoreCase(player.getName()))
+				} else if (entity.getCustomName().equalsIgnoreCase(player.getName())) {
 					event.setCancelled(true);
+				}
+			}
 		}
 	}
 }

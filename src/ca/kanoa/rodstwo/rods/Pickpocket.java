@@ -10,8 +10,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.util.BlockIterator;
 
-import ca.kanoa.rodstwo.objects.ConfigOptions;
-import ca.kanoa.rodstwo.objects.Rod;
+import ca.kanoa.rodstwo.config.ConfigOptions;
 
 public class Pickpocket extends Rod {
 

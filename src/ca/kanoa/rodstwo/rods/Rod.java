@@ -1,4 +1,4 @@
-package ca.kanoa.rodstwo.objects;
+package ca.kanoa.rodstwo.rods;
 
 import org.bukkit.Material;
 import org.bukkit.Server;
@@ -11,6 +11,7 @@ import org.bukkit.permissions.Permission;
 import org.bukkit.plugin.Plugin;
 
 import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.config.ConfigOptions;
 
 import java.util.Arrays;
 

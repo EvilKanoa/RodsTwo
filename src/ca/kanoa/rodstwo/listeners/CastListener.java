@@ -11,10 +11,10 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.ItemStack;
 
 import ca.kanoa.rodstwo.RodsTwo;
+import ca.kanoa.rodstwo.events.PlayerUseRodEvent;
+import ca.kanoa.rodstwo.helpers.CooldownBar;
 import ca.kanoa.rodstwo.helpers.Utils;
-import ca.kanoa.rodstwo.objects.CooldownBar;
-import ca.kanoa.rodstwo.objects.PlayerUseRodEvent;
-import ca.kanoa.rodstwo.objects.Rod;
+import ca.kanoa.rodstwo.rods.Rod;
 
 public class CastListener implements Listener {
 

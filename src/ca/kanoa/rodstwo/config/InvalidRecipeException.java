@@ -1,4 +1,4 @@
-package ca.kanoa.rodstwo.objects;
+package ca.kanoa.rodstwo.config;
 
 public class InvalidRecipeException extends Exception {
     

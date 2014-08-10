@@ -1,8 +1,10 @@
-package ca.kanoa.rodstwo.objects;
+package ca.kanoa.rodstwo.events;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
+
+import ca.kanoa.rodstwo.rods.Rod;
 
 public class PlayerUseRodEvent extends Event {
 	

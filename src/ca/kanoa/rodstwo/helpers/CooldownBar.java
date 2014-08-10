@@ -1,4 +1,4 @@
-package ca.kanoa.rodstwo.objects;
+package ca.kanoa.rodstwo.helpers;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;

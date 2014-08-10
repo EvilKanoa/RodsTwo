@@ -7,7 +7,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.CraftItemEvent;
 
 import ca.kanoa.rodstwo.RodsTwo;
-import ca.kanoa.rodstwo.objects.Rod;
+import ca.kanoa.rodstwo.rods.Rod;
 
 public class CraftListener implements Listener {
 

@@ -25,8 +25,7 @@ import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.inventory.meta.FireworkMeta;
 
 import ca.kanoa.rodstwo.RodsTwo;
-import ca.kanoa.rodstwo.objects.ConfigOptions;
-import ca.kanoa.rodstwo.objects.Rod;
+import ca.kanoa.rodstwo.config.ConfigOptions;
 
 public class God extends Rod implements Listener {
 

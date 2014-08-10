@@ -12,9 +12,9 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 import ca.kanoa.rodstwo.RodsTwo;
-import ca.kanoa.rodstwo.objects.CustomRod;
-import ca.kanoa.rodstwo.objects.Rod;
-import ca.kanoa.rodstwo.objects.Version;
+import ca.kanoa.rodstwo.config.CustomRod;
+import ca.kanoa.rodstwo.config.Version;
+import ca.kanoa.rodstwo.rods.Rod;
 
 public class RodLoader {
 

@@ -20,44 +20,26 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import ca.kanoa.rodstwo.config.Version;
 import ca.kanoa.rodstwo.helpers.CommandExecutor;
+import ca.kanoa.rodstwo.helpers.RodComparator;
 import ca.kanoa.rodstwo.helpers.Utils;
 import ca.kanoa.rodstwo.helpers.VaultManager;
 import ca.kanoa.rodstwo.listeners.CastListener;
 import ca.kanoa.rodstwo.listeners.CraftListener;
 import ca.kanoa.rodstwo.listeners.SignListener;
-import ca.kanoa.rodstwo.objects.Rod;
-import ca.kanoa.rodstwo.objects.Version;
 import ca.kanoa.rodstwo.rods.*;
 
-public class RodsTwo extends JavaPlugin implements Listener{
+public class RodsTwo extends JavaPlugin implements Listener {
 
     public static List<Rod> rods;
     public static Map<String, Long> cooldowns;
     public PluginDescriptionFile pdf;
-    private Comparator<Rod> rodComparator = new Comparator<Rod>(){
-		@Override
-		public int compare(Rod rod1, Rod rod2) {
-			int chosen = rod1.getName().equalsIgnoreCase(rod2.getName()) ? 0 : 2;
-			int index = 0;
-			while (chosen == 2) {
-				char c1 = rod1.getName().charAt(index), c2 = rod2.getName().charAt(index);
-				if (Character.toLowerCase(c1) != Character.toLowerCase(c2))
-					chosen = Character.getNumericValue(Character.toLowerCase(c1)) < Character.getNumericValue(Character.toLowerCase(c2)) ? -1 : 1;
-				index++;
-				if (index > rod1.getName().length() - 1) 
-					chosen = -1;
-				else if (index > rod2.getName().length() - 1)
-					chosen = 1;
-			}
-			return chosen;
-		}};
     public Logger logger;
     public FileConfiguration rodConfig;
     public static RodsTwo plugin;
-    public static boolean useMobDeathAsPlayer;
 
-    public void onEnable(){
+    public void onEnable() {
     	rods = new ArrayList<Rod>();
     	cooldowns = new HashMap<String, Long>();
         pdf = getDescription();
@@ -75,8 +57,6 @@ public class RodsTwo extends JavaPlugin implements Listener{
         	getLogger().warning("Vault has not been enabled, using signs will not cost any money!");
         }
         
-        useMobDeathAsPlayer = Bukkit.getPluginManager().isPluginEnabled("Batman API");
-        
         try {
             addRods();
         } catch (Exception e) {
@@ -84,7 +64,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
         }
 
         rodConfig = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "rods.yml"));
-        Utils.setRodVars();
+        Utils.loadRodOptions();
         Utils.addRecipes();
 
         Utils.initializeRods();
@@ -139,7 +119,7 @@ public class RodsTwo extends JavaPlugin implements Listener{
         	rods.add(rod);
         }**/
         
-        Collections.sort(rods, rodComparator);
+        Collections.sort(rods, new RodComparator());
         Utils.makeConfig(false);
     }
     

@@ -1,4 +1,4 @@
-package ca.kanoa.rodstwo.objects;
+package ca.kanoa.rodstwo.config;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
