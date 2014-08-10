@@ -21,31 +21,32 @@ public class CastListener implements Listener {
 	private RodsTwo plugin;
 
 	public CastListener(){
-		this.plugin = RodsTwo.plugin;
+		this.plugin = RodsTwo.getInstance();
 	}
 
 	@EventHandler(priority = EventPriority.NORMAL)
 	public void onPlayerInteract(PlayerInteractEvent event){
 		if(event.getAction() == Action.RIGHT_CLICK_AIR || event.getAction() == Action.RIGHT_CLICK_BLOCK){
 			try {
-				if (RodsTwo.noFire.contains(event.getClickedBlock().getType()))
+				if (RodsTwo.noFire.contains(event.getClickedBlock().getType())) {
 					return;
+				}
 			} catch (NullPointerException e) {}
 			
-			for(Rod rod : plugin.getRods()){
+			for (Rod rod : plugin.getRods()) {
 				try {
-					if(event.getItem().getTypeId() == rod.getItemID() && 
+					if (event.getItem().getTypeId() == rod.getItemID() && 
 							event.getItem().getItemMeta().getLore().contains(rod.getName()) &&
 							(event.getItem().getAmount() >= rod.getCost() || 
 							event.getPlayer().getGameMode() == GameMode.CREATIVE) && 
 							(event.getPlayer().hasPermission(rod.getUsePermission()) || 
 							event.getPlayer().hasPermission("lr.use.all")) &&
-							plugin.rodConfig.getBoolean(rod.getPath("enabled"))){
+							plugin.rodConfig.getBoolean(rod.getPath("enabled"))) {
 						
-						if(Utils.isCooldownOver(event.getPlayer().getName()) || 
-								event.getPlayer().hasPermission("lr.cooldown.exempt")){
+						if (Utils.isCooldownOver(event.getPlayer().getName()) || 
+								event.getPlayer().hasPermission("lr.cooldown.exempt")) {
 							
-							if(rod.run(event.getPlayer(), plugin.rodConfig.getConfigurationSection("Rods." + rod.getName() + ".options"))){
+							if (rod.run(event.getPlayer(), plugin.rodConfig.getConfigurationSection("Rods." + rod.getName() + ".options"))) {
 								if (!(event.getPlayer().getGameMode() == GameMode.CREATIVE)) {
 									ItemStack is = event.getItem();
 									if(is.getAmount() == rod.getCost()) is = null;

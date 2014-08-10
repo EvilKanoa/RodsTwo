@@ -4,6 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.ShapedRecipe;
 
 import ca.kanoa.rodstwo.RodsTwo;
@@ -17,9 +18,9 @@ import java.io.IOException;
 public class Utils {
 
 	public static void makeConfig(boolean overwrite) {
-		File configFile = new File(RodsTwo.plugin.getDataFolder(), "rods.yml");
+		File configFile = new File(RodsTwo.getInstance().getDataFolder(), "rods.yml");
 		if (!configFile.exists()) {
-			RodsTwo.plugin.saveResource("rods.yml", true);
+			RodsTwo.getInstance().saveResource("rods.yml", true);
 		}
 		FileConfiguration config = YamlConfiguration.loadConfiguration(configFile);
 
@@ -51,16 +52,26 @@ public class Utils {
 		}
 	}
 
+	public static Rod getRod(ItemStack stack) {
+		for (Rod rod : RodsTwo.getInstance().getRods()) {
+			if (stack.getTypeId() == rod.getItemID() && 
+					stack.getItemMeta().getLore().contains(rod.getName())) {
+				return rod;
+			}
+		}
+		return null;
+	}
+	
 	//TODO: load set of rods from folder plugins/lr2/rods
 
 	public static void loadRodOptions() {
 		for (Rod rod : RodsTwo.rods) {
 			try {
-				rod.setCost(RodsTwo.plugin.rodConfig.getInt(rod.getPath("cost")));
-				rod.setCooldown(RodsTwo.plugin.rodConfig.getLong(rod.getPath("cooldown")));
-				rod.setItemID(RodsTwo.plugin.rodConfig.getInt(rod.getPath("itemID")));
+				rod.setCost(RodsTwo.getInstance().rodConfig.getInt(rod.getPath("cost")));
+				rod.setCooldown(RodsTwo.getInstance().rodConfig.getLong(rod.getPath("cooldown")));
+				rod.setItemID(RodsTwo.getInstance().rodConfig.getInt(rod.getPath("itemID")));
 			} catch (Exception e) {
-				RodsTwo.plugin.logger.warning("Invalid config formatting for rod: " + rod.getName() + ".");
+				RodsTwo.getInstance().logger.warning("Invalid config formatting for rod: " + rod.getName() + ".");
 			}
 		}
 	}
@@ -68,12 +79,12 @@ public class Utils {
 	public static void addRecipes() {
 		for (Rod rod : RodsTwo.rods) {
 			try {
-				ShapedRecipe recipe = ConfigRecipe.loadRecipeFromConfig(RodsTwo.plugin.rodConfig, rod);
-				RodsTwo.plugin.getServer().addRecipe(recipe);
+				ShapedRecipe recipe = ConfigRecipe.loadRecipeFromConfig(RodsTwo.getInstance().rodConfig, rod);
+				RodsTwo.getInstance().getServer().addRecipe(recipe);
 				rod.setRecipe(recipe);
 			} catch (InvalidRecipeException e) {
 				e.printStackTrace();
-				RodsTwo.plugin.logger.warning("Error while loading recipe for rod: " + rod.getName() + "!");
+				RodsTwo.getInstance().logger.warning("Error while loading recipe for rod: " + rod.getName() + "!");
 			} catch(NullPointerException e){ e.printStackTrace(); }
 		}
 	}
@@ -88,7 +99,7 @@ public class Utils {
 
 	public static void initializeRods() {
 		for (Rod rod : RodsTwo.rods) {
-			if (!rod.enable(RodsTwo.plugin.getServer())) {
+			if (!rod.enable(RodsTwo.getInstance().getServer())) {
 				RodsTwo.rods.remove(rod);
 			}
 		}

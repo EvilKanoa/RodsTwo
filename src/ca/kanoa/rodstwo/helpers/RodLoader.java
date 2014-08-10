@@ -34,7 +34,7 @@ public class RodLoader {
 
 				jar = new JarFile(f);
 				Enumeration<JarEntry> e = jar.entries();
-				classLoader = URLClassLoader.newInstance(new URL[]{new URL("jar:file:" + f.getAbsolutePath() + "!/")}, RodsTwo.plugin.getClass().getClassLoader());
+				classLoader = URLClassLoader.newInstance(new URL[]{new URL("jar:file:" + f.getAbsolutePath() + "!/")}, RodsTwo.getInstance().getClass().getClassLoader());
 
 				while (e.hasMoreElements()) {
 					entry = (JarEntry) e.nextElement();
@@ -47,10 +47,10 @@ public class RodLoader {
 						
 						if (a == null)
 							continue;
-						if (Version.compare(RodsTwo.plugin.getVersion(), Version.parseString(a.minimumVersion())) == 1) {
+						if (Version.compare(RodsTwo.getInstance().getVersion(), Version.parseString(a.minimumVersion())) == 1) {
 							print("Rod " + loadedClass.getName() 
 									+ " is meant for a newer version of LightningRods 2 (have: " 
-									+ RodsTwo.plugin.getVersion().toString() + ", need: " 
+									+ RodsTwo.getInstance().getVersion().toString() + ", need: " 
 									+ Version.parseString(a.minimumVersion()).toString() + ")");
 							continue;
 						}

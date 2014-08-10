@@ -49,7 +49,7 @@ public class Minigun extends Rod implements Listener {
 		gun.setItemMeta(im);
 		for (int i = 0; i < loops; i++)
 			if (i + 1 >= loops)
-				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 					@Override
 					public void run() {
 						if (isFiring.contains(p1.getName())) {
@@ -62,7 +62,7 @@ public class Minigun extends Rod implements Listener {
 						}
 					}}, (20 / config.getInt("shots_per_second")) * i);
 			else if (i == 0)
-				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 					@Override
 					public void run() {
 						if (isFiring.contains(p1.getName())) {
@@ -75,7 +75,7 @@ public class Minigun extends Rod implements Listener {
 						}
 					}}, (20 / config.getInt("shots_per_second")) * i);
 			else
-				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 					@Override
 					public void run() {
 						if (isFiring.contains(p1.getName())) {
@@ -90,7 +90,7 @@ public class Minigun extends Rod implements Listener {
 	@Override
 	public boolean enable(Server serv) {
 		isFiring = new HashSet<String>();
-		Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
+		Bukkit.getPluginManager().registerEvents(this, RodsTwo.getInstance());
 		return true;
 	}
 
@@ -101,7 +101,7 @@ public class Minigun extends Rod implements Listener {
 			if (ball.getShooter() instanceof Player) {
 				Player player = (Player) ball.getShooter();
 				if (isFiring.contains(player.getName()))
-					event.setDamage(RodsTwo.plugin.rodConfig.getInt(getPath("options.damage_per_shot")));
+					event.setDamage(RodsTwo.getInstance().rodConfig.getInt(getPath("options.damage_per_shot")));
 			}
 		}
 	}

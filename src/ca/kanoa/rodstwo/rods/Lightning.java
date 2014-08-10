@@ -32,7 +32,7 @@ public class Lightning extends Rod implements Listener {
     public boolean run(Player player, ConfigurationSection config){
     	final int id = player.getWorld().strikeLightning(player.getTargetBlock(null, config.getInt("max_distence")).getLocation()).getEntityId();
         strikeID.put(id, player.getName());
-        Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+        Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 			public void run() {
 				strikeID.remove(id);
 			}}, 100);
@@ -42,7 +42,7 @@ public class Lightning extends Rod implements Listener {
     @Override
     public boolean enable(Server serv) {
     	strikeID = new HashMap<Integer, String>();
-    	Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
+    	Bukkit.getPluginManager().registerEvents(this, RodsTwo.getInstance());
     	return true;
     }
     

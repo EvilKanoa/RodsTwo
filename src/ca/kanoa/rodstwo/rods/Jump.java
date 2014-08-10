@@ -33,7 +33,7 @@ public class Jump extends Rod implements Listener {
 		player.playSound(player.getLocation(), Sound.EXPLODE, 1, 1);
 		final String playerName = player.getName();
 		jumpees.add(playerName);
-		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 			@Override
 			public void run() {
 				if (jumpees.contains(playerName))
@@ -45,7 +45,7 @@ public class Jump extends Rod implements Listener {
 	@Override
 	public boolean enable(Server serv) {
 		jumpees = new HashSet<String>();
-		Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
+		Bukkit.getPluginManager().registerEvents(this, RodsTwo.getInstance());
 		return true;
 	}
 	

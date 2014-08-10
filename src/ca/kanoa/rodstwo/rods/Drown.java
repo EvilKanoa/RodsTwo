@@ -30,7 +30,7 @@ public class Drown extends Rod {
 					} else {
 						placed[x - loc.getBlockX() + 1][y - loc.getBlockY() + 1][z - loc.getBlockZ() + 1] = false;
 					}
-		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 			public void run() {
 				for (int x = loc.getBlockX() - 1; x <= loc.getBlockX() + 1; x++)
 					for (int z = loc.getBlockZ() - 1; z <= loc.getBlockZ() + 1; z++)

@@ -29,7 +29,7 @@ public class Drought extends Rod {
 					loc.getWorld().getBlockAt(x, y, z).getType() == Material.ICE)
 						loc.getWorld().getBlockAt(x, y, z).setType(Material.AIR);
 		player.playSound(loc, Sound.ITEM_BREAK, 2, 1);
-		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 			public void run() {
 				for (int x = loc.getBlockX() - 3; x <= loc.getBlockX() + 3; x++)
 					for (int z = loc.getBlockZ() - 3; z <= loc.getBlockZ() + 3; z++)

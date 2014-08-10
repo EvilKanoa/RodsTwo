@@ -18,7 +18,7 @@ public class CooldownBar extends BukkitRunnable {
 			this.startTime = System.currentTimeMillis();
 			this.percent = 100;
 			render();
-			Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, this, 2l);
+			Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), this, 2l);
 		}
 		
 	}
@@ -39,7 +39,7 @@ public class CooldownBar extends BukkitRunnable {
 		this.percent = getPercent();
 		if (this.percent >= 1) {
 			render();
-			Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, this, 2l);
+			Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), this, 2l);
 		} 
 		else
 			player.setExp(0.00f);

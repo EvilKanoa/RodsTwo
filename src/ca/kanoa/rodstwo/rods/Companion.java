@@ -37,7 +37,7 @@ public class Companion extends Rod implements Listener {
 	
 	@Override
 	public boolean enable(Server serv) {
-		Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
+		Bukkit.getPluginManager().registerEvents(this, RodsTwo.getInstance());
 		return true;
 	}
 	

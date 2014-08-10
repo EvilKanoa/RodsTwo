@@ -64,7 +64,7 @@ public class God extends Rod implements Listener {
 		int i = 0;
 		for (Location loc : circle(player, centerLoc, 10, 1, true, false, 0)) {
 			final Location l1 = loc;
-			Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+			Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 				public void run() {
 					try {
 						fePlayer.playFirework(l1.getWorld(), l1, fe);
@@ -79,13 +79,13 @@ public class God extends Rod implements Listener {
 		final Location centerLoc2 = new Location(centerLoc.getWorld(), centerLoc.getX(), player.getTargetBlock(null, config.getInt("max_distance")).getY(), centerLoc.getZ());
 		final Player p1 = player;
 		final ConfigurationSection c1 = config;
-		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 			public void run() {
 				for (Location loc : circle(p1, centerLoc2, 10, 1, false, false, 0)) {
 					//Lightning first
 					final int id = loc.getWorld().strikeLightning(loc).getEntityId();
 					strikeID.put(id, p1.getName());
-			        Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+			        Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 						public void run() {
 							strikeID.remove(id);
 						}}, 100L);
@@ -96,7 +96,7 @@ public class God extends Rod implements Listener {
 					tnt.setIsIncendiary(c1.getBoolean("enable_fire_from_explosion"));
 					tnt.setFuseTicks(0);
 					bombSites.put(tnt, p1.getName());
-					Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+					Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 						@Override
 						public void run() {
 							bombSites.remove(tnt);
@@ -105,7 +105,7 @@ public class God extends Rod implements Listener {
 			}}, (long) (((double)(effectDelay) / (double)(5)) * i));
 		
 		//Star around a player
-		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 			public void run() {
 				Location pLoc = p1.getLocation().add(0, 2, 0);
 				try {
@@ -125,7 +125,7 @@ public class God extends Rod implements Listener {
 	public boolean enable(Server serv) {
     	strikeID = new HashMap<Integer, String>();
 		bombSites = new HashMap<TNTPrimed, String>();
-    	Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
+    	Bukkit.getPluginManager().registerEvents(this, RodsTwo.getInstance());
 		fePlayer = new FireworkEffectPlayer();
 		return true;
 	}

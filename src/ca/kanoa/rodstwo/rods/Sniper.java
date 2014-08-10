@@ -39,15 +39,15 @@ public class Sniper extends Rod implements Listener {
 		arrow.setVelocity(velocity);
 		arrow.setBounce(false);
 		arrows.add(arrow);
-		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 			@Override
 			public void run() {
 				if (arrows.contains(arrow)) {
 					arrow.setVelocity(velocity);
-					Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, this, 1);
+					Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), this, 1);
 				}
 			}}, 1);
-		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 			public void run() {
 				if (arrows.contains(arrow)) {
 					arrow.remove();
@@ -60,7 +60,7 @@ public class Sniper extends Rod implements Listener {
 	@Override
 	public boolean enable(Server serv) {
 		this.arrows = new HashSet<org.bukkit.entity.Arrow>();
-		Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
+		Bukkit.getPluginManager().registerEvents(this, RodsTwo.getInstance());
 		return true;
 	}
 	
@@ -69,7 +69,7 @@ public class Sniper extends Rod implements Listener {
 		if(event.getEntity() instanceof org.bukkit.entity.Arrow){
 			final org.bukkit.entity.Arrow a = (org.bukkit.entity.Arrow) event.getEntity();
 			if (arrows.contains(a)) {
-				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 					public void run() {
 						a.remove();
 						arrows.remove(a);

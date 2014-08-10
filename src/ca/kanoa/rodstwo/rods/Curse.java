@@ -62,7 +62,7 @@ public class Curse extends Rod implements Listener {
 		if (target instanceof Player) {
 			final AffectedPlayer afft = new AffectedPlayer(player, (Player) target, potion);
 			affected.add(afft);
-			Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+			Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 				public void run() {
 					affected.remove(afft);
 				}}, (config.getInt("random_potion_length") * 20) + 30);
@@ -74,7 +74,7 @@ public class Curse extends Rod implements Listener {
 	@Override
 	public boolean enable(Server serv) {
 		rand = new Random(serv.getSpawnRadius() * serv.getMaxPlayers() * 10);
-		Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
+		Bukkit.getPluginManager().registerEvents(this, RodsTwo.getInstance());
 		affected = new HashSet<AffectedPlayer>();
 		return true;
 	}

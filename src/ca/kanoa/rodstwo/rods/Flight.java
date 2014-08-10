@@ -28,7 +28,7 @@ public class Flight extends Rod {
 		player.setFlying(true);
 		player.addPotionEffect(new PotionEffect(PotionEffectType.JUMP, (int) (config.getDouble("flight_time") * 20), -1));
 		final Player p1 = player;
-		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 			@Override
 			public void run() {
 				p1.setFlying(false);

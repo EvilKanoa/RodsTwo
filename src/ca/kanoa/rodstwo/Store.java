@@ -25,7 +25,7 @@ public class Store implements Listener {
 	public Store(Player sender) {
 		this.buyer = sender;
 		populateStore();
-		Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
+		Bukkit.getPluginManager().registerEvents(this, RodsTwo.getInstance());
 	}
 
 	private void populateStore() {

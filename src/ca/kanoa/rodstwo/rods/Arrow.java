@@ -29,7 +29,7 @@ public class Arrow extends Rod implements Listener {
 	public boolean run(Player player, ConfigurationSection config) {
 		final Player p1 = player;
 		for (int i = 0; i < config.getInt("quiver_size"); i++)
-			player.getServer().getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+			player.getServer().getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 				public void run() {
 					org.bukkit.entity.Arrow a = p1.launchProjectile(org.bukkit.entity.Arrow.class);
 					arrows.add(a);
@@ -40,7 +40,7 @@ public class Arrow extends Rod implements Listener {
 	@Override
 	public boolean enable(Server serv) {
 		this.arrows = new HashSet<org.bukkit.entity.Arrow>();
-		Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
+		Bukkit.getPluginManager().registerEvents(this, RodsTwo.getInstance());
 		return true;
 	}
 
@@ -50,7 +50,7 @@ public class Arrow extends Rod implements Listener {
 			final org.bukkit.entity.Arrow a = (org.bukkit.entity.Arrow) event.getEntity();
 			if (arrows.contains(a)) {
 				arrows.remove(a);
-				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 					public void run() {
 						a.remove();
 					}}, 1);

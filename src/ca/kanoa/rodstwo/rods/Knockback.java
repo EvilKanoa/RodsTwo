@@ -33,7 +33,7 @@ public class Knockback extends Rod {
 		im.setDisplayName("" + ChatColor.RESET + ChatColor.BLUE + "Knockerbacker");
 		sword.setItemMeta(im);
 		sword.setDurability((short) (60 - config.getInt("durability_left_on_item")));
-		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 			public void run() {
 				p1.getInventory().addItem(sword);
 				p1.updateInventory();

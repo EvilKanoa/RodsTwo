@@ -45,7 +45,7 @@ public abstract class Rod {
         this.defaultRodID = rodID;
         this.rodID = rodID;
         this.cooldown = cooldown;
-        this.plugin = RodsTwo.plugin;
+        this.plugin = RodsTwo.getInstance();
         this.defaultCooldown = cooldown;
         this.defaultCost = cost;
     }
@@ -65,7 +65,7 @@ public abstract class Rod {
         this.defaultRodID = rodID;
         this.rodID = rodID;
         this.cooldown = cooldown;
-        this.plugin = RodsTwo.plugin;
+        this.plugin = RodsTwo.getInstance();
         this.defaultCooldown = cooldown;
         this.defaultCost = cost;
     }

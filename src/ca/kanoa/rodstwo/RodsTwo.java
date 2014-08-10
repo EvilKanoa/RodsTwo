@@ -4,7 +4,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,14 +36,14 @@ public class RodsTwo extends JavaPlugin implements Listener {
     public PluginDescriptionFile pdf;
     public Logger logger;
     public FileConfiguration rodConfig;
-    public static RodsTwo plugin;
+    private static RodsTwo instance;
 
     public void onEnable() {
     	rods = new ArrayList<Rod>();
     	cooldowns = new HashMap<String, Long>();
         pdf = getDescription();
         logger = getLogger();
-        plugin = this;
+        instance = this;
         
         getCommand("lightningrod").setExecutor(new CommandExecutor());
         Bukkit.getPluginManager().registerEvents(new CastListener(), this);
@@ -157,6 +156,9 @@ public class RodsTwo extends JavaPlugin implements Listener {
     	System.out.println("[Debug] " + msg);
     }
     
+    public static RodsTwo getInstance() {
+    	return instance;
+    }
     
     public static List<Material> noFire = Arrays.asList(new Material[]{
     		Material.SIGN, Material.SIGN_POST, Material.WALL_SIGN,

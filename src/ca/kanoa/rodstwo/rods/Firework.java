@@ -48,7 +48,7 @@ public class Firework extends Rod {
 		firework.setVelocity(velocity);
 		final ConfigurationSection c1 = config;
 		final Player p1 = player;
-		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new FireworkHitBlock(firework, velocity, new FireworkRunnable(){
+		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new FireworkHitBlock(firework, velocity, new FireworkRunnable(){
 			@Override
 			public void run(Location loc, org.bukkit.entity.Firework firework) {
 				int radius = c1.getInt("radius");
@@ -105,7 +105,7 @@ public class Firework extends Rod {
 				whenHitsBlock.run(loc.getLocation(), firework);
 			}
 			else {
-				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, this, 1L);
+				Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), this, 1L);
 				firework.setVelocity(velocity);
 			}
 		}

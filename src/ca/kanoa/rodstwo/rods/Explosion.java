@@ -38,7 +38,7 @@ public class Explosion extends Rod implements Listener {
 		tnt.setIsIncendiary(config.getBoolean("enable_fire"));
 		tnt.setFuseTicks(0);
 		bombSites.put(tnt, player.getName());
-		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.plugin, new Runnable(){
+		Bukkit.getScheduler().scheduleSyncDelayedTask(RodsTwo.getInstance(), new Runnable(){
 			@Override
 			public void run() {
 				bombSites.remove(tnt);
@@ -50,7 +50,7 @@ public class Explosion extends Rod implements Listener {
 	@Override
 	public boolean enable(Server serv) {
 		bombSites = new HashMap<TNTPrimed, String>();
-		Bukkit.getPluginManager().registerEvents(this, RodsTwo.plugin);
+		Bukkit.getPluginManager().registerEvents(this, RodsTwo.getInstance());
 		return true;
 	}
 
