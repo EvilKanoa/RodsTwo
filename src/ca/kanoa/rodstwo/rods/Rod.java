@@ -21,10 +21,8 @@ public abstract class Rod {
     private final ConfigOptions options;
     private final int defaultRodID;
     private long cooldown;
-    private int cost;
     private int rodID;
     private final long defaultCooldown;
-    private final int defaultCost;
     private ShapedRecipe recipe;
     private final Plugin plugin;
 
@@ -35,50 +33,66 @@ public abstract class Rod {
      * @param rodID The default itemID for the rod
      * @param options The options that get placed into the config (under: Rods.rodName.options)
      * @param cooldown The cooldown after using this rod in milliseconds
-     * @param plugin The original plugin, USE OTHER CONSTRUCTOR
+     * @param plugin The original plugin
+     * 
+     * @deprecated The plugin field is no longer required
      */
     @Deprecated
     public Rod(String name, int cost, int rodID, ConfigOptions options, long cooldown, Plugin plugin){
         this.name = name;
-        this.cost = cost;
         this.options = options;
         this.defaultRodID = rodID;
         this.rodID = rodID;
         this.cooldown = cooldown;
         this.plugin = RodsTwo.getInstance();
         this.defaultCooldown = cooldown;
-        this.defaultCost = cost;
     }
     
     /**
      * The default lightning rod
      * @param name The name of the rod, shows up in inventorys and on the item
-     * @param cost How many rods get used when you right click
      * @param rodID The default itemID for the rod
      * @param options The options that get placed into the config (under: Rods.rodName.options)
      * @param cooldown The cooldown after using this rod in milliseconds
+     * 
+     * @deprecated Item costs have been removed from the plugin.
      */
+    @Deprecated
     public Rod(String name, int cost, int rodID, ConfigOptions options, long cooldown){
     	this.name = name;
-        this.cost = cost;
         this.options = options == null ? new ConfigOptions() : options;
         this.defaultRodID = rodID;
         this.rodID = rodID;
         this.cooldown = cooldown;
         this.plugin = RodsTwo.getInstance();
         this.defaultCooldown = cooldown;
-        this.defaultCost = cost;
     }
     
     /**
      * The default lightning rod
      * @param name The name of the rod, shows up in inventorys and on the item
-     * @param cost How many rods get used when you right click
+     * @param rodID The default itemID for the rod
+     * @param options The options that get placed into the config (under: Rods.rodName.options)
+     * @param cooldown The cooldown after using this rod in milliseconds
+     */
+    public Rod(String name, int rodID, ConfigOptions options, long cooldown){
+    	this.name = name;
+        this.options = options == null ? new ConfigOptions() : options;
+        this.defaultRodID = rodID;
+        this.rodID = rodID;
+        this.cooldown = cooldown;
+        this.plugin = RodsTwo.getInstance();
+        this.defaultCooldown = cooldown;
+    }
+    
+    /**
+     * The default lightning rod
+     * @param name The name of the rod, shows up in inventorys and on the item
      * @param rodID The default itemID for the rod
      * @param cooldown The cooldown after using this rod in milliseconds
      */
-    public Rod(String name, int cost, int rodID, long cooldown){
-    	this(name, cost, rodID, new ConfigOptions(), cooldown);
+    public Rod(String name, int rodID, long cooldown){
+    	this(name, rodID, new ConfigOptions(), cooldown);
     }
 
     public long getDefaultCooldown(){
@@ -97,10 +111,6 @@ public abstract class Rod {
     	return this.defaultRodID;
     }
 
-    public int getDefaultCost(){
-        return defaultCost;
-    }
-
     public String getName(){
         return  name;
     }
@@ -111,14 +121,6 @@ public abstract class Rod {
     
     public Permission getCraftPermission(){
         return new Permission("lr.craft." + name, "Default crafting permission node for " + name + " rod.");
-    }
-
-    public int getCost(){
-        return cost;
-    }
-
-    public void setCost(int cost){
-        this.cost = cost;
     }
 
     public ConfigOptions getOptions(){

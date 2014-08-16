@@ -28,9 +28,6 @@ public class Utils {
 			if (config.get(rod.getPath("enabled")) == null || overwrite) {
 				config.set(rod.getPath("enabled"), true);
 			}
-			if (config.get(rod.getPath("cost")) == null || overwrite) {
-				config.set(rod.getPath("cost"), overwrite ? rod.getDefaultCost() : rod.getCost());
-			}
 			if (config.get(rod.getPath("cooldown")) == null || overwrite) {
 				config.set(rod.getPath("cooldown"), overwrite ? rod.getDefaultCooldown() : rod.getCooldown());
 			}
@@ -67,7 +64,6 @@ public class Utils {
 	public static void loadRodOptions() {
 		for (Rod rod : RodsTwo.rods) {
 			try {
-				rod.setCost(RodsTwo.getInstance().rodConfig.getInt(rod.getPath("cost")));
 				rod.setCooldown(RodsTwo.getInstance().rodConfig.getLong(rod.getPath("cooldown")));
 				rod.setItemID(RodsTwo.getInstance().rodConfig.getInt(rod.getPath("itemID")));
 			} catch (Exception e) {

@@ -36,9 +36,7 @@ public class CastListener implements Listener {
 			for (Rod rod : plugin.getRods()) {
 				try {
 					if (event.getItem().getTypeId() == rod.getItemID() && 
-							event.getItem().getItemMeta().getLore().contains(rod.getName()) &&
-							(event.getItem().getAmount() >= rod.getCost() || 
-							event.getPlayer().getGameMode() == GameMode.CREATIVE) && 
+							event.getItem().getItemMeta().getLore().contains(rod.getName()) && 
 							(event.getPlayer().hasPermission(rod.getUsePermission()) || 
 							event.getPlayer().hasPermission("lr.use.all")) &&
 							plugin.rodConfig.getBoolean(rod.getPath("enabled"))) {
@@ -49,8 +47,6 @@ public class CastListener implements Listener {
 							if (rod.run(event.getPlayer(), plugin.rodConfig.getConfigurationSection("Rods." + rod.getName() + ".options"))) {
 								if (!(event.getPlayer().getGameMode() == GameMode.CREATIVE)) {
 									ItemStack is = event.getItem();
-									if(is.getAmount() == rod.getCost()) is = null;
-									else is.setAmount(is.getAmount() - rod.getCost());
 									event.getPlayer().setItemInHand(is);
 								}
 
