@@ -65,7 +65,7 @@
   </target>
   
   <!-- Creates the jar file -->
-  <target name="jar" depends="docs">
+  <target name="jar" depends="compile">
   	<jar destfile="${dist.dir}\${project.name}.jar" basedir="${build.dir}">
       <zipfileset dir="." includes="plugin.yml"/>
       <zipfileset dir="." includes="rods.yml"/>

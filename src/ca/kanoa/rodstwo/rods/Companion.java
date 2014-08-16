@@ -19,7 +19,7 @@ import ca.kanoa.rodstwo.config.ConfigOptions;
 public class Companion extends Rod implements Listener {
 
 	public Companion() throws Exception {
-		super("Companion", 1, 280, new ConfigOptions(new String[]{"number_to_spawn"}, new Object[]{2}), 500);
+		super("Companion", 1, 280, new ConfigOptions(new String[]{"number_to_spawn", "health_per_companion"}, new Object[]{2, 20}), 500);
 		super.setRecipe(new ShapedRecipe(super.getItem()).shape(" W ", "WBW", " W ").setIngredient('W', Material.BONE).setIngredient('B', Material.STICK));
 	}
 
@@ -28,6 +28,7 @@ public class Companion extends Rod implements Listener {
 		for (int i = 0; i < config.getInt("number_to_spawn"); i++) {
 			Wolf wolf = player.getWorld().spawn(player.getLocation(), Wolf.class);
 			wolf.setTamed(true);
+			wolf.setHealth(config.getInt("health_per_companion"));
 			wolf.setOwner(player);
 			wolf.setCustomName(player.getName());
 			wolf.setCustomNameVisible(true);
