@@ -21,7 +21,7 @@ public class Arrow extends Rod implements Listener {
 	private Set<org.bukkit.entity.Arrow> arrows;
 
 	public Arrow() throws Exception {
-		super("Arrow", 1, new ConfigOptions(new String[]{"quiver_size"}, new Object[]{4}), 500);
+		super("Arrow", 1, new ConfigOptions(new String[]{"quiver_size"}, new Object[]{4}), 500, 10);
 		setRecipe(new ShapedRecipe(super.getItem()).shape("AAA", "ABA", "AAA").setIngredient('A', Material.ARROW).setIngredient('B', Material.STICK));
 	}
 

@@ -91,7 +91,7 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
             if(args.length == 1){
                 sender.sendMessage("" + ChatColor.DARK_PURPLE + ChatColor.BOLD + "Listing all loaded rods");
                 for(Rod rod : plugin.getRods())
-                    sender.sendMessage(ChatColor.LIGHT_PURPLE + "Name: " + ChatColor.RED + rod.getName() + ChatColor.LIGHT_PURPLE + ", ItemID: " + ChatColor.GREEN + rod.getItemID());
+                    sender.sendMessage(ChatColor.LIGHT_PURPLE + "Name: " + ChatColor.RED + rod.getName() + ChatColor.LIGHT_PURPLE + ", Uses: " + ChatColor.GREEN + rod.getUses() + ", ItemID: " + ChatColor.GREEN + rod.getItemID());
             }
             else
                 sender.sendMessage(ChatColor.RED + "Too many arguments!");
