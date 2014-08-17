@@ -28,6 +28,9 @@ public class Utils {
 			if (config.get(rod.getPath("enabled")) == null || overwrite) {
 				config.set(rod.getPath("enabled"), true);
 			}
+			if (config.get(rod.getPath("uses")) == null || overwrite) {
+				config.set(rod.getPath("uses"), overwrite ? rod.getDefaultUses() : rod.getUses());
+			}
 			if (config.get(rod.getPath("cooldown")) == null || overwrite) {
 				config.set(rod.getPath("cooldown"), overwrite ? rod.getDefaultCooldown() : rod.getCooldown());
 			}
@@ -66,6 +69,7 @@ public class Utils {
 			try {
 				rod.setCooldown(RodsTwo.getInstance().rodConfig.getLong(rod.getPath("cooldown")));
 				rod.setItemID(RodsTwo.getInstance().rodConfig.getInt(rod.getPath("itemID")));
+				rod.setUses(RodsTwo.getInstance().rodConfig.getInt(rod.getPath("uses")));
 			} catch (Exception e) {
 				RodsTwo.getInstance().logger.warning("Invalid config formatting for rod: " + rod.getName() + ".");
 			}

@@ -22,6 +22,8 @@ public abstract class Rod {
     private final int defaultRodID;
     private long cooldown;
     private int rodID;
+    private int uses;
+    private int defaultUses;
     private final long defaultCooldown;
     private ShapedRecipe recipe;
     private final Plugin plugin;
@@ -46,6 +48,8 @@ public abstract class Rod {
         this.cooldown = cooldown;
         this.plugin = RodsTwo.getInstance();
         this.defaultCooldown = cooldown;
+        this.uses = 10;
+        this.defaultUses = uses;
     }
     
     /**
@@ -66,6 +70,8 @@ public abstract class Rod {
         this.cooldown = cooldown;
         this.plugin = RodsTwo.getInstance();
         this.defaultCooldown = cooldown;
+        this.uses = 10;
+        this.defaultUses = uses;
     }
     
     /**
@@ -75,7 +81,7 @@ public abstract class Rod {
      * @param options The options that get placed into the config (under: Rods.rodName.options)
      * @param cooldown The cooldown after using this rod in milliseconds
      */
-    public Rod(String name, int rodID, ConfigOptions options, long cooldown){
+    public Rod(String name, int rodID, ConfigOptions options, long cooldown, int uses){
     	this.name = name;
         this.options = options == null ? new ConfigOptions() : options;
         this.defaultRodID = rodID;
@@ -83,6 +89,8 @@ public abstract class Rod {
         this.cooldown = cooldown;
         this.plugin = RodsTwo.getInstance();
         this.defaultCooldown = cooldown;
+        this.uses = uses;
+        this.defaultUses = uses;
     }
     
     /**
@@ -91,8 +99,8 @@ public abstract class Rod {
      * @param rodID The default itemID for the rod
      * @param cooldown The cooldown after using this rod in milliseconds
      */
-    public Rod(String name, int rodID, long cooldown){
-    	this(name, rodID, new ConfigOptions(), cooldown);
+    public Rod(String name, int rodID, long cooldown, int uses){
+    	this(name, rodID, new ConfigOptions(), cooldown, uses);
     }
 
     public long getDefaultCooldown(){
@@ -133,6 +141,18 @@ public abstract class Rod {
 
     public void setCooldown(long cooldown){
         this.cooldown = cooldown;
+    }
+    
+    public int getUses() {
+    	return uses;
+    }
+    
+    public void setUses(int uses) {
+    	this.uses = uses;
+    }
+    
+    public int getDefaultUses() {
+    	return defaultUses;
     }
 
     public ShapedRecipe getRecipe(){
