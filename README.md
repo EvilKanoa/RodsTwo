@@ -1,6 +1,6 @@
-LightningRods 2
+RodsTwo
 =================================
-LightningRods 2 is a new and (greatly) improved version of my plugin [LightningRod] (http://dev.bukkit.org/server-mods/kanoas-lightning-rods) which is a plugin that adds magic wands (ish) that can preform things.  LightningRods 2 comes with every feature of the previous version, plus so much much more! 
+RodsTwo is a new and (greatly) improved version of my plugin [LightningRod] (http://dev.bukkit.org/server-mods/kanoas-lightning-rods) which is a plugin that adds magic wands (ish) that can preform things.  LightningRods 2 comes with every feature of the previous version, plus so much much more! 
 
 Requirments
 -----------
@@ -27,7 +27,5 @@ Permissions
  - lr.overwrite - Allows overwriting the config with default values.
  - lr.cooldown.exempt - Allows a player to be exempt from cooldowns.
  - lr.list - Allows use of the /lr list command.
- - lr.cooldown.bar - Allows a players EXP bar to be used as a cooldown timer.
- - lr.cooldown.message - Allows the player to see the cooldown message. *1
  - lr.version - Allows a player to view the current plugin version. *1
  - Note(*1): Defaults to letting anyone use it.
