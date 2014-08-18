@@ -27,9 +27,6 @@ permissions:
     lr.cooldown.exempt:
         description: Turns off cooldowns.
         default: false
-    lr.cooldown.messages:
-        description: View the slowdown message.
-        default: true
     lr.cooldown.bar:
         description: Uses the exp bar to show cooldowns.
         default: false

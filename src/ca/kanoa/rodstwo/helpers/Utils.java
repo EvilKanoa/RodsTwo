@@ -53,6 +53,9 @@ public class Utils {
 	}
 
 	public static Rod getRod(ItemStack stack) {
+		if (stack == null) {
+			return null;
+		}
 		for (Rod rod : RodsTwo.getInstance().getRods()) {
 			if (stack.getTypeId() == rod.getItemID() && 
 					stack.getItemMeta().getLore().contains(rod.getName())) {
@@ -89,12 +92,8 @@ public class Utils {
 		}
 	}
 
-	public static boolean isCooldownOver(String player) {
-		try {
-			return System.currentTimeMillis() > RodsTwo.cooldowns.get(player);
-		} catch(Exception e){
-			return true;
-		}
+	public static boolean isCooldownOver(ItemStack item) {
+		return getRod(item) != null && item.getAmount() == 1;
 	}
 
 	public static void initializeRods() {

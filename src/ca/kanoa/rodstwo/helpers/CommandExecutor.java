@@ -50,13 +50,8 @@ public class CommandExecutor implements org.bukkit.command.CommandExecutor {
                         } catch(Exception e) {
                            x = 1;
                         }
-                        ItemStack rodStack = new ItemStack(Material.getMaterial(rod.getItemID()), x);
-                        ItemMeta rodMeta = rodStack.getItemMeta();
-                        rodMeta.setLore(Arrays.asList(new String[]{rod.getName()}));
-                        rodMeta.setDisplayName(rod.getName() + " Rod");
-                        rodStack.setItemMeta(rodMeta);
-                        player.getInventory().addItem(rodStack);
-                        player.sendMessage(ChatColor.LIGHT_PURPLE + "Spawned a(n) " + rodStack.getItemMeta().getDisplayName());
+                        player.getInventory().addItem(rod.getItem(x));
+                        player.sendMessage(ChatColor.LIGHT_PURPLE + "Spawned a(n) " + rod.getName());
                         return true;
                     }
                 }

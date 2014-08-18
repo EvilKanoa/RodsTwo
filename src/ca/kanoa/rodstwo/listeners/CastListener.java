@@ -1,7 +1,6 @@
 package ca.kanoa.rodstwo.listeners;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -12,7 +11,6 @@ import org.bukkit.inventory.ItemStack;
 
 import ca.kanoa.rodstwo.RodsTwo;
 import ca.kanoa.rodstwo.events.PlayerUseRodEvent;
-import ca.kanoa.rodstwo.helpers.CooldownBar;
 import ca.kanoa.rodstwo.helpers.Utils;
 import ca.kanoa.rodstwo.rods.Rod;
 
@@ -32,44 +30,34 @@ public class CastListener implements Listener {
 					return;
 				}
 			} catch (NullPointerException e) {}
-			
-			for (Rod rod : plugin.getRods()) {
-				try {
-					if (event.getItem().getTypeId() == rod.getItemID() && 
-							event.getItem().getItemMeta().getLore().contains(rod.getName()) && 
-							(event.getPlayer().hasPermission(rod.getUsePermission()) || 
-							event.getPlayer().hasPermission("lr.use.all")) &&
-							plugin.rodConfig.getBoolean(rod.getPath("enabled"))) {
-						
-						if (Utils.isCooldownOver(event.getPlayer().getName()) || 
-								event.getPlayer().hasPermission("lr.cooldown.exempt")) {
-							
-							if (rod.run(event.getPlayer(), plugin.rodConfig.getConfigurationSection("Rods." + rod.getName() + ".options"))) {
-								if (!(event.getPlayer().getGameMode() == GameMode.CREATIVE)) {
-									ItemStack is = event.getItem();
-									event.getPlayer().setItemInHand(is);
-								}
 
-								if (!event.getPlayer().hasPermission("lr.cooldown.exempt")) {
-									RodsTwo.cooldowns.put(event.getPlayer().getName(), System.currentTimeMillis() + rod.getCooldown());
-									new CooldownBar(event.getPlayer());
-								}
-								
-								Bukkit.getPluginManager().callEvent(new PlayerUseRodEvent(event.getPlayer(), rod));
-								
-							}
-							
-						}
-						else if (event.getPlayer().hasPermission("lr.slowdownmessage")) {
-							
-							String timeLeft = (((float)(((double)(RodsTwo.cooldowns.get(event.getPlayer().getName())) - System.currentTimeMillis()) / 1000)) + "");
-							timeLeft = timeLeft.substring(0, timeLeft.indexOf('.') + 2);
-							event.getPlayer().sendMessage(ChatColor.RED + "Slow down! Wait " + ChatColor.YELLOW + '[' + ChatColor.AQUA + (timeLeft.contains("0.0") ? "0.1" : timeLeft) + ChatColor.YELLOW + ']' + ChatColor.RED + " second(s) to regain power!");
-							
+			Rod rod = Utils.getRod(event.getItem());
+			if (rod != null &&
+					(event.getPlayer().hasPermission(rod.getUsePermission()) || 
+					event.getPlayer().hasPermission("lr.use.all")) &&
+					plugin.rodConfig.getBoolean(rod.getPath("enabled")) &&
+					(Utils.isCooldownOver(event.getItem()) ||
+					event.getPlayer().hasPermission("lr.cooldown.exempt"))) {
+				if (rod.run(event.getPlayer(), plugin.rodConfig.getConfigurationSection("Rods." + rod.getName() + ".options"))) {
+					if (event.getPlayer().getGameMode() != GameMode.CREATIVE) {
+						ItemStack is = event.getItem();
+						rod.changeUses(is, -1);
+						if (rod.getUses(event.getItem()) < 1) {
+							event.getPlayer().setItemInHand(null);
+						} else {
+							event.getPlayer().setItemInHand(is);
 						}
 					}
-				} catch (NullPointerException e) {
-					//Do nothing
+
+					if (!event.getPlayer().hasPermission("lr.cooldown.exempt")) {
+						ItemStack rodStack = event.getPlayer().getItemInHand();
+						rodStack.setAmount(Math.round(rod.getCooldown() / (float) 1000) + 1);
+						event.getPlayer().setItemInHand(rodStack);
+						event.getPlayer().updateInventory();
+					}
+
+					Bukkit.getPluginManager().callEvent(new PlayerUseRodEvent(event.getPlayer(), rod));
+
 				}
 			}
 		}

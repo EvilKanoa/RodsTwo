@@ -21,6 +21,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import ca.kanoa.rodstwo.config.Version;
 import ca.kanoa.rodstwo.helpers.CommandExecutor;
+import ca.kanoa.rodstwo.helpers.Cooldown;
 import ca.kanoa.rodstwo.helpers.RodComparator;
 import ca.kanoa.rodstwo.helpers.Utils;
 import ca.kanoa.rodstwo.helpers.VaultManager;
@@ -32,7 +33,6 @@ import ca.kanoa.rodstwo.rods.*;
 public class RodsTwo extends JavaPlugin implements Listener {
 
     public static List<Rod> rods;
-    public static Map<String, Long> cooldowns;
     public PluginDescriptionFile pdf;
     public Logger logger;
     public FileConfiguration rodConfig;
@@ -40,7 +40,6 @@ public class RodsTwo extends JavaPlugin implements Listener {
 
     public void onEnable() {
     	rods = new ArrayList<Rod>();
-    	cooldowns = new HashMap<String, Long>();
         pdf = getDescription();
         logger = getLogger();
         instance = this;
@@ -49,6 +48,7 @@ public class RodsTwo extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(new CastListener(), this);
         Bukkit.getPluginManager().registerEvents(new SignListener(), this);
         Bukkit.getPluginManager().registerEvents(new CraftListener(), this);
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Cooldown(), 20, 20);
         
         if (Bukkit.getPluginManager().isPluginEnabled("Vault")) {
         	VaultManager.eco = VaultManager.setupEconomy();
