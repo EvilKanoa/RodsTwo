@@ -58,7 +58,7 @@ public class Utils {
 		}
 		for (Rod rod : RodsTwo.getInstance().getRods()) {
 			if (stack.getTypeId() == rod.getItemID() && 
-					stack.getItemMeta().getLore().contains(rod.getName())) {
+					stack.getItemMeta().getLore().get(0).equals(ChatColor.RED + rod.getName())) {
 				return rod;
 			}
 		}

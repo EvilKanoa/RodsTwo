@@ -4,9 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -21,12 +19,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import ca.kanoa.rodstwo.config.Version;
 import ca.kanoa.rodstwo.helpers.CommandExecutor;
-import ca.kanoa.rodstwo.helpers.Cooldown;
 import ca.kanoa.rodstwo.helpers.RodComparator;
 import ca.kanoa.rodstwo.helpers.Utils;
 import ca.kanoa.rodstwo.helpers.VaultManager;
 import ca.kanoa.rodstwo.listeners.CastListener;
+import ca.kanoa.rodstwo.listeners.CooldownItemListener;
 import ca.kanoa.rodstwo.listeners.CraftListener;
+import ca.kanoa.rodstwo.listeners.ItemListener;
 import ca.kanoa.rodstwo.listeners.SignListener;
 import ca.kanoa.rodstwo.rods.*;
 
@@ -48,7 +47,8 @@ public class RodsTwo extends JavaPlugin implements Listener {
         Bukkit.getPluginManager().registerEvents(new CastListener(), this);
         Bukkit.getPluginManager().registerEvents(new SignListener(), this);
         Bukkit.getPluginManager().registerEvents(new CraftListener(), this);
-        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Cooldown(), 20, 20);
+        Bukkit.getPluginManager().registerEvents(new CooldownItemListener(), this);
+        Bukkit.getPluginManager().registerEvents(new ItemListener(), this);
         
         if (Bukkit.getPluginManager().isPluginEnabled("Vault")) {
         	VaultManager.eco = VaultManager.setupEconomy();

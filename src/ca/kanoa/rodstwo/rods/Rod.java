@@ -153,38 +153,8 @@ public abstract class Rod {
 		return getUsesString(uses);
 	}
 
-	public String getUsesString(int uses) {
-		return ChatColor.GRAY + "Uses: " + ChatColor.YELLOW + uses;
-	}
-
 	public void setUses(int uses) {
 		this.uses = uses;
-	}
-
-	public int getUses(ItemStack item) {
-		if (Utils.getRod(item) == null) {
-			return -1;
-		}
-		ItemMeta meta = item.getItemMeta();
-		String str = meta.getLore().get(1).substring(10);
-		int uses;
-		try {
-			uses = Integer.parseInt(str);
-		} catch (NumberFormatException ex) {
-			uses = -1;
-			ex.printStackTrace();
-		}
-		return uses;
-	}
-
-	public void changeUses(ItemStack item, int change) {
-		if (Utils.getRod(item) == null) {
-			return;
-		}
-		ItemMeta meta = item.getItemMeta();
-		String str = getUsesString(getUses(item) + change);
-		meta.setLore(Arrays.asList(new String[]{meta.getLore().get(0), str}));
-		item.setItemMeta(meta);
 	}
 
 	public int getDefaultUses() {
@@ -206,8 +176,8 @@ public abstract class Rod {
 	public ItemStack getItem(int amount){
 		ItemStack is = new ItemStack(Material.getMaterial(rodID), amount);
 		ItemMeta im = is.getItemMeta();
-		im.setDisplayName(name + " Rod");
-		im.setLore(Arrays.asList(new String[]{name, getUsesString()}));
+		im.setDisplayName(ChatColor.RESET + name + " Rod");
+		im.setLore(Arrays.asList(new String[]{ChatColor.RED + name, getUsesString()}));
 		is.setItemMeta(im);
 		return is;
 	}
@@ -224,5 +194,39 @@ public abstract class Rod {
 
 	public boolean enable(Server server){
 		return true;
+	}
+
+	public static String getUsesString(int uses) {
+		return ChatColor.GRAY + "Uses: " + ChatColor.YELLOW + uses;
+	}
+
+	public static void changeUses(ItemStack item, int change) {
+		setUses(item, getUses(item) + change);
+	}
+
+	public static int getUses(ItemStack item) {
+		if (Utils.getRod(item) == null) {
+			return -1;
+		}
+		ItemMeta meta = item.getItemMeta();
+		String str = meta.getLore().get(1).substring(10);
+		int uses;
+		try {
+			uses = Integer.parseInt(str);
+		} catch (NumberFormatException ex) {
+			uses = -1;
+			ex.printStackTrace();
+		}
+		return uses;
+	}
+	
+	public static void setUses(ItemStack item, int uses) {
+		if (Utils.getRod(item) == null) {
+			return;
+		}
+		ItemMeta meta = item.getItemMeta();
+		String str = getUsesString(uses);
+		meta.setLore(Arrays.asList(new String[]{meta.getLore().get(0), str}));
+		item.setItemMeta(meta);
 	}
 }
