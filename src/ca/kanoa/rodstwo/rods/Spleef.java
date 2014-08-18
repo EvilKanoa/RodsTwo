@@ -21,7 +21,9 @@ public class Spleef extends Rod {
 					Material.STONE,
 					Material.WATER,
 					Material.SAND,
-					Material.STATIONARY_WATER
+					Material.STATIONARY_WATER,
+					Material.SANDSTONE,
+					Material.COBBLESTONE
 			});
 	
 	public Spleef() {
