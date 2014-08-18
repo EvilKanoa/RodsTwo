@@ -1,7 +1,7 @@
 name: RodsTwo
 main: ca.kanoa.rodstwo.RodsTwo
 #Version Major.MinorMinor.[Build[Build[Build[Build]]]]
-version: 2.00
+version: 2.01
 author: 12323op
 softdepend: [Vault]
 description: The second edition of the LightningRods plugin.
